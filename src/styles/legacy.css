@@ -159,6 +159,12 @@ body {
 .mpls-legacy a:visited {
   color: #660000;
 }
+.mpls-legacy .story-link {
+  text-decoration: none;
+}
+.mpls-legacy .story-link:hover {
+  text-decoration: underline;
+}
 
 .mpls-legacy hr.divider {
   border: 0;

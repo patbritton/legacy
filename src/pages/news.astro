@@ -71,7 +71,7 @@ On The Internet</font>
         ) : null}
         {leadStory ? (
           <>
-            <p><font face="Verdana, Helvetica, Arial" size="3"><b><a href={`/news/${leadStory.slug}/`}>{leadStory.title}</a></b></font></p>
+            <p><font face="Verdana, Helvetica, Arial" size="3"><b><a class="story-link" href={`/news/${leadStory.slug}/`}>{leadStory.title}</a></b></font></p>
             <p><font face="Verdana, Helvetica, Arial" size="2">{leadStory.source || "Wire report"}.</font></p>
             <p><font face="Verdana, Helvetica, Arial" size="1"><b>{leadStory.displayDate || leadStory.date}</b></font></p>
           </>
@@ -94,7 +94,7 @@ On The Internet</font>
               </td>
               <td valign="top">
                 <font face="Verdana, Helvetica, Arial" size="2">
-                  <b>{story.displayDate || story.date}</b> - <a href={`/news/${story.slug}/`}>{story.title}</a><br>
+                  <b>{story.displayDate || story.date}</b> - <a class="story-link" href={`/news/${story.slug}/`}>{story.title}</a><br>
                   <font face="Verdana, Helvetica, Arial" size="1">{story.source}</font>
                 </font>
               </td>
@@ -119,7 +119,7 @@ On The Internet</font>
         
         <p><font face="Verdana, Helvetica, Arial" size="2"><b>ON THE WIRE</b></font></p>
         {topStories.slice(0, 3).map((story) => (
-          <p><font face="Verdana, Helvetica, Arial" size="1"><a href={`/news/${story.slug}/`}>{story.title}</a></font></p>
+          <p><font face="Verdana, Helvetica, Arial" size="1"><a class="story-link" href={`/news/${story.slug}/`}>{story.title}</a></font></p>
         ))}
         <hr width="100%">
 
