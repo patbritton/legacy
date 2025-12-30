@@ -1,4 +1,4 @@
-# Fix all import paths after moving from /legacy/ to root
+# Fix all import paths after moving from / to root
 
 Write-Host "Fixing lib imports in subdirectories..."
 
