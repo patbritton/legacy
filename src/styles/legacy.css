@@ -836,13 +836,12 @@ body {
        ========================= */
 
     body {
-        padding: 16px 8px 32px;
+        padding: 12px 6px 24px;
     }
 
     /* Allow the main container to fill the screen width with some padding */
     .mpls-legacy {
-        padding: 0 8px;
-        line-height: 1.4; /* Improve readability on mobile */
+        padding: 0 6px;
     }
 
     /* Set the main content area (where fixed widths are often set) to 100% */
@@ -869,19 +868,22 @@ body {
     }
 
     /* Improve readability of text on mobile */
-    .mpls-legacy,
     .mpls-legacy p,
     .mpls-legacy li {
         font-size: 14px;
         line-height: 1.5;
     }
 
-    /* Make all links easier to tap */
+    /* Base link styling - keep inline */
     .mpls-legacy a {
-        min-height: 44px;
-        display: inline-block;
-        padding: 2px 0;
         line-height: 1.4;
+    }
+
+    /* Make important interactive elements easier to tap */
+    .mpls-legacy button,
+    .mpls-legacy input[type="submit"] {
+        min-height: 44px;
+        padding: 8px 16px;
     }
 
     /* ------------------------------------------------------------
@@ -944,17 +946,22 @@ body {
        ------------------------------------------------------------ */
 
     .mpls-legacy .header {
-        flex-direction: column; /* Stack header elements vertically */
-        gap: 10px;
-        padding: 10px 0;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 0;
     }
     .mpls-legacy .header-left,
     .mpls-legacy .header-right {
-        width: 100%; /* Make sidebars full width */
+        width: 100%;
         text-align: center;
+        font-size: 11px;
     }
     .mpls-legacy .header-center {
-        order: -1; /* Move the center logo/title to the top */
+        order: -1;
+    }
+    .mpls-legacy .header img {
+        max-width: 100%;
+        height: auto;
     }
 
     /* ------------------------------------------------------------
@@ -963,23 +970,21 @@ body {
 
     .titlebar {
         white-space: normal;
-        line-height: 2.2;
+        line-height: 1.8;
         font-size: 11px;
-        padding: 8px 4px;
+        padding: 6px 4px;
         height: auto;
     }
     .titlebar img {
         float: none;
         display: block;
-        margin: 0 auto 8px auto;
-        max-height: 24px;
+        margin: 0 auto 6px auto;
+        max-height: 20px;
     }
     .titlebar a {
-        padding: 6px 8px;
-        margin: 2px;
-        min-height: 44px;
+        padding: 4px 6px;
+        margin: 1px;
         display: inline-block;
-        line-height: 1.4;
     }
 
     /* ------------------------------------------------------------
@@ -987,15 +992,16 @@ body {
        ------------------------------------------------------------ */
 
     .mpls-legacy .main {
-        flex-direction: column; /* Stack main content and sidebar vertically */
+        flex-direction: column;
+        gap: 12px;
     }
     .mpls-legacy .sidebar {
-        width: 100%; /* Sidebar takes full width */
-        order: -1; /* Place the sidebar above the content area */
+        width: 100%;
+        order: -1;
     }
     .mpls-legacy .content {
-        width: 100%; /* Content takes full width */
-        padding: 15px; /* Adjust padding for less horizontal space */
+        width: 100%;
+        padding: 12px;
     }
 
     /* ------------------------------------------------------------
@@ -1127,8 +1133,9 @@ body {
 
     /* Navigation improvements */
     .mpls-legacy .nav {
-        font-size: 13px;
-        margin: 12px 0;
+        font-size: 12px;
+        margin: 10px 0;
+        line-height: 1.6;
     }
 
     .mpls-legacy .nav ul {
@@ -1136,13 +1143,12 @@ body {
     }
 
     .mpls-legacy .nav li {
-        margin: 4px 2px;
+        margin: 2px 1px;
         display: inline;
     }
 
     .mpls-legacy .nav a {
-        padding: 6px 4px;
-        min-height: 44px;
+        padding: 4px 6px;
         display: inline-block;
     }
 
