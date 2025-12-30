@@ -835,10 +835,14 @@ body {
        GLOBAL BASE STRUCTURE
        ========================= */
 
+    body {
+        padding: 16px 8px 32px;
+    }
+
     /* Allow the main container to fill the screen width with some padding */
     .mpls-legacy {
-        padding: 0 10px; /* Add some side padding */
-        /* max-width: 800px; is okay but we ensure content doesn't break */
+        padding: 0 8px;
+        line-height: 1.4; /* Improve readability on mobile */
     }
 
     /* Set the main content area (where fixed widths are often set) to 100% */
@@ -855,13 +859,51 @@ body {
     .mpls-legacy .kid-layout,
     .mpls-legacy .media-layout,
     .mpls-legacy .sports-divider {
-        max-width: 100%; /* Override fixed max-widths */
-        width: 100%;    /* Ensure they take full available width */
+        max-width: 100%;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
         padding-left: 0;
         padding-right: 0;
-        box-sizing: border-box; /* Crucial for padding/border inside width */
+        box-sizing: border-box;
+    }
+
+    /* Improve readability of text on mobile */
+    .mpls-legacy,
+    .mpls-legacy p,
+    .mpls-legacy li {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* Make all links easier to tap */
+    .mpls-legacy a {
+        min-height: 44px;
+        display: inline-block;
+        padding: 2px 0;
+        line-height: 1.4;
+    }
+
+    /* ------------------------------------------------------------
+       LEGACY BANNER
+       ------------------------------------------------------------ */
+
+    .legacy-banner {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+    .legacy-banner__inner {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .legacy-banner__close {
+        min-height: 44px;
+        padding: 8px 16px;
+        font-size: 14px;
+        width: 100%;
+    }
+    .has-legacy-banner {
+        padding-top: 120px;
     }
 
     /* ------------------------------------------------------------
@@ -869,18 +911,23 @@ body {
        ------------------------------------------------------------ */
 
     .mpls-legacy #legacyIntro {
-        width: 90%; /* Make intro box responsive */
+        width: 95%;
+        max-width: none;
     }
     .mpls-legacy #legacyIntro h5 {
-        float: none; /* Remove float for better stacking */
-        margin-top: 5px; /* Adjust margin */
+        float: none;
+        margin-top: 5px;
         text-align: center;
+        font-size: 16px;
     }
     .mpls-legacy .legacy-close {
         float: none;
         display: block;
         margin: 10px auto;
         width: fit-content;
+        min-height: 44px;
+        padding: 8px 16px;
+        font-size: 14px;
     }
 
     /* ------------------------------------------------------------
@@ -915,17 +962,24 @@ body {
        ------------------------------------------------------------ */
 
     .titlebar {
-        white-space: normal; /* Allow the nav text to wrap */
-        line-height: 1.5; /* Add space between lines */
-        font-size: 10px; /* Base font size */
+        white-space: normal;
+        line-height: 2.2;
+        font-size: 11px;
+        padding: 8px 4px;
+        height: auto;
     }
     .titlebar img {
         float: none;
         display: block;
-        margin: 0 auto 5px auto; /* Center the image */
+        margin: 0 auto 8px auto;
+        max-height: 24px;
     }
     .titlebar a {
-        padding: 0 3px; /* Add slight padding around links */
+        padding: 6px 8px;
+        margin: 2px;
+        min-height: 44px;
+        display: inline-block;
+        line-height: 1.4;
     }
 
     /* ------------------------------------------------------------
@@ -1039,7 +1093,69 @@ body {
         /* Disable complex hover image for touch devices */
         display: none !important;
     }
-}    
+
+    /* ------------------------------------------------------------
+       TABLES AND IMAGES - PREVENT HORIZONTAL SCROLL
+       ------------------------------------------------------------ */
+
+    .mpls-legacy table {
+        max-width: 100%;
+        width: 100% !important;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .mpls-legacy img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Improve font sizes for better readability */
+    .mpls-legacy .content {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .mpls-legacy .business-title {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+
+    .mpls-legacy .mpls-title {
+        font-size: 24px;
+    }
+
+    /* Navigation improvements */
+    .mpls-legacy .nav {
+        font-size: 13px;
+        margin: 12px 0;
+    }
+
+    .mpls-legacy .nav ul {
+        width: 100%;
+    }
+
+    .mpls-legacy .nav li {
+        margin: 4px 2px;
+        display: inline;
+    }
+
+    .mpls-legacy .nav a {
+        padding: 6px 4px;
+        min-height: 44px;
+        display: inline-block;
+    }
+
+    /* Footer improvements */
+    .mpls-legacy .footer {
+        font-size: 13px;
+        padding: 0 8px;
+    }
+
+    .mpls-legacy .footer small {
+        font-size: 11px;
+    }
+}
 
 
 
