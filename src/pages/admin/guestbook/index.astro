@@ -1,5 +1,5 @@
 ---
-import LegacyLayout from "../../../../layouts/LegacyLayout.astro";
+import LegacyLayout from "../../../layouts/LegacyLayout.astro";
 import { verifySessionToken } from "../../../../lib/adminAuth";
 import { getSupabaseAdminClient } from "../../../../lib/supabase";
 
@@ -241,4 +241,6 @@ const config = configData || {
 ))}
 </div>
 </LegacyLayout>
+
+
 
