@@ -3,16 +3,14 @@
 import LegacyLayout from "../../layouts/LegacyLayout.astro";
 
 export async function getStaticPaths() {
-  const entries = import.meta.glob("../../content/politics/*.md");
-  return Object.keys(entries).map((path) => ({
+  const entries = import.meta.glob("../../content/politics/*.md", { eager: true });
+  return Object.entries(entries).map(([path, entry]) => ({
     params: { slug: path.split("/").pop().replace(".md", "") },
-    props: { path },
+    props: { entry },
   }));
 }
 
-const { path } = Astro.props;
-const entries = import.meta.glob("../../../content/politics/*.md");
-const entry = await entries[path]();
+const { entry } = Astro.props;
 const { frontmatter, Content } = entry;
 ---
 <LegacyLayout title={`${frontmatter.title} @ mpls.com`}>
