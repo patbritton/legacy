@@ -1,0 +1,243 @@
+---
+import LegacyLayout from "../../../../layouts/LegacyLayout.astro";
+import { verifySessionToken } from "../../../../lib/adminAuth";
+import { getSupabaseAdminClient } from "../../../../lib/supabase";
+
+export const prerender = false;
+
+const status = Astro.url.searchParams.get("status");
+const token = Astro.cookies.get("admin_session")?.value;
+const isAuthed = verifySessionToken(token);
+
+if (!isAuthed) {
+  return Astro.redirect("/admin?status=auth");
+}
+
+// Fetch data from Supabase
+const supabase = getSupabaseAdminClient();
+
+const { data: approvedData } = await supabase
+  .from('guestbook_entries')
+  .select('*')
+  .eq('status', 'approved')
+  .order('created_at', { ascending: false });
+
+const { data: pendingData } = await supabase
+  .from('guestbook_entries')
+  .select('*')
+  .eq('status', 'pending')
+  .order('created_at', { ascending: false });
+
+const { data: configData } = await supabase
+  .from('guestbook_config')
+  .select('*')
+  .eq('id', 1)
+  .single();
+
+const approved = approvedData || [];
+const pending = pendingData || [];
+const config = configData || {
+  max_links: 2,
+  max_comment_length: 800,
+  max_field_length: 120,
+  banned_terms: [],
+  require_moderation: false,
+};
+---
+<LegacyLayout title="Guestbook Admin @ mpls.com">
+<div class="mpls-legacy">
+<center>
+  <p><font face="Verdana,Helvetica,Arial" size="4"><b>Guestbook Admin</b></font></p>
+  <p><font face="Verdana,Helvetica,Arial" size="-1"><a href="/admin">Admin Menu</a> | <a href="/legacy/guestbook/">View Guestbook</a></font></p>
+</center>
+
+<center>
+<table border="0" cellpadding="6" cellspacing="0" width="600">
+  <tr>
+    <td>
+      {status === "auth" && (
+        <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Auth failed.</b> Check admin password.</font></p>
+      )}
+      {status === "ok" && (
+        <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Saved.</b></font></p>
+      )}
+      {status === "error" && (
+        <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Error.</b> Try again.</font></p>
+      )}
+    </td>
+  </tr>
+</table>
+</center>
+
+<center>
+<table border="1" cellpadding="6" cellspacing="0" width="600">
+  <tr>
+    <td>
+      <form action="/api/guestbook/admin" method="post">
+        <input type="hidden" name="action" value="update-config">
+        <table border="0" cellpadding="4" cellspacing="0" width="100%">
+          <tr>
+            <td><font face="Verdana,Helvetica,Arial" size="-1">Max Links</font></td>
+            <td><input type="number" name="maxLinks" value={config.max_links} min="0" max="10"></td>
+          </tr>
+          <tr>
+            <td><font face="Verdana,Helvetica,Arial" size="-1">Max Comment Length</font></td>
+            <td><input type="number" name="maxCommentLength" value={config.max_comment_length} min="50" max="2000"></td>
+          </tr>
+          <tr>
+            <td><font face="Verdana,Helvetica,Arial" size="-1">Max Field Length</font></td>
+            <td><input type="number" name="maxFieldLength" value={config.max_field_length} min="20" max="300"></td>
+          </tr>
+          <tr>
+            <td><font face="Verdana,Helvetica,Arial" size="-1">Require Moderation</font></td>
+            <td><input type="checkbox" name="requireModeration" checked={config.require_moderation}></td>
+          </tr>
+          <tr>
+            <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Banned Terms</font></td>
+            <td>
+              <textarea name="bannedTerms" rows="5" cols="40">{config.banned_terms.join("\n")}</textarea>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Update Filter"></td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>
+</center>
+
+<center>
+  <p><font face="Verdana,Helvetica,Arial" size="3"><b>Pending Entries</b></font></p>
+</center>
+{pending.length === 0 && (
+  <center><font face="Verdana,Helvetica,Arial" size="-1">No pending entries.</font></center>
+)}
+{pending.map((entry) => (
+  <center>
+  <table border="1" cellpadding="6" cellspacing="0" width="600">
+    <tr>
+      <td>
+        <form action="/api/guestbook/admin" method="post">
+          <input type="hidden" name="action" value="update">
+          <input type="hidden" name="list" value="pending">
+          <input type="hidden" name="record" value={entry.record}>
+          <table border="0" cellpadding="4" cellspacing="0" width="100%">
+            <tr>
+              <td style="width: 160px"><font face="Verdana,Helvetica,Arial" size="-1"><b>Record {entry.record}</b></font></td>
+              <td><font face="Verdana,Helvetica,Arial" size="-2">Flagged: {entry.flagged ? "Yes" : "No"}</font></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Name</font></td>
+              <td><input type="text" name="name" value={entry.name} size="40"></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Website</font></td>
+              <td><input type="text" name="website" value={entry.website} size="40"></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></td>
+              <td><input type="text" name="referredBy" value={entry.referred_by} size="40"></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">From</font></td>
+              <td><input type="text" name="from" value={entry.from_location} size="40"></td>
+            </tr>
+            <tr>
+              <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></td>
+              <td><textarea name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Private</font></td>
+              <td><input type="checkbox" name="privateMessage" checked={entry.private_message}></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" value="Save">
+              </td>
+            </tr>
+          </table>
+        </form>
+        <form action="/api/guestbook/admin" method="post">
+          <input type="hidden" name="action" value="approve">
+          <input type="hidden" name="record" value={entry.record}>
+          <input type="submit" value="Approve">
+        </form>
+        <form action="/api/guestbook/admin" method="post">
+          <input type="hidden" name="action" value="reject">
+          <input type="hidden" name="record" value={entry.record}>
+          <input type="submit" value="Reject">
+        </form>
+      </td>
+    </tr>
+  </table>
+  </center>
+))}
+
+<center>
+  <p><font face="Verdana,Helvetica,Arial" size="3"><b>Approved Entries</b></font></p>
+</center>
+{approved.length === 0 && (
+  <center><font face="Verdana,Helvetica,Arial" size="-1">No approved entries.</font></center>
+)}
+{approved.map((entry) => (
+  <center>
+  <table border="1" cellpadding="6" cellspacing="0" width="600">
+    <tr>
+      <td>
+        <form action="/api/guestbook/admin" method="post">
+          <input type="hidden" name="action" value="update">
+          <input type="hidden" name="list" value="approved">
+          <input type="hidden" name="record" value={entry.record}>
+          <table border="0" cellpadding="4" cellspacing="0" width="100%">
+            <tr>
+              <td style="width: 160px"><font face="Verdana,Helvetica,Arial" size="-1"><b>Record {entry.record}</b></font></td>
+              <td><font face="Verdana,Helvetica,Arial" size="-2">{new Date(entry.created_at).toISOString().replace("T", " ").slice(0, 19)}</font></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Name</font></td>
+              <td><input type="text" name="name" value={entry.name} size="40"></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Website</font></td>
+              <td><input type="text" name="website" value={entry.website} size="40"></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></td>
+              <td><input type="text" name="referredBy" value={entry.referred_by} size="40"></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">From</font></td>
+              <td><input type="text" name="from" value={entry.from_location} size="40"></td>
+            </tr>
+            <tr>
+              <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></td>
+              <td><textarea name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
+            </tr>
+            <tr>
+              <td><font face="Verdana,Helvetica,Arial" size="-1">Private</font></td>
+              <td><input type="checkbox" name="privateMessage" checked={entry.private_message}></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" value="Save">
+              </td>
+            </tr>
+          </table>
+        </form>
+        <form action="/api/guestbook/admin" method="post">
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="record" value={entry.record}>
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+  </table>
+  </center>
+))}
+</div>
+</LegacyLayout>

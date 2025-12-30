@@ -1,0 +1,152 @@
+---
+// @ts-nocheck
+import LegacyLayout from "../../layouts/LegacyLayout.astro";
+
+const politicsEntries = Object.entries(
+  import.meta.glob("../../content/politics/*.md", { eager: true })
+);
+
+const allPolitics = politicsEntries.map(([path, mod]) => ({
+  ...(mod as { frontmatter: any }).frontmatter,
+  slug: path.split("/").pop().replace(".md", ""),
+}));
+
+allPolitics.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const seed = new Date().getDate();
+const offset = allPolitics.length ? seed % allPolitics.length : 0;
+const rotated = allPolitics.slice(offset).concat(allPolitics.slice(0, offset));
+const currentBatch = rotated.slice(0, 8);
+const leadStory = currentBatch[0];
+const topStories = currentBatch.slice(1);
+const sideStories = currentBatch.slice(0, 2);
+---
+<LegacyLayout title="Minnesota Politics @ mpls.com">
+<div class="mpls-legacy">
+<center>
+<table border="0" width="623">
+<tr>
+<td width="621">
+<center>
+<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr>
+<td align="LEFT" valign="CENTER" width="130">
+<center>
+<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
+Minnesota USA</font>
+</center>
+</td>
+<td width="340"><a href="/legacy/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
+</td>
+<td align="RIGHT" valign="CENTER" width="130">
+<center>
+<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
+On The Internet</font>
+</center>
+</td>
+</tr>
+</table>
+<img height="10" src="/img/dividerline.gif" width="600">
+</center>
+</td>
+</tr>
+</table>
+</center>
+<center><img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
+</center>
+
+
+<center>
+  <table width="600" border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <td width="390" valign="top">
+        <center><font face="Verdana, Helvetica, Arial" size="4"><b>MINNESOTA POLITICS</b></font></center>
+        <center><font face="Verdana, Helvetica, Arial" size="1">Updated daily - Statehouse / City Hall</font></center>
+        <hr width="90%">
+        <p><font face="Verdana, Helvetica, Arial" size="2"><b>LEAD STORY</b></font></p>
+        {leadStory?.image ? (
+          <center>
+            <img align="TOP" border="1" height="150" src={leadStory.image} width="300">
+          </center>
+        ) : null}
+        {leadStory ? (
+          <>
+            <p><font face="Verdana, Helvetica, Arial" size="3"><b><a href={`/legacy/politics/${leadStory.slug}/`}>{leadStory.title}</a></b></font></p>
+            <p><font face="Verdana, Helvetica, Arial" size="2">{leadStory.source || "Wire report"}.</font></p>
+            <p><font face="Verdana, Helvetica, Arial" size="1"><b>{leadStory.displayDate || leadStory.date}</b></font></p>
+          </>
+        ) : null}
+        <hr width="90%">
+        <p><font face="Verdana, Helvetica, Arial" size="2"><b>TOP STORIES</b></font></p>
+        <table border="0" cellpadding="4" cellspacing="0" width="100%">
+          {topStories.map((story) => (
+            <tr>
+              <td width="120" valign="top">
+                {story.image ? (
+                  <img border="1" height="70" width="110" src={story.image}>
+                ) : null}
+              </td>
+              <td valign="top">
+                <font face="Verdana, Helvetica, Arial" size="2">
+                  <b>{story.displayDate || story.date}</b> - <a href={`/legacy/politics/${story.slug}/`}>{story.title}</a><br>
+                  <font face="Verdana, Helvetica, Arial" size="1">{story.source}</font>
+                </font>
+              </td>
+            </tr>
+          ))}
+        </table>
+      </td>
+      <td width="190" valign="top">
+        <center><img align="TOP" border="0" height="25" src="/img/tvnews.gif" width="200"></center>
+        <p><font face="Verdana, Helvetica, Arial" size="2"><b>BREAKING</b></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1">Fresh items are pulled from live feeds when available.</font></p>
+        {sideStories.map((story) =>
+          story.image ? (
+            <center>
+              <img border="1" height="90" src={story.image} width="150">
+            </center>
+          ) : null
+        )}
+        <hr width="100%">
+        <p><font face="Verdana, Helvetica, Arial" size="2"><b>ON THE WIRE</b></font></p>
+        {topStories.slice(0, 3).map((story) => (
+          <p><font face="Verdana, Helvetica, Arial" size="1"><a href={`/legacy/politics/${story.slug}/`}>{story.title}</a></font></p>
+        ))}
+        <hr width="100%">
+        <p><font face="Verdana, Helvetica, Arial" size="2"><b>QUICK LINKS</b></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/news/">News Desk</a></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/weather/">Weather Center</a></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/sports/">Sports</a></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/media/">Media</a></font></p>
+      </td>
+    </tr>
+  </table>
+</center>
+
+
+<map name="titlebar">
+  <area shape="rect" coords="554,0,599,19" href="/legacy/search/" target="_top">
+  <area shape="rect" coords="498,0,552,19" href="/legacy/weather/" target="_top">
+  <area shape="rect" coords="450,0,495,19" href="/legacy/sports/" target="_top">
+  <area shape="rect" coords="397,0,448,19" href="/legacy/politics/" target="_top">
+  <area shape="rect" coords="358,0,392,19" href="/legacy/news/" target="_top">
+  <area shape="rect" coords="316,0,354,19" href="/legacy/media/" target="_top">
+  <area shape="rect" coords="281,0,312,19" href="/legacy/kid/" target="_top">
+  <area shape="rect" coords="220,0,278,19" href="/legacy/exposure/" target="_top">
+  <area shape="rect" coords="151,0,218,19" href="/legacy/cool/" target="_top">
+  <area shape="rect" coords="92,0,148,19" href="/legacy/business/" target="_top">
+  <area shape="rect" coords="0,0,90,19" href="/legacy/" target="_top">
+  <area shape="default" href="/legacy/">
+</map>
+</div>
+</LegacyLayout>
+
+
+
+
+
+
+
+
+

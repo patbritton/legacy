@@ -1,0 +1,56 @@
+name: Deploy Legacy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          # Increasing timeout to match your local habits (optional but safe)
+          timeout: "60s"
+          command_timeout: "30m"
+          script: |
+            set -e
+            
+            # Navigate to the folder (Owned by patrick)
+            cd /var/www/legacy.mp.ls
+
+            # Verify Git
+            if [ ! -d .git ]; then
+              echo "Error: Not a git repository. Please clone manually first."
+              exit 1
+            fi
+
+            # Git Operations
+            git fetch --all
+            CURRENT_COMMIT=$(git rev-parse HEAD)
+            git reset --hard origin/main
+            NEW_COMMIT=$(git rev-parse HEAD)
+            echo "Deploying from $CURRENT_COMMIT to $NEW_COMMIT"
+
+            # NPM Install
+            if [ -f package-lock.json ]; then
+              npm ci --production --ignore-scripts
+            else
+              npm install --production --ignore-scripts
+            fi
+
+            # Build
+            npm run build
+
+            # PM2 Process Management
+            # Using port 3001 to distinguish from other apps
+            pm2 restart legacy-app || pm2 start npm --name legacy-app -- run start -- --port 3001
+            
+            # Freeze the process list for reboot safety
+            pm2 save

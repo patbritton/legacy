@@ -1,0 +1,1045 @@
+/* ==========================
+   MPLS.COM LEGACY THEME - 1999-2000 RESTORATION
+   ========================= */
+
+body {
+  margin: 0;
+  padding: 24px 16px 48px;
+  background: #fff;
+}
+
+:root {
+  --wp--preset--spacing--20: 0.44rem;
+  --wp--preset--spacing--30: 0.67rem;
+  --wp--preset--spacing--60: 2.25rem;
+}
+
+/* ------------------------------------------------------------
+   GLOBAL BASE STRUCTURE
+   ------------------------------------------------------------ */
+
+.wp-block-table.biz-table table,
+.biz-table {
+  border: 4px double #000;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.CENTERTHIS {
+  display: grid;
+  place-items: center;
+}
+
+.mpls-legacy {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #000;
+  line-height: 0.9;
+}
+
+.legacy-news-frame {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.legacy-news-frame iframe {
+  width: 100%;
+  border: 1px solid #000;
+  background: #fff;
+}
+
+.legacy-news-frame iframe:first-child {
+  height: 140px;
+}
+
+.legacy-news-frame iframe:last-child {
+  height: 720px;
+}
+
+.site-sub-header {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   LEGACY REPRODUCTION BANNER
+   ------------------------------------------------------------ */
+
+.legacy-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background: #fff6c9;
+  border-bottom: 1px solid #999;
+  padding: 16px 12px;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+  transform: translateY(-120%);
+  transition: transform 400ms ease;
+}
+.legacy-banner.show {
+  transform: translateY(0);
+}
+.legacy-banner__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.legacy-banner__inner span {
+  flex: 1;
+}
+.legacy-banner__close {
+  border: 1px solid #666;
+  background: #eee;
+  font-size: 12px;
+  padding: 4px 12px;
+  cursor: pointer;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.legacy-banner__spacer {
+  height: 0;
+}
+.has-legacy-banner {
+  padding-top: 88px;
+}
+
+/* ------------------------------------------------------------
+   LEGACY INTRO BOX
+   ------------------------------------------------------------ */
+
+.mpls-legacy #legacyIntro {
+  background: #ccc;
+  padding: 0 5px 5px 5px;
+  margin: 0 auto;
+  width: 300px;
+  border-radius: 15px;
+}
+
+.mpls-legacy #legacyIntro h5 {
+  padding: 0 0 0 5px;
+  text-decoration: none;
+  float: left;
+  margin-top: -25px;
+}
+
+.mpls-legacy #legacyIntro p,
+.mpls-legacy .legacy-intro-box h6 {
+  padding: 5px;
+}
+
+.mpls-legacy .legacy-close {
+  float: right;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 5px 10px;
+}
+
+/* ------------------------------------------------------------
+   GENERAL ELEMENTS
+   ------------------------------------------------------------ */
+
+.mpls-legacy a {
+  color: #660000;
+  text-decoration: underline;
+}
+.mpls-legacy a:hover {
+  color: #990000;
+}
+.mpls-legacy a:visited {
+  color: #660000;
+}
+
+.mpls-legacy hr.divider {
+  border: 0;
+  border-top: 1px solid #000;
+  width: 600px;
+  margin: 12px auto;
+}
+
+.mpls-legacy hr.mini-divider {
+  border: 0;
+  border-top: 1px solid #000;
+  width: 468px;
+  margin: 10px auto;
+}
+
+/* ------------------------------------------------------------
+   AD / TOP BANNER
+   ------------------------------------------------------------ */
+
+.mpls-legacy .top-ad {
+  text-align: center;
+  margin: 0 auto;
+  width: 600px;
+  display: block;
+}
+.mpls-legacy .top-ad img {
+  display: block;
+  margin: 0 auto;
+}
+.mpls-legacy .ad-label,
+.mpls-legacy .ad-caption {
+  font-size: 10px;
+  margin: 0;
+}
+.mpls-legacy .ad-label {
+  color: #999;
+}
+.mpls-legacy .ad-caption {
+  color: #666;
+}
+
+/* ------------------------------------------------------------
+   HEADER
+   ------------------------------------------------------------ */
+
+.mpls-legacy .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.mpls-legacy .header-left,
+.mpls-legacy .header-right {
+  width: 130px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+.mpls-legacy .header-center {
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   TITLEBAR NAVIGATION
+   ------------------------------------------------------------ */
+
+.titlebar {
+  background-color: #000;
+  color: #fff;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: clamp(7px, 1.5vw, 10px);
+  font-weight: bold;
+  text-align: center;
+  padding: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 600px;
+  margin: 0 auto;
+  display: block;
+  vertical-align: center;
+}
+.titlebar img {
+  float: left;
+  vertical-align: middle;
+  display: inline-block;
+  max-height: 18px;
+  width: auto;
+  height: auto;
+}
+.titlebar a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline;
+  font-size: 7px;
+  vertical-align: middle;
+}
+.titlebar a:hover {
+  color: #ffff00;
+}
+.titlebar a:visited {
+  color: #fff;
+}
+
+/* ------------------------------------------------------------
+   MAIN NAV BAR (FOOTER + GENERAL)
+   ------------------------------------------------------------ */
+
+.mpls-legacy .nav {
+  text-align: center;
+  font-size: 12px;
+  margin: 15px 0 20px 0;
+}
+.mpls-legacy .nav ul {
+  padding: 0;
+  margin: 0 auto;
+  width: 300px;
+  list-style: none;
+  font-size: 10px;
+  text-align: center;
+}
+.mpls-legacy .nav li {
+  display: inline-block;
+  margin: 0 3px;
+}
+.mpls-legacy .nav a {
+  color: #0000cc;
+  text-decoration: underline;
+}
+.mpls-legacy .nav a:hover {
+  color: #990000;
+}
+.mpls-legacy .nav a:visited {
+  color: #660099;
+}
+
+/* ------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------ */
+
+.mpls-legacy .footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+}
+.mpls-legacy .footer img,
+.mpls-legacy .email-icon img {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.mpls-legacy .footer small {
+  font-size: 10px;
+  color: #000;
+}
+
+/* ------------------------------------------------------------
+   HOME PAGE LAYOUT + SIDEBAR
+   ------------------------------------------------------------ */
+
+.mpls-legacy .main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto 25px auto;
+}
+.mpls-legacy .sidebar {
+  width: 165px;
+  text-align: center;
+}
+.mpls-legacy .email-box {
+  background: #d4d4d4;
+  border: 1px solid #999;
+  padding: 6px 4px;
+  margin-bottom: 15px;
+}
+.mpls-legacy .email-button {
+  display: block;
+  font-weight: bold;
+  background: #c0c0c0;
+  border: 1px solid #666;
+  padding: 4px;
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+.mpls-legacy .email-button:hover {
+  background: #b0b0b0;
+}
+.mpls-legacy .email-note {
+  font-size: 11px;
+  line-height: 1.3;
+  margin: 0;
+}
+.mpls-legacy .sidebar-credits {
+  font-size: 11px;
+  text-align: left;
+  line-height: 1.4;
+}
+.mpls-legacy .sidebar-credits p {
+  margin: 8px 0;
+}
+
+/* ------------------------------------------------------------
+   CONTENT BOX (GENERIC)
+   ------------------------------------------------------------ */
+
+.mpls-legacy .content {
+  flex: 1;
+  border: 1px solid #000;
+  padding: 15px 25px;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.5;
+}
+.mpls-legacy .mpls-title {
+  font-size: 28px;
+  display: inline-block;
+  margin: 5px 0;
+}
+
+/* ------------------------------------------------------------
+   BUSINESS NETWORK PAGE
+   ------------------------------------------------------------ */
+
+.mpls-legacy .business-title {
+  letter-spacing: 6px;
+  margin: 10px 0 5px 0;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: x-large;
+}
+.mpls-legacy .join-link {
+  color: #660000;
+  font-size: 12px;
+  text-decoration: underline;
+}
+.mpls-legacy .biz-table {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  border: 3px double #000;
+  background: #fff;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+.mpls-legacy .biz-row {
+  display: flex;
+  border-top: 3px double #000;
+}
+.mpls-legacy .biz-row:first-child {
+  border-top: none;
+}
+.mpls-legacy .biz-left {
+  flex: 0 0 150px;
+  padding: 8px;
+  font-weight: bold;
+  background: #f2f2f2;
+  border-right: 3px double #000;
+  box-sizing: border-box;
+}
+.mpls-legacy .biz-left a {
+  color: #000;
+  text-decoration: none;
+}
+.mpls-legacy .biz-left a:hover {
+  text-decoration: underline;
+}
+.mpls-legacy .biz-right {
+  flex: 1;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.mpls-legacy .biz-right img {
+  display: block;
+  margin-bottom: 6px;
+  max-width: 100%;
+  height: auto;
+}
+.mpls-legacy .join-block {
+  text-align: center;
+  margin: 15px 0;
+}
+.mpls-legacy .join-link:hover {
+  background: #eaeaea;
+}
+
+/* ------------------------------------------------------------
+   COOL SPOTS PAGE
+   ------------------------------------------------------------ */
+
+.mpls-legacy .cool-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 25px auto;
+  gap: 8px;
+}
+.mpls-legacy .cool-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.mpls-legacy .cool-top .business-title {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0;
+}
+.mpls-legacy .cool-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mpls-legacy .cool-dots img {
+  width: 32px;
+  height: 32px;
+}
+.mpls-legacy .cool-bar img {
+  display: block;
+  width: 600px;
+  height: 20px;
+  margin: 10px auto 0 auto;
+}
+.mpls-legacy .cool-table {
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #000;
+}
+.mpls-legacy .cool-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.mpls-legacy .cool-cell {
+  flex: 1;
+  min-width: 180px;
+  border-right: 1px solid #000;
+  padding: 12px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.mpls-legacy .cool-cell:last-child {
+  border-right: none;
+}
+.mpls-legacy .cool-cell h3 {
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.mpls-legacy .cool-cell a {
+  color: #0000cc;
+  text-decoration: underline;
+}
+.mpls-legacy .cool-cell a:hover {
+  color: #990000;
+}
+
+.mpls-legacy .exposure-grid {
+  max-width: 610px;
+  margin: 0 auto 15px auto;
+  text-align: center;
+}
+.mpls-legacy .exposure-grid .row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  margin: 0;
+  padding: 2px 0;
+}
+.mpls-legacy .exposure-grid .row > * {
+  margin: 0 2px;
+}
+.mpls-legacy .exposure-grid img,
+.mpls-legacy .exposure-grid .mid-banner {
+  display: block;
+  border: none;
+}
+.mpls-legacy .exposure-grid .mid-banner {
+  width: 303px;
+  height: 94px;
+}
+.mpls-legacy .info-box {
+  width: 300px;
+  height: 80px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.3;
+  margin: 0 2px;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.mpls-legacy .info-box p {
+  margin: 3px 0;
+}
+.mpls-legacy .info-box a {
+  color: #0000cc;
+  text-decoration: underline;
+}
+.mpls-legacy .info-box a:hover {
+  color: #990000;
+}
+.mpls-legacy .info-box img {
+  margin: 4px auto 0;
+  image-rendering: pixelated;
+}
+
+/* ------------------------------------------------------------
+   KID KAIJA PAGE
+   ------------------------------------------------------------ */
+
+.mpls-legacy .kid-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto 25px auto;
+}
+.mpls-legacy .kid-left img {
+  display: block;
+  width: 40px;
+  height: auto;
+}
+.mpls-legacy .kid-main {
+  width: 545px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.mpls-legacy .kid-header {
+  text-align: center;
+  font-family: Verdana, Helvetica, Arial;
+  margin: 15px 0;
+}
+.mpls-legacy .kid-header img {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 270px;
+  height: auto;
+}
+.mpls-legacy .kid-header p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+.mpls-legacy .kid-links ul,
+.mpls-legacy .kid-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+.mpls-legacy .kid-links li,
+.mpls-legacy .kid-section li {
+  margin: 4px 0;
+}
+.mpls-legacy .kid-links li a {
+  color: #630000;
+  font-weight: bold;
+}
+.mpls-legacy .kid-section {
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.mpls-legacy .kid-section p {
+  margin: 5px 0;
+  text-align: left;
+}
+.mpls-legacy .kid-section a {
+  font-weight: bold;
+  color: #630000;
+}
+
+/* ------------------------------------------------------------
+   MINNESOTA MEDIA PAGE
+   ------------------------------------------------------------ */
+
+.mpls-legacy .media-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+.mpls-legacy .media-main {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+.mpls-legacy .media-main img {
+  display: block;
+  margin: 0 auto 10px auto;
+  height: auto;
+  max-width: 320px;
+}
+.mpls-legacy .media-main h2 {
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 3px;
+  margin: 10px 0 15px 0;
+}
+.mpls-legacy .media-main hr {
+  width: 60%;
+  margin: 20px auto;
+}
+.mpls-legacy .media-main blockquote {
+  margin: 5px 20px;
+  font-style: italic;
+}
+.mpls-legacy .media-main a {
+  color: #0000cc;
+  text-decoration: underline;
+}
+.mpls-legacy .media-main a:hover {
+  color: #990000;
+}
+
+/* ------------------------------------------------------------
+   POLL COMPONENTS (MEDIA & SPORTS)
+   ------------------------------------------------------------ */
+
+.media-sidebar {
+  width: 230px;
+  font-family: Arial, sans-serif;
+  color: #111;
+  background: #fff;
+}
+.media-sidebar h2 {
+  color: #660000;
+  font-size: 16px;
+  text-align: center;
+  border-bottom: 3px double #660000;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.poll-box {
+  border: 1px solid #000;
+  margin-bottom: 1px;
+  padding: 6px;
+  background: #fff;
+  text-align: left;
+}
+.poll-header {
+  border-bottom: 1px solid #660000;
+  padding: 3px;
+  margin: 0 auto;
+  text-align: center;
+}
+.poll-box p {
+  font-size: 13px;
+  margin: 6px 0;
+  padding-bottom: 10px;
+  color: #000;
+  font-family: Verdana;
+}
+.poll-box form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.poll-box label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  justify-content: flex-start;
+  line-height: 1.0;
+  margin: -5px 0;
+}
+.poll-box img {
+  height: auto;
+  border: none;
+}
+.poll-actions {
+  width: 100%;
+  text-align: center;
+  margin-top: 6px;
+}
+.poll-actions button {
+  font-size: 11px;
+  padding: 3px 8px;
+  background: #e6e6e6;
+  border: 1px solid #000;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+.poll-actions a {
+  display: block;
+  color: #660000;
+  font-size: 11px;
+  text-decoration: underline;
+}
+.poll-actions a:hover {
+  text-decoration: none;
+}
+.poll-actions .hover-image {
+  position: relative;
+  display: inline-block;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #000;
+  cursor: pointer;
+}
+.poll-actions .hover-image::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 300px;
+  background-image: url('/img/best-tv-news.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  margin-top: 5px;
+}
+.poll-actions .hover-image:hover::after {
+  opacity: 1;
+}
+.poll-box span {
+  display: inline-block;
+  line-height: 1.2;
+}
+.poll-box small {
+  font-size: 11px;
+  color: #333;
+}
+
+/* ------------------------------------------------------------
+   MINNESOTA SPORTS PAGE
+   ------------------------------------------------------------ */
+
+.mpls-legacy .sports-divider {
+  display: block;
+  width: 600px;
+  height: 10px;
+  margin: 10px auto;
+  background: url('/img/dividerline.gif') no-repeat center;
+  background-size: contain;
+}
+.mpls-legacy .business-title {
+  color: #660000;
+}
+
+/* ------------------------------------------------------------
+    MOBILE OPTIMIZATION (Media Query)
+    ------------------------------------------------------------ */
+
+@media (max-width: 650px) {
+
+    /* ==========================
+       GLOBAL BASE STRUCTURE
+       ========================= */
+
+    /* Allow the main container to fill the screen width with some padding */
+    .mpls-legacy {
+        padding: 0 10px; /* Add some side padding */
+        /* max-width: 800px; is okay but we ensure content doesn't break */
+    }
+
+    /* Set the main content area (where fixed widths are often set) to 100% */
+    .mpls-legacy .top-ad,
+    .mpls-legacy .header,
+    .titlebar,
+    .mpls-legacy hr.divider,
+    .mpls-legacy hr.mini-divider,
+    .mpls-legacy .main,
+    .mpls-legacy .biz-table,
+    .mpls-legacy .cool-bar img,
+    .mpls-legacy .cool-table,
+    .mpls-legacy .exposure-grid,
+    .mpls-legacy .kid-layout,
+    .mpls-legacy .media-layout,
+    .mpls-legacy .sports-divider {
+        max-width: 100%; /* Override fixed max-widths */
+        width: 100%;    /* Ensure they take full available width */
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        padding-right: 0;
+        box-sizing: border-box; /* Crucial for padding/border inside width */
+    }
+
+    /* ------------------------------------------------------------
+       LEGACY INTRO BOX
+       ------------------------------------------------------------ */
+
+    .mpls-legacy #legacyIntro {
+        width: 90%; /* Make intro box responsive */
+    }
+    .mpls-legacy #legacyIntro h5 {
+        float: none; /* Remove float for better stacking */
+        margin-top: 5px; /* Adjust margin */
+        text-align: center;
+    }
+    .mpls-legacy .legacy-close {
+        float: none;
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
+    }
+
+    /* ------------------------------------------------------------
+       AD / TOP BANNER
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .top-ad img {
+        max-width: 100%; /* Ensure ad images are not wider than the screen */
+        height: auto;
+    }
+
+    /* ------------------------------------------------------------
+       HEADER
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .header {
+        flex-direction: column; /* Stack header elements vertically */
+        gap: 10px;
+        padding: 10px 0;
+    }
+    .mpls-legacy .header-left,
+    .mpls-legacy .header-right {
+        width: 100%; /* Make sidebars full width */
+        text-align: center;
+    }
+    .mpls-legacy .header-center {
+        order: -1; /* Move the center logo/title to the top */
+    }
+
+    /* ------------------------------------------------------------
+       TITLEBAR NAVIGATION
+       ------------------------------------------------------------ */
+
+    .titlebar {
+        white-space: normal; /* Allow the nav text to wrap */
+        line-height: 1.5; /* Add space between lines */
+        font-size: 10px; /* Base font size */
+    }
+    .titlebar img {
+        float: none;
+        display: block;
+        margin: 0 auto 5px auto; /* Center the image */
+    }
+    .titlebar a {
+        padding: 0 3px; /* Add slight padding around links */
+    }
+
+    /* ------------------------------------------------------------
+       MAIN CONTENT AND SIDEBAR (HOME PAGE LAYOUT)
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .main {
+        flex-direction: column; /* Stack main content and sidebar vertically */
+    }
+    .mpls-legacy .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        order: -1; /* Place the sidebar above the content area */
+    }
+    .mpls-legacy .content {
+        width: 100%; /* Content takes full width */
+        padding: 15px; /* Adjust padding for less horizontal space */
+    }
+
+    /* ------------------------------------------------------------
+       BUSINESS NETWORK PAGE (BIZ-TABLE)
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .biz-row {
+        flex-direction: column; /* Stack table rows vertically */
+    }
+    .mpls-legacy .biz-left {
+        flex: none; /* Remove flex sizing */
+        width: 100%; /* Make left column full width */
+        border-right: none;
+        border-bottom: 3px double #000; /* Add separation back */
+    }
+    .mpls-legacy .biz-right {
+        width: 100%;
+    }
+
+    /* ------------------------------------------------------------
+       COOL SPOTS PAGE (COOL-TABLE)
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .cool-top {
+        flex-direction: column; /* Stack cool header elements */
+    }
+    .mpls-legacy .cool-row {
+        flex-direction: column; /* Stack table rows vertically */
+    }
+    .mpls-legacy .cool-cell {
+        min-width: 100%; /* Cells take full width */
+        border-right: none;
+        border-bottom: 1px solid #000; /* Add bottom border for separation */
+    }
+    .mpls-legacy .cool-cell:last-child {
+        border-bottom: none; /* No border on the last cell */
+    }
+
+    /* ------------------------------------------------------------
+       NORTHERN EXPOSURE PAGE (EXPOSURE-GRID)
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .exposure-grid .row {
+        flex-wrap: wrap; /* Allow rows of banners to wrap */
+        gap: 5px; /* Add a bit of space between wrapped elements */
+    }
+    .mpls-legacy .exposure-grid .row > *,
+    .mpls-legacy .exposure-grid img,
+    .mpls-legacy .exposure-grid .mid-banner,
+    .mpls-legacy .info-box {
+        width: 100%; /* Elements in the grid become full width */
+        margin: 2px auto;
+        height: auto; /* Allow height to adjust */
+    }
+    .mpls-legacy .info-box {
+        min-height: 80px; /* Ensure content fits */
+    }
+
+    /* ------------------------------------------------------------
+       KID KAIJA PAGE
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .kid-layout {
+        flex-direction: column; /* Stack layout vertically */
+    }
+    .mpls-legacy .kid-left {
+        text-align: center;
+        width: 100%;
+    }
+    .mpls-legacy .kid-main {
+        width: 100%; /* Main content full width */
+        padding: 0 10px;
+    }
+
+    /* ------------------------------------------------------------
+       MINNESOTA MEDIA PAGE & POLL COMPONENTS
+       ------------------------------------------------------------ */
+
+    .mpls-legacy .media-layout {
+        flex-direction: column; /* Stack layout vertically */
+        padding: 0 10px;
+    }
+    .media-sidebar {
+        width: 100%; /* Sidebar takes full width and is placed first */
+        order: -1;
+    }
+    .mpls-legacy .media-main {
+        width: 100%; /* Main content full width */
+    }
+
+    .poll-box {
+        padding: 10px;
+    }
+    .poll-actions .hover-image::after {
+        /* Disable complex hover image for touch devices */
+        display: none !important;
+    }
+}    
+
+
+

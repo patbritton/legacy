@@ -1,0 +1,7 @@
+{
+  "maxLinks": 2,
+  "maxCommentLength": 800,
+  "maxFieldLength": 120,
+  "bannedTerms": [],
+  "requireModeration": false
+}

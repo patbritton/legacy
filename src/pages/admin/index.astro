@@ -1,0 +1,67 @@
+---
+import LegacyLayout from "../../layouts/LegacyLayout.astro";
+import { verifySessionToken } from "../../lib/adminAuth";
+
+export const prerender = false;
+
+const status = Astro.url.searchParams.get("status");
+const token = Astro.cookies.get("admin_session")?.value;
+const isAuthed = verifySessionToken(token);
+---
+<LegacyLayout title="Admin Login @ mpls.com">
+<div class="mpls-legacy">
+<center>
+  <p><font face="Verdana,Helvetica,Arial" size="4"><b>Admin</b></font></p>
+</center>
+
+{isAuthed ? (
+  <center>
+    <table border="1" cellpadding="6" cellspacing="0" width="600">
+      <tr>
+        <td>
+          <font face="Verdana,Helvetica,Arial" size="-1"><b>Menu</b></font><br>
+          <a href="/legacy/admin/guestbook/">Guestbook</a><br>
+          <form action="/api/admin/logout" method="post" style="margin-top:8px;">
+            <input type="submit" value="Log Out">
+          </form>
+        </td>
+      </tr>
+    </table>
+  </center>
+) : (
+  <center>
+    <table border="1" cellpadding="6" cellspacing="0" width="600">
+      <tr>
+        <td>
+          {status === "auth" && (
+            <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Login failed.</b></font></p>
+          )}
+          {status === "logout" && (
+            <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Logged out.</b></font></p>
+          )}
+          {status === "error" && (
+            <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Error.</b> Please try again.</font></p>
+          )}
+          <form action="/api/admin/login" method="post">
+            <table border="0" cellpadding="4" cellspacing="0">
+              <tr>
+                <td><font face="Verdana,Helvetica,Arial" size="-1">Username</font></td>
+                <td><input type="text" name="username" size="30" autocomplete="username" value="admin"></td>
+              </tr>
+              <tr>
+                <td><font face="Verdana,Helvetica,Arial" size="-1">Password</font></td>
+                <td><input type="password" name="password" size="30" autocomplete="current-password" required></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><input type="submit" value="Log In"></td>
+              </tr>
+            </table>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </center>
+)}
+</div>
+</LegacyLayout>

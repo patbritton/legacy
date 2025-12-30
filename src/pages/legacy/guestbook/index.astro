@@ -1,0 +1,188 @@
+---
+import LegacyLayout from "../../../layouts/LegacyLayout.astro";
+import { getSupabaseClient } from "../../../lib/supabase";
+
+const status = Astro.url.searchParams.get("status");
+const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+
+// Fetch approved entries from Supabase
+const supabase = getSupabaseClient();
+const { data: entries } = await supabase
+  .from('guestbook_entries')
+  .select('*')
+  .eq('status', 'approved')
+  .order('created_at', { ascending: false });
+
+const sortedEntries = entries || [];
+---
+<LegacyLayout title="Guestbook @ mpls.com">
+<div class="mpls-legacy">
+<center>
+<table border="0" width="623">
+<tr>
+<td width="621">
+<center>
+<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr>
+<td align="LEFT" valign="CENTER" width="130">
+<center>
+<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
+Minnesota USA</font>
+</center>
+</td>
+<td width="340"><a href="/legacy/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
+</td>
+<td align="RIGHT" valign="CENTER" width="130">
+<center>
+<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
+On The Internet</font>
+</center>
+</td>
+</tr>
+</table>
+<img height="10" src="/img/dividerline.gif" width="600">
+</center>
+</td>
+</tr>
+</table>
+</center>
+<center>
+<p><img border="0" height="20" src="/img/titlebar.gif" usemap="#titlebar" width="600"></p>
+</center>
+
+<center>
+  <font face="Verdana,Helvetica,Arial" size="4"><b>Guestbook</b></font>
+</center>
+
+<center>
+<table border="0" cellpadding="6" cellspacing="0" width="600">
+<tr>
+<td>
+  {status === "ok" && (
+    <p><font face="Verdana,Helvetica,Arial" size="-1" color="green"><b>✓ Success!</b> Your entry has been posted and is now visible in the guestbook.</font></p>
+  )}
+  {status === "pending" && (
+    <p><font face="Verdana,Helvetica,Arial" size="-1" color="blue"><b>✓ Submitted!</b> Your entry has been received and will appear after review. Thank you for signing our guestbook!</font></p>
+  )}
+  {status === "banned" && (
+    <p><font face="Verdana,Helvetica,Arial" size="-1" color="red"><b>✗ Entry Rejected</b> Your submission contains prohibited content or language. Please review our guidelines and try again with appropriate content.</font></p>
+  )}
+  {status === "captcha" && (
+    <p><font face="Verdana,Helvetica,Arial" size="-1" color="orange"><b>⚠ Verification Failed</b> Please complete the reCAPTCHA verification and try again.</font></p>
+  )}
+  {status === "error" && (
+    <p><font face="Verdana,Helvetica,Arial" size="-1" color="red"><b>✗ Error</b> There was a problem submitting your entry. Please check that all required fields are filled and within the length limits.</font></p>
+  )}
+</td>
+</tr>
+</table>
+</center>
+
+<center>
+<table border="1" cellpadding="6" cellspacing="0" width="600">
+<tr>
+<td>
+<a id="sign"></a>
+<form action="/api/guestbook/submit" method="post">
+  <input type="text" name="company" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+  <table border="0" cellpadding="4" cellspacing="0" width="100%">
+    <tr>
+      <td width="120"><font face="Verdana,Helvetica,Arial" size="-1">Name *</font></td>
+      <td><input type="text" name="name" size="40" maxlength="120" required></td>
+    </tr>
+    <tr>
+      <td><font face="Verdana,Helvetica,Arial" size="-1">Website</font></td>
+      <td><input type="text" name="website" size="40" maxlength="120"></td>
+    </tr>
+    <tr>
+      <td><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></td>
+      <td><input type="text" name="referredBy" size="40" maxlength="120"></td>
+    </tr>
+    <tr>
+      <td><font face="Verdana,Helvetica,Arial" size="-1">From</font></td>
+      <td><input type="text" name="from" size="40" maxlength="120"></td>
+    </tr>
+    <tr>
+      <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Comments *</font></td>
+      <td><textarea name="comments" rows="5" cols="46" maxlength="800" required></textarea></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        {siteKey ? (
+          <div class="g-recaptcha" data-sitekey={siteKey}></div>
+        ) : (
+          <font face="Verdana,Helvetica,Arial" size="-2">reCAPTCHA site key missing.</font>
+        )}
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Sign Guestbook"></td>
+    </tr>
+  </table>
+</form>
+</td>
+</tr>
+</table>
+</center>
+
+<center>
+<table border="0" cellpadding="6" cellspacing="0" width="600">
+  <tr>
+    <td>
+      <font face="Verdana,Helvetica,Arial" size="-1"><b>Guestbook Entries</b></font>
+    </td>
+  </tr>
+</table>
+</center>
+
+<center>
+<table border="1" cellpadding="6" cellspacing="0" width="600">
+  {sortedEntries.map((entry) => {
+    const websiteUrl = entry.website && entry.website.trim()
+      ? (entry.website.startsWith('http://') || entry.website.startsWith('https://')
+          ? entry.website
+          : `http://${entry.website}`)
+      : null;
+
+    return (
+      <tr>
+        <td>
+          <font face="Verdana,Helvetica,Arial" size="-1"><b>Record {entry.record}</b></font><br>
+          <font face="Verdana,Helvetica,Arial" size="-1"><b>Name:</b> {entry.name}</font><br>
+          <font face="Verdana,Helvetica,Arial" size="-1">
+            <b>Website:</b> {websiteUrl
+              ? <a href={websiteUrl} rel="nofollow noopener noreferrer" target="_blank">{entry.website}</a>
+              : (entry.website || " ")}
+          </font><br>
+          <font face="Verdana,Helvetica,Arial" size="-1"><b>Referred by:</b> {entry.referred_by || " "}</font><br>
+          <font face="Verdana,Helvetica,Arial" size="-1"><b>From:</b> {entry.from_location || " "}</font><br>
+          <font face="Verdana,Helvetica,Arial" size="-1"><b>Time:</b> {new Date(entry.created_at).toISOString().replace("T", " ").slice(0, 19)}</font><br>
+          <font face="Verdana,Helvetica,Arial" size="-1"><b>Comments:</b> {entry.comments}</font>
+        </td>
+      </tr>
+    );
+  })}
+</table>
+</center>
+
+<map name="titlebar">
+  <area shape="rect" coords="554,0,599,19" href="/legacy/search/" target="_top">
+  <area shape="rect" coords="498,0,552,19" href="/legacy/weather/" target="_top">
+  <area shape="rect" coords="450,0,495,19" href="/legacy/sports/" target="_top">
+  <area shape="rect" coords="397,0,448,19" href="/legacy/politics/" target="_top">
+  <area shape="rect" coords="358,0,392,19" href="/legacy/news/" target="_top">
+  <area shape="rect" coords="316,0,354,19" href="/legacy/media/" target="_top">
+  <area shape="rect" coords="281,0,312,19" href="/legacy/kid/" target="_top">
+  <area shape="rect" coords="220,0,278,19" href="/legacy/exposure/" target="_top">
+  <area shape="rect" coords="151,0,218,19" href="/legacy/cool/" target="_top">
+  <area shape="rect" coords="92,0,148,19" href="/legacy/business/" target="_top">
+  <area shape="rect" coords="0,0,90,19" href="/legacy/" target="_top">
+  <area shape="default" href="/legacy/">
+</map>
+</div>
+</LegacyLayout>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
