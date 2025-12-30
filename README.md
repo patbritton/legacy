@@ -5,7 +5,7 @@ This is a modern Astro rebuild of the legacy `mpls.com` site, preserving the ori
 
 What's inside
 -------------
-- Astro 4 project with legacy pages in `src/pages/legacy/`.
+- Astro 4 project with legacy pages preserved.
 - Static assets in `public/`.
 - Guestbook with reCAPTCHA v2 and moderation, plus an admin UI.
 - Supabase setup docs/scripts included for optional backend workflows.
@@ -41,7 +41,7 @@ This project uses `output: "hybrid"` in `astro.config.mjs` so API routes work. I
 Guestbook
 ---------
 Public page:
-- `/legacy/guestbook/`
+- `/guestbook/`
 
 Data storage:
 - `data/guestbook/seed.json` (original records, committed)
@@ -60,7 +60,7 @@ Login page:
 - `/admin`
 
 Guestbook admin:
-- `/legacy/admin/guestbook/`
+- `/admin/guestbook/`
 
 Admin controls:
 - Approve/reject pending entries.

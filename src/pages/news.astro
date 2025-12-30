@@ -37,7 +37,7 @@ const sideStories = currentBatch.slice(0, 2);
 Minnesota USA</font>
 </center>
 </td>
-<td width="340"><a href="/legacy/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
+<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
 </td>
 <td align="RIGHT" valign="CENTER" width="130">
 <center>
@@ -71,7 +71,7 @@ On The Internet</font>
         ) : null}
         {leadStory ? (
           <>
-            <p><font face="Verdana, Helvetica, Arial" size="3"><b><a href={`/legacy/news/${leadStory.slug}/`}>{leadStory.title}</a></b></font></p>
+            <p><font face="Verdana, Helvetica, Arial" size="3"><b><a href={`/news/${leadStory.slug}/`}>{leadStory.title}</a></b></font></p>
             <p><font face="Verdana, Helvetica, Arial" size="2">{leadStory.source || "Wire report"}.</font></p>
             <p><font face="Verdana, Helvetica, Arial" size="1"><b>{leadStory.displayDate || leadStory.date}</b></font></p>
           </>
@@ -94,7 +94,7 @@ On The Internet</font>
               </td>
               <td valign="top">
                 <font face="Verdana, Helvetica, Arial" size="2">
-                  <b>{story.displayDate || story.date}</b> - <a href={`/legacy/news/${story.slug}/`}>{story.title}</a><br>
+                  <b>{story.displayDate || story.date}</b> - <a href={`/news/${story.slug}/`}>{story.title}</a><br>
                   <font face="Verdana, Helvetica, Arial" size="1">{story.source}</font>
                 </font>
               </td>
@@ -119,15 +119,15 @@ On The Internet</font>
         
         <p><font face="Verdana, Helvetica, Arial" size="2"><b>ON THE WIRE</b></font></p>
         {topStories.slice(0, 3).map((story) => (
-          <p><font face="Verdana, Helvetica, Arial" size="1"><a href={`/legacy/news/${story.slug}/`}>{story.title}</a></font></p>
+          <p><font face="Verdana, Helvetica, Arial" size="1"><a href={`/news/${story.slug}/`}>{story.title}</a></font></p>
         ))}
         <hr width="100%">
 
         <p><font face="Verdana, Helvetica, Arial" size="2"><b>QUICK LINKS</b></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/weather/">Weather Center</a></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/politics/">Politics Desk</a></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/sports/">Sports</a></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/legacy/media/">Media</a></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/weather/">Weather Center</a></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/politics/">Politics Desk</a></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/sports/">Sports</a></font></p>
+        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/media/">Media</a></font></p>
         <hr width="100%">
         <p><font face="Verdana, Helvetica, Arial" size="1"><b>ARCHIVE NOTE</b><br>
         Original syndicated feed archived from 1999-2000.</font></p>
@@ -138,18 +138,19 @@ On The Internet</font>
 </center>
 
 <map name="titlebar">
-  <area shape="rect" coords="554,0,599,19" href="/legacy/search/" target="_top">
-  <area shape="rect" coords="498,0,552,19" href="/legacy/weather/" target="_top">
-  <area shape="rect" coords="450,0,495,19" href="/legacy/sports/" target="_top">
-  <area shape="rect" coords="397,0,448,19" href="/legacy/politics/" target="_top">
-  <area shape="rect" coords="358,0,392,19" href="/legacy/news/" target="_top">
-  <area shape="rect" coords="316,0,354,19" href="/legacy/media/" target="_top">
-  <area shape="rect" coords="281,0,312,19" href="/legacy/kid/" target="_top">
-  <area shape="rect" coords="220,0,278,19" href="/legacy/exposure/" target="_top">
-  <area shape="rect" coords="151,0,218,19" href="/legacy/cool/" target="_top">
-  <area shape="rect" coords="92,0,148,19" href="/legacy/business/" target="_top">
-  <area shape="rect" coords="0,0,90,19" href="/legacy/" target="_top">
-  <area shape="default" href="/legacy/">
+  <area shape="rect" coords="554,0,599,19" href="/search/" target="_top">
+  <area shape="rect" coords="498,0,552,19" href="/weather/" target="_top">
+  <area shape="rect" coords="450,0,495,19" href="/sports/" target="_top">
+  <area shape="rect" coords="397,0,448,19" href="/politics/" target="_top">
+  <area shape="rect" coords="358,0,392,19" href="/news/" target="_top">
+  <area shape="rect" coords="316,0,354,19" href="/media/" target="_top">
+  <area shape="rect" coords="281,0,312,19" href="/kid/" target="_top">
+  <area shape="rect" coords="220,0,278,19" href="/exposure/" target="_top">
+  <area shape="rect" coords="151,0,218,19" href="/cool/" target="_top">
+  <area shape="rect" coords="92,0,148,19" href="/business/" target="_top">
+  <area shape="rect" coords="0,0,90,19" href="/" target="_top">
+  <area shape="default" href="/">
 </map>
 </div>
 </LegacyLayout>
+

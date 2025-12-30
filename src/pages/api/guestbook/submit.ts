@@ -124,20 +124,20 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const captchaToken = String(formData.get("g-recaptcha-response") || "");
 
   if (!name || !comments) {
-    return Response.redirect(new URL("/legacy/guestbook/?status=error", request.url), 303);
+    return Response.redirect(new URL("/guestbook/?status=error", request.url), 303);
   }
 
   if (name.length > config.max_field_length || website.length > config.max_field_length || referredBy.length > config.max_field_length || from.length > config.max_field_length) {
-    return Response.redirect(new URL("/legacy/guestbook/?status=error", request.url), 303);
+    return Response.redirect(new URL("/guestbook/?status=error", request.url), 303);
   }
 
   if (comments.length > config.max_comment_length) {
-    return Response.redirect(new URL("/legacy/guestbook/?status=error", request.url), 303);
+    return Response.redirect(new URL("/guestbook/?status=error", request.url), 303);
   }
 
   const captchaResult = await verifyRecaptcha(captchaToken, clientAddress ?? null);
   if (!captchaResult.ok) {
-    return Response.redirect(new URL("/legacy/guestbook/?status=captcha", request.url), 303);
+    return Response.redirect(new URL("/guestbook/?status=captcha", request.url), 303);
   }
 
   const linkScore = countLinks(`${website} ${comments}`);
@@ -147,7 +147,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   // Auto-reject if banned terms detected
   if (bannedMatch) {
-    return Response.redirect(new URL("/legacy/guestbook/?status=banned", request.url), 303);
+    return Response.redirect(new URL("/guestbook/?status=banned", request.url), 303);
   }
 
   const moderation = await runOpenAIModeration(combinedText);
@@ -174,12 +174,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   if (error) {
     console.error('Error inserting guestbook entry:', error);
-    return Response.redirect(new URL("/legacy/guestbook/?status=error", request.url), 303);
+    return Response.redirect(new URL("/guestbook/?status=error", request.url), 303);
   }
 
   if (requiresReview) {
-    return Response.redirect(new URL("/legacy/guestbook/?status=pending", request.url), 303);
+    return Response.redirect(new URL("/guestbook/?status=pending", request.url), 303);
   }
 
-  return Response.redirect(new URL("/legacy/guestbook/?status=ok", request.url), 303);
+  return Response.redirect(new URL("/guestbook/?status=ok", request.url), 303);
 };

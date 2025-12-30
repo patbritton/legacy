@@ -30,10 +30,10 @@ export const POST: APIRoute = async ({ request, cookies, clientAddress }) => {
 
     if (error) {
       console.error('Error approving entry:', error);
-      return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+      return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
     }
 
-    return Response.redirect(new URL("/legacy/admin/guestbook/?status=ok", request.url), 303);
+    return Response.redirect(new URL("/admin/guestbook/?status=ok", request.url), 303);
   }
 
   if (action === "reject") {
@@ -46,10 +46,10 @@ export const POST: APIRoute = async ({ request, cookies, clientAddress }) => {
 
     if (error) {
       console.error('Error rejecting entry:', error);
-      return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+      return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
     }
 
-    return Response.redirect(new URL("/legacy/admin/guestbook/?status=ok", request.url), 303);
+    return Response.redirect(new URL("/admin/guestbook/?status=ok", request.url), 303);
   }
 
   if (action === "delete") {
@@ -62,10 +62,10 @@ export const POST: APIRoute = async ({ request, cookies, clientAddress }) => {
 
     if (error) {
       console.error('Error deleting entry:', error);
-      return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+      return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
     }
 
-    return Response.redirect(new URL("/legacy/admin/guestbook/?status=ok", request.url), 303);
+    return Response.redirect(new URL("/admin/guestbook/?status=ok", request.url), 303);
   }
 
   if (action === "update") {
@@ -91,10 +91,10 @@ export const POST: APIRoute = async ({ request, cookies, clientAddress }) => {
 
     if (error) {
       console.error('Error updating entry:', error);
-      return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+      return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
     }
 
-    return Response.redirect(new URL("/legacy/admin/guestbook/?status=ok", request.url), 303);
+    return Response.redirect(new URL("/admin/guestbook/?status=ok", request.url), 303);
   }
 
   if (action === "update-config") {
@@ -104,7 +104,7 @@ export const POST: APIRoute = async ({ request, cookies, clientAddress }) => {
     const requireModeration = String(formData.get("requireModeration") || "") === "on";
     const bannedRaw = String(formData.get("bannedTerms") || "");
     if (bannedRaw.length > 10000) {
-      return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+      return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
     }
     const bannedTerms = bannedRaw
       .split("\n")
@@ -112,7 +112,7 @@ export const POST: APIRoute = async ({ request, cookies, clientAddress }) => {
       .filter(Boolean);
 
     if (bannedTerms.length > 1000) {
-        return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+        return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
     }
 
     const config: Partial<GuestbookConfig> = {
@@ -130,11 +130,11 @@ export const POST: APIRoute = async ({ request, cookies, clientAddress }) => {
 
     if (error) {
       console.error('Error updating config:', error);
-      return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+      return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
     }
 
-    return Response.redirect(new URL("/legacy/admin/guestbook/?status=ok", request.url), 303);
+    return Response.redirect(new URL("/admin/guestbook/?status=ok", request.url), 303);
   }
 
-  return Response.redirect(new URL("/legacy/admin/guestbook/?status=error", request.url), 303);
+  return Response.redirect(new URL("/admin/guestbook/?status=error", request.url), 303);
 };
