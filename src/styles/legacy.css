@@ -231,6 +231,9 @@ body {
   max-width: 600px;
   margin: 10px auto;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 .mobile-menu details {
   border: 1px solid #000;
