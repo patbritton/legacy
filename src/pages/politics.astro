@@ -3,7 +3,7 @@
 import LegacyLayout from "../layouts/LegacyLayout.astro";
 
 const politicsEntries = Object.entries(
-  import.meta.glob("../../content/politics/*.md", { eager: true })
+  import.meta.glob("../content/politics/*.md", { eager: true })
 );
 
 const allPolitics = politicsEntries.map(([path, mod]) => ({

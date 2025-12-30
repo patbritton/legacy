@@ -3,7 +3,7 @@
 import LegacyLayout from "../layouts/LegacyLayout.astro";
 
 const newsEntries = Object.entries(
-  import.meta.glob("../../content/news/*.md", { eager: true })
+  import.meta.glob("../content/news/*.md", { eager: true })
 );
 
 const allNews = newsEntries.map(([path, mod]) => ({
