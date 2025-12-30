@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "start": "node ./dist/server/entry.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",
+    "@astrojs/node": "^8.3.4",
     "astro": "^4.16.19"
   }
 }
