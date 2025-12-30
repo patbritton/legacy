@@ -1,8 +1,8 @@
 ---
-import LegacyLayout from "../../../layouts/LegacyLayout.astro";
+import LegacyLayout from "../../layouts/LegacyLayout.astro";
 
 export async function getStaticPaths() {
-  const entries = import.meta.glob("../../../content/politics/*.md");
+  const entries = import.meta.glob("../../content/politics/*.md");
   return Object.keys(entries).map((path) => ({
     params: { slug: path.split("/").pop().replace(".md", "") },
     props: { path },
