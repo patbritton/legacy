@@ -1028,6 +1028,11 @@ body {
         display: none;
     }
 
+    .mpls-legacy center:has(a[href="/order/"]),
+    .mpls-legacy p:has(a[href="/order/"]) {
+        display: none;
+    }
+
     .titlebar {
         white-space: normal;
         line-height: 1.8;
