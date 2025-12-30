@@ -226,6 +226,54 @@ body {
    TITLEBAR NAVIGATION
    ------------------------------------------------------------ */
 
+.mobile-menu {
+  display: none;
+  max-width: 600px;
+  margin: 10px auto;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.mobile-menu details {
+  border: 2px solid #000;
+  background: #fff;
+}
+.mobile-menu summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.mobile-menu summary::-webkit-details-marker {
+  display: none;
+}
+.mobile-menu summary::after {
+  content: "+";
+  float: right;
+}
+.mobile-menu details[open] summary::after {
+  content: "-";
+}
+.mobile-menu__links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 8px 10px 12px;
+}
+.mobile-menu__links a {
+  display: block;
+  border: 1px solid #000;
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 12px;
+  text-decoration: none;
+  color: #000;
+  background: #f5f5f5;
+}
+.mobile-menu__links a:hover {
+  background: #e6e6e6;
+}
+
 .titlebar {
   background-color: #000;
   color: #fff;
@@ -967,6 +1015,15 @@ body {
     /* ------------------------------------------------------------
        TITLEBAR NAVIGATION
        ------------------------------------------------------------ */
+
+    .mobile-menu {
+        display: block;
+    }
+
+    img[usemap="#titlebar"],
+    .titlebar {
+        display: none;
+    }
 
     .titlebar {
         white-space: normal;

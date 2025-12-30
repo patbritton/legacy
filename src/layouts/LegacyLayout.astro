@@ -2,6 +2,20 @@
 import "../styles/legacy.css";
 
 const { title = "Legacy MPLS" } = Astro.props;
+const basePath = Astro.url.pathname.startsWith("/legacy") ? "/legacy" : "";
+const menuLinks = [
+  { label: "Home", href: `${basePath}/` },
+  { label: "Business", href: `${basePath}/business/` },
+  { label: "Cool", href: `${basePath}/cool/` },
+  { label: "Exposure", href: `${basePath}/exposure/` },
+  { label: "Kid", href: `${basePath}/kid/` },
+  { label: "Media", href: `${basePath}/media/` },
+  { label: "News", href: `${basePath}/news/` },
+  { label: "Politics", href: `${basePath}/politics/` },
+  { label: "Sports", href: `${basePath}/sports/` },
+  { label: "Weather", href: `${basePath}/weather/` },
+  { label: "Search", href: `${basePath}/search/` },
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -11,6 +25,16 @@ const { title = "Legacy MPLS" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <nav class="mobile-menu" aria-label="Primary">
+      <details>
+        <summary>Menu</summary>
+        <div class="mobile-menu__links">
+          {menuLinks.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      </details>
+    </nav>
     <slot />
   </body>
 </html>
