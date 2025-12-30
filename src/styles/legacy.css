@@ -233,45 +233,48 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 .mobile-menu details {
-  border: 2px solid #000;
-  background: #fff;
+  border: 1px solid #000;
+  background: #000;
 }
 .mobile-menu summary {
   list-style: none;
   cursor: pointer;
-  padding: 8px 10px;
-  font-size: 13px;
+  padding: 6px 10px;
+  font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px;
 }
 .mobile-menu summary::-webkit-details-marker {
   display: none;
 }
 .mobile-menu summary::after {
-  content: "+";
+  content: "▾";
   float: right;
 }
 .mobile-menu details[open] summary::after {
-  content: "-";
+  content: "▴";
 }
 .mobile-menu__links {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
-  padding: 8px 10px 12px;
+  background: #fff;
+  border-top: 1px solid #000;
 }
 .mobile-menu__links a {
   display: block;
-  border: 1px solid #000;
-  padding: 6px 8px;
-  text-align: center;
-  font-size: 12px;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 11px;
   text-decoration: none;
   color: #000;
-  background: #f5f5f5;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000;
 }
 .mobile-menu__links a:hover {
-  background: #e6e6e6;
+  background: #f0f0f0;
+}
+.mobile-menu__links a:last-child {
+  border-bottom: 0;
 }
 
 .titlebar {
