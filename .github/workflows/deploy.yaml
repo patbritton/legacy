@@ -23,12 +23,16 @@ jobs:
             set -e
             
             # Navigate to the folder (Owned by patrick)
+            mkdir -p /var/www/legacy.mp.ls
             cd /var/www/legacy.mp.ls
 
-            # Verify Git
+            # Ensure repo exists
             if [ ! -d .git ]; then
-              echo "Error: Not a git repository. Please clone manually first."
-              exit 1
+              if [ -n "$(ls -A)" ]; then
+                echo "Error: Directory not empty and not a git repository."
+                exit 1
+              fi
+              git clone https://github.com/${{ github.repository }}.git .
             fi
 
             # Git Operations
