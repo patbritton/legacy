@@ -1028,8 +1028,7 @@ body {
         display: none;
     }
 
-    .mpls-legacy center:has(a[href="/order/"]),
-    .mpls-legacy p:has(a[href="/order/"]) {
+    .mpls-legacy center:has(img[src="/img/mpls.gif"]) {
         display: none;
     }
 
