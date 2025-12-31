@@ -285,11 +285,13 @@ export const prerender = false;
       setLocationLabel(location.label);
       localStorage.setItem("mpls-weather-location", query);
       await fetchWeather(location.lat, location.lon);
+      await renderHourlyForecast(location.lat, location.lon);
     } catch {
       setLocationLabel(defaultLocation.label);
       setText("wx-cond", "Location not found");
       setIcon(null);
       await fetchWeather(defaultLocation.lat, defaultLocation.lon);
+      await renderHourlyForecast(defaultLocation.lat, defaultLocation.lon);
     }
   };
 
@@ -326,38 +328,48 @@ export const prerender = false;
     });
   }
 
-  loadWeatherFor(input?.value || "Minneapolis, MN");
-
   // Hourly forecast (3-hour intervals)
   const fetchHourlyForecast = async (lat, lon) => {
     try {
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=weather_code,temperature_2m&temperature_unit=fahrenheit&timezone=auto&forecast_days=2`;
+      console.log('Fetching hourly forecast from:', url);
       const response = await fetch(url, { cache: "no-store" });
+      console.log('Hourly forecast response status:', response.status, response.ok);
       if (!response.ok) throw new Error("bad response");
       const data = await response.json();
+      console.log('Hourly forecast data:', data);
+      console.log('Hourly forecast data.hourly:', data.hourly);
       return data.hourly;
-    } catch {
+    } catch (error) {
+      console.error('Error fetching hourly forecast:', error);
       return null;
     }
   };
 
-  const renderHourlyForecast = async () => {
+  const renderHourlyForecast = async (lat, lon) => {
+    console.log('renderHourlyForecast called with lat:', lat, 'lon:', lon);
     const container = document.getElementById("hourly-forecast");
+    console.log('Hourly forecast container found:', !!container);
     if (!container) return;
 
     try {
-      const location = await fetchLocation(input?.value || "Minneapolis, MN");
       /** @type {{ time: string[]; weather_code: number[]; temperature_2m: number[] } | null} */
-      const hourly = await fetchHourlyForecast(location.lat, location.lon);
+      const hourly = await fetchHourlyForecast(lat, lon);
+      console.log('Hourly data returned:', hourly);
+      console.log('Hourly time array length:', hourly?.time?.length);
 
       if (!hourly?.time?.length) {
+        console.error('No hourly forecast data received');
         container.innerHTML = '<div class="forecast-error">Forecast unavailable</div>';
         return;
       }
 
       const now = new Date();
+      console.log('Current time:', now);
       const times = hourly.time.map((time) => new Date(time));
+      console.log('First few times:', times.slice(0, 5));
       let startIndex = times.findIndex((time) => time >= now);
+      console.log('Start index:', startIndex);
       if (startIndex == -1) startIndex = 0;
 
       const slots = [{ time: new Date(0), code: 0, temp: 0 }];
@@ -372,8 +384,10 @@ export const prerender = false;
           temp: Math.round(hourly.temperature_2m[idx]),
         });
       }
+      console.log('Slots created:', slots.length, slots);
 
       if (!slots.length) {
+        console.error('No slots created!');
         container.innerHTML = '<div class="forecast-error">Forecast unavailable</div>';
         return;
       }
@@ -400,12 +414,13 @@ export const prerender = false;
 
       html += '</tr></table>';
       container.innerHTML = html;
-    } catch {
+    } catch (error) {
+      console.error('Error rendering hourly forecast:', error);
       container.innerHTML = '<div class="forecast-error">Forecast unavailable</div>';
     }
   };
 
-  renderHourlyForecast();
+  loadWeatherFor(input?.value || "Minneapolis, MN");
 </script>
 
 
