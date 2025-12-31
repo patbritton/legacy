@@ -48,12 +48,12 @@ const isAuthed = verifySessionToken(token);
           <form action="/api/admin/login" method="post">
             <table border="0" cellpadding="4" cellspacing="0">
               <tr>
-                <td><font face="Verdana,Helvetica,Arial" size="-1">Username</font></td>
-                <td><input type="text" name="username" size="30" autocomplete="username" value="admin"></td>
+                <td><label for="admin-username"><font face="Verdana,Helvetica,Arial" size="-1">Username</font></label></td>
+                <td><input type="text" id="admin-username" name="username" size="30" autocomplete="username" value="admin"></td>
               </tr>
               <tr>
-                <td><font face="Verdana,Helvetica,Arial" size="-1">Password</font></td>
-                <td><input type="password" name="password" size="30" autocomplete="current-password" required></td>
+                <td><label for="admin-password"><font face="Verdana,Helvetica,Arial" size="-1">Password</font></label></td>
+                <td><input type="password" id="admin-password" name="password" size="30" autocomplete="current-password" required></td>
               </tr>
               <tr>
                 <td></td>

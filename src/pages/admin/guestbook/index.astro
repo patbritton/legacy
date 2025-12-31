@@ -80,25 +80,25 @@ const config = configData || {
         <input type="hidden" name="action" value="update-config">
         <table border="0" cellpadding="4" cellspacing="0" width="100%">
           <tr>
-            <td><font face="Verdana,Helvetica,Arial" size="-1">Max Links</font></td>
-            <td><input type="number" name="maxLinks" value={config.max_links} min="0" max="10"></td>
+            <td><label for="gb-config-max-links"><font face="Verdana,Helvetica,Arial" size="-1">Max Links</font></label></td>
+            <td><input type="number" id="gb-config-max-links" name="maxLinks" value={config.max_links} min="0" max="10"></td>
           </tr>
           <tr>
-            <td><font face="Verdana,Helvetica,Arial" size="-1">Max Comment Length</font></td>
-            <td><input type="number" name="maxCommentLength" value={config.max_comment_length} min="50" max="2000"></td>
+            <td><label for="gb-config-max-comment-length"><font face="Verdana,Helvetica,Arial" size="-1">Max Comment Length</font></label></td>
+            <td><input type="number" id="gb-config-max-comment-length" name="maxCommentLength" value={config.max_comment_length} min="50" max="2000"></td>
           </tr>
           <tr>
-            <td><font face="Verdana,Helvetica,Arial" size="-1">Max Field Length</font></td>
-            <td><input type="number" name="maxFieldLength" value={config.max_field_length} min="20" max="300"></td>
+            <td><label for="gb-config-max-field-length"><font face="Verdana,Helvetica,Arial" size="-1">Max Field Length</font></label></td>
+            <td><input type="number" id="gb-config-max-field-length" name="maxFieldLength" value={config.max_field_length} min="20" max="300"></td>
           </tr>
           <tr>
-            <td><font face="Verdana,Helvetica,Arial" size="-1">Require Moderation</font></td>
-            <td><input type="checkbox" name="requireModeration" checked={config.require_moderation}></td>
+            <td><label for="gb-config-require-moderation"><font face="Verdana,Helvetica,Arial" size="-1">Require Moderation</font></label></td>
+            <td><input type="checkbox" id="gb-config-require-moderation" name="requireModeration" checked={config.require_moderation}></td>
           </tr>
           <tr>
-            <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Banned Terms</font></td>
+            <td valign="top"><label for="gb-config-banned-terms"><font face="Verdana,Helvetica,Arial" size="-1">Banned Terms</font></label></td>
             <td>
-              <textarea name="bannedTerms" rows="5" cols="40">{config.banned_terms.join("\n")}</textarea>
+              <textarea id="gb-config-banned-terms" name="bannedTerms" rows="5" cols="40">{config.banned_terms.join("\n")}</textarea>
             </td>
           </tr>
           <tr>
@@ -133,28 +133,28 @@ const config = configData || {
               <td><font face="Verdana,Helvetica,Arial" size="-2">Flagged: {entry.flagged ? "Yes" : "No"}</font></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Name</font></td>
-              <td><input type="text" name="name" value={entry.name} size="40"></td>
+              <td><label for={`pending-name-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Name</font></label></td>
+              <td><input type="text" id={`pending-name-${entry.record}`} name="name" value={entry.name} size="40"></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Website</font></td>
-              <td><input type="text" name="website" value={entry.website} size="40"></td>
+              <td><label for={`pending-website-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
+              <td><input type="text" id={`pending-website-${entry.record}`} name="website" value={entry.website} size="40"></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></td>
-              <td><input type="text" name="referredBy" value={entry.referred_by} size="40"></td>
+              <td><label for={`pending-referred-by-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
+              <td><input type="text" id={`pending-referred-by-${entry.record}`} name="referredBy" value={entry.referred_by} size="40"></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">From</font></td>
-              <td><input type="text" name="from" value={entry.from_location} size="40"></td>
+              <td><label for={`pending-from-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
+              <td><input type="text" id={`pending-from-${entry.record}`} name="from" value={entry.from_location} size="40"></td>
             </tr>
             <tr>
-              <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></td>
-              <td><textarea name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
+              <td valign="top"><label for={`pending-comments-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></label></td>
+              <td><textarea id={`pending-comments-${entry.record}`} name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Private</font></td>
-              <td><input type="checkbox" name="privateMessage" checked={entry.private_message}></td>
+              <td><label for={`pending-private-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Private</font></label></td>
+              <td><input type="checkbox" id={`pending-private-${entry.record}`} name="privateMessage" checked={entry.private_message}></td>
             </tr>
             <tr>
               <td></td>
@@ -201,28 +201,28 @@ const config = configData || {
               <td><font face="Verdana,Helvetica,Arial" size="-2">{new Date(entry.created_at).toISOString().replace("T", " ").slice(0, 19)}</font></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Name</font></td>
-              <td><input type="text" name="name" value={entry.name} size="40"></td>
+              <td><label for={`approved-name-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Name</font></label></td>
+              <td><input type="text" id={`approved-name-${entry.record}`} name="name" value={entry.name} size="40"></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Website</font></td>
-              <td><input type="text" name="website" value={entry.website} size="40"></td>
+              <td><label for={`approved-website-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
+              <td><input type="text" id={`approved-website-${entry.record}`} name="website" value={entry.website} size="40"></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></td>
-              <td><input type="text" name="referredBy" value={entry.referred_by} size="40"></td>
+              <td><label for={`approved-referred-by-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
+              <td><input type="text" id={`approved-referred-by-${entry.record}`} name="referredBy" value={entry.referred_by} size="40"></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">From</font></td>
-              <td><input type="text" name="from" value={entry.from_location} size="40"></td>
+              <td><label for={`approved-from-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
+              <td><input type="text" id={`approved-from-${entry.record}`} name="from" value={entry.from_location} size="40"></td>
             </tr>
             <tr>
-              <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></td>
-              <td><textarea name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
+              <td valign="top"><label for={`approved-comments-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></label></td>
+              <td><textarea id={`approved-comments-${entry.record}`} name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
             </tr>
             <tr>
-              <td><font face="Verdana,Helvetica,Arial" size="-1">Private</font></td>
-              <td><input type="checkbox" name="privateMessage" checked={entry.private_message}></td>
+              <td><label for={`approved-private-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Private</font></label></td>
+              <td><input type="checkbox" id={`approved-private-${entry.record}`} name="privateMessage" checked={entry.private_message}></td>
             </tr>
             <tr>
               <td></td>

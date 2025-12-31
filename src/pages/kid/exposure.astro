@@ -6,15 +6,12 @@ import LegacyFooter from "../../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Exposure - MP.LS">
 <div class="mpls-legacy">
-<LegacyHeader />
+<LegacyHeader showNav />
 
 <p><!-- Header Bar --></p>
 <div class="cool-header">
-<div class="cool-bar">
-<LegacyFooter />
+<div class="cool-bar"></div>
 </div>
-</div>
-<div class="titlebar"><a href="/"><img decoding="async" src="/img/menu-logo.jpg" alt="mpls.com" width="95" height="18"></a> | <a href="/">BUSINESS</a> | <a href="/">COOL SPOTS</a> | <a href="/">EXPOSURE</a> | <a href="/">KIDS</a> | <a href="/">MEDIA</a> | <a href="/">NEWS</a> | <a href="/">POLITICS</a> | <a href="/">SPORTS</a> | <a href="/">WEATHER</a> | <a href="/">SEARCH</a></div>
 <p><!-- Gallery Grid --></p>
 <div class="exposure-grid">
 <div class="row"><a href="/"><img decoding="async" src="/img/01.jpg" alt="Exposure 01"></a><br>
@@ -37,13 +34,7 @@ import LegacyFooter from "../../components/LegacyFooter.astro";
 <a href="/"><img decoding="async" src="/img/08.jpg" alt="Exposure 08"></a><br>
 <a href="/"><img decoding="async" src="/img/07.jpg" alt="Exposure 07"></a></div>
 </div>
-<p><!-- Footer --></p>
-<hr class="divider">
-<div class="footer">
-<p><small>WEBSITE DESIGNED &amp; MAINTAINED BY <a href="https://digital.mpls.com/" target="_blank" rel="noopener">DIGITAL CONCEPTS</a>, MINNEAPOLIS, MINNESOTA</small></p>
-<hr class="mini-divider">
-<p><small>  1997-2000 DIGITAL CONCEPTS &amp; HEINRICH PHOTOGRAPHY. All rights reserved.</small></p>
-</div>
+<LegacyFooter />
 </div>
 </LegacyLayout>
 

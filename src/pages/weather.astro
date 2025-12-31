@@ -8,11 +8,9 @@ export const prerender = false;
 ---
 <LegacyLayout title="Minnesota Weather @ mpls.com">
 <div class="mpls-legacy">
-<LegacyHeader />
+<LegacyHeader showNav />
 
-<div class="weather-titlebar">
-  <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
-</div>
+
 <br>
 <div class="weather-page-title"><font face="Verdana,Helvetica,Arial" size="6"><b>MINNESOTA WEATHER</b></font></div>
 <hr width="40%">
@@ -127,21 +125,6 @@ export const prerender = false;
 <div class="weather-legacy-footer">
 <LegacyFooter />
 </div>
-
-<map name="titlebar">
-  <area shape="rect" coords="554,0,599,19" href="/search/" target="_top">
-  <area shape="rect" coords="498,0,552,19" href="/weather/" target="_top">
-  <area shape="rect" coords="450,0,495,19" href="/sports/" target="_top">
-  <area shape="rect" coords="397,0,448,19" href="/politics/" target="_top">
-  <area shape="rect" coords="358,0,392,19" href="/news/" target="_top">
-  <area shape="rect" coords="316,0,354,19" href="/media/" target="_top">
-  <area shape="rect" coords="281,0,312,19" href="/kid/" target="_top">
-  <area shape="rect" coords="220,0,278,19" href="/exposure/" target="_top">
-  <area shape="rect" coords="151,0,218,19" href="/cool/" target="_top">
-  <area shape="rect" coords="92,0,148,19" href="/business/" target="_top">
-  <area shape="rect" coords="0,0,90,19" href="/" target="_top">
-  <area shape="default" href="/">
-</map>
 </LegacyLayout>
 
 <script>

@@ -25,6 +25,7 @@ const menuLinks = [
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <nav class="mobile-menu" aria-label="Primary">
       <details>
         <summary>Menu</summary>
@@ -35,6 +36,8 @@ const menuLinks = [
         </div>
       </details>
     </nav>
-    <slot />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
   </body>
 </html>

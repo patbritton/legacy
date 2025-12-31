@@ -8,6 +8,20 @@ body {
   background: #fff;
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  padding: 4px 8px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  z-index: 20;
+}
+.skip-link:focus {
+  left: 8px;
+}
+
 :root {
   --wp--preset--spacing--20: 0.44rem;
   --wp--preset--spacing--30: 0.67rem;
@@ -159,6 +173,14 @@ body {
 }
 .mpls-legacy a:visited {
   color: #660000;
+}
+.mpls-legacy a:focus-visible,
+.mpls-legacy button:focus-visible,
+.mpls-legacy input:focus-visible,
+.mpls-legacy textarea:focus-visible,
+.mpls-legacy summary:focus-visible {
+  outline: 2px dotted #000;
+  outline-offset: 2px;
 }
 .mpls-legacy .story-link {
   text-decoration: none;
@@ -392,29 +414,34 @@ body {
   font-size: clamp(7px, 1.5vw, 10px);
   font-weight: bold;
   text-align: center;
-  padding: 2px;
+  padding: 1px 2px;
   white-space: nowrap;
   overflow: hidden;
   width: 600px;
   margin: 0 auto;
-  display: block;
-  vertical-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  line-height: 1;
+  min-height: 20px;
+  box-shadow: 1px 3px 1px #7e7e7e;
 }
 .titlebar img {
-  float: left;
-  vertical-align: middle;
   display: inline-block;
   max-height: 18px;
   width: auto;
   height: auto;
+  vertical-align: middle;
 }
 .titlebar a {
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
-  display: inline;
+  display: inline-block;
   font-size: 7px;
-  vertical-align: middle;
+  line-height: 1;
+  padding: 1px 0;
 }
 .titlebar a:hover {
   color: #ffff00;
@@ -1831,6 +1858,10 @@ body {
 
 .home-main-content p[align="center"] {
   text-align: center;
+}
+
+.email-signup-table {
+  margin: 0 auto;
 }
 
 /* Bizads page */

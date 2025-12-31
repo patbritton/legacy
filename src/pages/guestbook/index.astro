@@ -21,11 +21,9 @@ const sortedEntries = entries || [];
 ---
 <LegacyLayout title="Guestbook @ mpls.com">
 <div class="mpls-legacy">
-<LegacyHeader />
+<LegacyHeader showNav />
 
-<div class="guestbook-titlebar">
-<p><img border="0" height="20" src="/img/titlebar.gif" usemap="#titlebar" width="600"></p>
-</div>
+
 
 <div class="guestbook-header">
   <font face="Verdana,Helvetica,Arial" size="4"><b>Guestbook</b></font>
@@ -61,33 +59,33 @@ const sortedEntries = entries || [];
 <td>
 <a id="sign"></a>
 <form action="/api/guestbook/submit" method="post">
-  <input type="text" name="company" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+  <input type="text" name="company" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
   <table border="0" cellpadding="4" cellspacing="0" width="100%">
     <tr>
-      <td width="120"><font face="Verdana,Helvetica,Arial" size="-1">Name *</font></td>
-      <td><input type="text" name="name" size="40" maxlength="120" required></td>
+      <td width="120"><label for="gb-name"><font face="Verdana,Helvetica,Arial" size="-1">Name *</font></label></td>
+      <td><input type="text" id="gb-name" name="name" size="40" maxlength="120" required></td>
     </tr>
     <tr>
-      <td><font face="Verdana,Helvetica,Arial" size="-1">Website</font></td>
-      <td><input type="text" name="website" size="40" maxlength="120"></td>
+      <td><label for="gb-website"><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
+      <td><input type="text" id="gb-website" name="website" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></td>
-      <td><input type="text" name="referredBy" size="40" maxlength="120"></td>
+      <td><label for="gb-referred-by"><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
+      <td><input type="text" id="gb-referred-by" name="referredBy" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td><font face="Verdana,Helvetica,Arial" size="-1">From</font></td>
-      <td><input type="text" name="from" size="40" maxlength="120"></td>
+      <td><label for="gb-from"><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
+      <td><input type="text" id="gb-from" name="from" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td valign="top"><font face="Verdana,Helvetica,Arial" size="-1">Comments *</font></td>
-      <td><textarea name="comments" rows="5" cols="46" maxlength="800" required></textarea></td>
+      <td valign="top"><label for="gb-comments"><font face="Verdana,Helvetica,Arial" size="-1">Comments *</font></label></td>
+      <td><textarea id="gb-comments" name="comments" rows="5" cols="46" maxlength="800" required></textarea></td>
     </tr>
     <tr>
       <td></td>
       <td>
         {siteKey ? (
-          <div class="g-recaptcha" data-sitekey={siteKey}></div>
+          <div class="g-recaptcha" data-sitekey={siteKey} aria-label="reCAPTCHA"></div>
         ) : (
           <font face="Verdana,Helvetica,Arial" size="-2">reCAPTCHA site key missing.</font>
         )}
@@ -145,21 +143,6 @@ const sortedEntries = entries || [];
 </div>
 
 <LegacyFooter />
-
-<map name="titlebar">
-  <area shape="rect" coords="554,0,599,19" href="/search/" target="_top">
-  <area shape="rect" coords="498,0,552,19" href="/weather/" target="_top">
-  <area shape="rect" coords="450,0,495,19" href="/sports/" target="_top">
-  <area shape="rect" coords="397,0,448,19" href="/politics/" target="_top">
-  <area shape="rect" coords="358,0,392,19" href="/news/" target="_top">
-  <area shape="rect" coords="316,0,354,19" href="/media/" target="_top">
-  <area shape="rect" coords="281,0,312,19" href="/kid/" target="_top">
-  <area shape="rect" coords="220,0,278,19" href="/exposure/" target="_top">
-  <area shape="rect" coords="151,0,218,19" href="/cool/" target="_top">
-  <area shape="rect" coords="92,0,148,19" href="/business/" target="_top">
-  <area shape="rect" coords="0,0,90,19" href="/" target="_top">
-  <area shape="default" href="/">
-</map>
 </div>
 </LegacyLayout>
 
