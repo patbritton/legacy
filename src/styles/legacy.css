@@ -2145,22 +2145,31 @@ body {
 }
 
 .forecast-table-hourly .forecast-day-name {
-  font-size: 13px;
+  font-size: 11px;
   white-space: nowrap;
+  padding: 2px 1px 3px;
 }
 
 .forecast-table-hourly .forecast-icon {
-  font-size: 34px;
-  height: 88px;
+  font-size: 28px;
+  height: 70px;
+  margin: 2px 0 6px;
 }
 
 .forecast-table-hourly .forecast-temp-high {
-  font-size: 22px;
+  font-size: 18px;
+  padding: 3px 0 2px 0;
 }
 
 .forecast-table-hourly .forecast-condition {
-  font-size: 11px;
-  letter-spacing: 0.5px;
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  padding: 3px 2px;
+  min-height: 24px;
+}
+
+.forecast-table-hourly .forecast-temps {
+  padding: 4px 0 6px;
 }
 
 /* Admin pages */
