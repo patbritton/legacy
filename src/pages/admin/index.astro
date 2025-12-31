@@ -10,7 +10,11 @@ const status = Astro.url.searchParams.get("status");
 const token = Astro.cookies.get("admin_session")?.value;
 const isAuthed = verifySessionToken(token);
 ---
-<LegacyLayout title="Admin Login @ mpls.com">
+<LegacyLayout
+  title="Admin Login @ mpls.com"
+  description="Administrative login for managing the MPLS.com guestbook."
+  robots="noindex, nofollow"
+>
 <div class="mpls-legacy">
 <LegacyHeader />
 <div class="admin-header">

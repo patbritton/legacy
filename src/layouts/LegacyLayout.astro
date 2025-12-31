@@ -1,7 +1,14 @@
 ---
 import "../styles/legacy.css";
 
-const { title = "Legacy MPLS" } = Astro.props;
+const {
+  title = "Legacy MPLS",
+  description = "Explore a faithful recreation of the original MPLS.com experience, celebrating Minneapolis culture, news, weather, and community.",
+  ogImage = "/img/logo2-768x455.png",
+  ogType = "website",
+  siteName = "MPLS.com",
+  robots,
+} = Astro.props;
 const basePath = Astro.url.pathname.startsWith("/legacy") ? "/legacy" : "";
 const menuLinks = [
   { label: "Home", href: `${basePath}/` },
@@ -16,6 +23,9 @@ const menuLinks = [
   { label: "Weather", href: `${basePath}/weather/` },
   { label: "Search", href: `${basePath}/search/` },
 ];
+const canonicalUrl = new URL(Astro.url.pathname, Astro.url);
+const canonicalHref = canonicalUrl.toString();
+const resolvedOgImage = ogImage ? new URL(ogImage, Astro.url).toString() : "";
 ---
 <!doctype html>
 <html lang="en">
@@ -23,6 +33,27 @@ const menuLinks = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/img/favicon.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="mask-icon" href="/img/favicon.svg" color="#7a0b0b" />
+    <link rel="canonical" href={canonicalHref} />
+    {description ? <meta name="description" content={description} /> : null}
+    {robots ? <meta name="robots" content={robots} /> : null}
+    <meta property="og:title" content={title} />
+    {description ? <meta property="og:description" content={description} /> : null}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalHref} />
+    {resolvedOgImage ? <meta property="og:image" content={resolvedOgImage} /> : null}
+    <meta property="og:site_name" content={siteName} />
+    <meta name="twitter:card" content={resolvedOgImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    {description ? <meta name="twitter:description" content={description} /> : null}
+    {resolvedOgImage ? <meta name="twitter:image" content={resolvedOgImage} /> : null}
     <title>{title}</title>
   </head>
   <body>

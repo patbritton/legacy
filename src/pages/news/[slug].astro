@@ -14,8 +14,15 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { frontmatter, Content } = entry;
+const description = frontmatter.description ?? frontmatter.title;
+const ogImage = frontmatter.image ?? "/img/logo2-768x455.png";
 ---
-<LegacyLayout title={`${frontmatter.title} @ mpls.com`}>
+<LegacyLayout
+  title={`${frontmatter.title} @ mpls.com`}
+  description={description}
+  ogType="article"
+  ogImage={ogImage}
+>
   <div class="mpls-legacy">
 <LegacyHeader showNav />
 

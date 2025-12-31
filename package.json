@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-sitemap.js",
     "build": "astro build",
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs"
