@@ -36,12 +36,27 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
     <td>
       <table border="0" cellpadding="4" cellspacing="0" width="100%">
         <tr>
+          <td colspan="2">
+            <form id="wx-form">
+              <font face="Verdana,Helvetica,Arial" size="1"><b>Location:</b></font>
+              <input id="wx-location" type="text" size="18" value="Minneapolis, MN">
+              <input type="submit" value="Go">
+              <font face="Verdana,Helvetica,Arial" size="1">Zip or City</font>
+            </form>
+          </td>
+        </tr>
+        <tr>
           <td width="50%"><font face="Verdana,Helvetica,Arial" size="2"><b>Temperature:</b></font></td>
           <td><font face="Verdana,Helvetica,Arial" size="2"><span id="wx-temp">Loading...</span></font></td>
         </tr>
         <tr>
           <td><font face="Verdana,Helvetica,Arial" size="2"><b>Conditions:</b></font></td>
-          <td><font face="Verdana,Helvetica,Arial" size="2"><span id="wx-cond">Loading...</span></font></td>
+          <td>
+            <font face="Verdana,Helvetica,Arial" size="2">
+              <span class="wx-icon" id="wx-icon">--</span>
+              <span id="wx-cond">Loading...</span>
+            </font>
+          </td>
         </tr>
         <tr>
           <td><font face="Verdana,Helvetica,Arial" size="2"><b>Wind:</b></font></td>
@@ -49,7 +64,12 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
         </tr>
         <tr>
           <td><font face="Verdana,Helvetica,Arial" size="2"><b>Updated:</b></font></td>
-          <td><font face="Verdana,Helvetica,Arial" size="2"><span id="wx-time">--</span></font></td>
+          <td>
+            <font face="Verdana,Helvetica,Arial" size="2">
+              <span id="wx-time">--</span><br>
+              <span id="wx-place" class="wx-place">Minneapolis, MN</span>
+            </font>
+          </td>
         </tr>
       </table>
       <noscript>
@@ -137,14 +157,46 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
     99: "Heavy Thunderstorm",
   };
 
+  const weatherIconMap = {
+    0: "SUN",
+    1: "SUN",
+    2: "CLD",
+    3: "OVC",
+    45: "FOG",
+    48: "FOG",
+    51: "DRZ",
+    53: "DRZ",
+    55: "DRZ",
+    61: "RAN",
+    63: "RAN",
+    65: "RAN",
+    71: "SNW",
+    73: "SNW",
+    75: "SNW",
+    80: "SHR",
+    81: "SHR",
+    82: "SHR",
+    95: "TST",
+    96: "TST",
+    99: "TST",
+  };
+
   const setText = (id, value) => {
     const el = document.getElementById(id);
     if (el) el.textContent = value;
   };
 
-  const fetchWeather = async () => {
+  const setLocationLabel = (value) => {
+    setText("wx-place", value || "Minneapolis, MN");
+  };
+
+  const setIcon = (code) => {
+    setText("wx-icon", weatherIconMap[code] || "--");
+  };
+
+  const fetchWeather = async (lat, lon) => {
     try {
-      const url = "https://api.open-meteo.com/v1/forecast?latitude=44.9778&longitude=-93.2650&current=temperature_2m,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph";
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`;
       const response = await fetch(url, { cache: "no-store" });
       if (!response.ok) throw new Error("bad response");
       const data = await response.json();
@@ -156,17 +208,65 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
       const updated = current.time ? current.time.replace("T", " ") : "--";
       setText("wx-temp", `${temp}°F`);
       setText("wx-cond", cond);
+      setIcon(current.weather_code);
       setText("wx-wind", `${wind} mph`);
       setText("wx-time", updated);
     } catch {
       setText("wx-temp", "Unavailable");
       setText("wx-cond", "Unavailable");
+      setIcon(null);
       setText("wx-wind", "Unavailable");
       setText("wx-time", "--");
     }
   };
 
-  fetchWeather();
+  const fetchLocation = async (query) => {
+    const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=1&language=en&format=json`;
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) throw new Error("bad response");
+    const data = await response.json();
+    const result = data?.results?.[0];
+    if (!result) throw new Error("no results");
+    return {
+      lat: result.latitude,
+      lon: result.longitude,
+      label: [result.name, result.admin1, result.country_code].filter(Boolean).join(", "),
+    };
+  };
+
+  const loadWeatherFor = async (query) => {
+    try {
+      const location = await fetchLocation(query);
+      setLocationLabel(location.label);
+      localStorage.setItem("mpls-weather-location", query);
+      await fetchWeather(location.lat, location.lon);
+    } catch {
+      setText("wx-temp", "Unavailable");
+      setText("wx-cond", "Location not found");
+      setIcon(null);
+      setText("wx-wind", "--");
+      setText("wx-time", "--");
+    }
+  };
+
+  const form = document.getElementById("wx-form");
+  const input = document.getElementById("wx-location");
+  const saved = localStorage.getItem("mpls-weather-location");
+  if (saved && input) {
+    input.value = saved;
+  }
+
+  if (form && input) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const value = input.value.trim();
+      if (value) {
+        loadWeatherFor(value);
+      }
+    });
+  }
+
+  loadWeatherFor(input?.value || "Minneapolis, MN");
 </script>
 
 
