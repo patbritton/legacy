@@ -60,30 +60,30 @@ const sortedEntries = entries || [];
 <a id="sign"></a>
 <form action="/api/guestbook/submit" method="post">
   <input type="text" name="company" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
-  <table border="0" cellpadding="4" cellspacing="0" width="100%">
+  <table class="guestbook-form-table" border="0" cellpadding="4" cellspacing="0" width="100%">
     <tr>
-      <td width="120"><label for="gb-name"><font face="Verdana,Helvetica,Arial" size="-1">Name *</font></label></td>
-      <td><input type="text" id="gb-name" name="name" size="40" maxlength="120" required></td>
+      <td class="guestbook-form-label"><label for="gb-name"><font face="Verdana,Helvetica,Arial" size="-1">Name *</font></label></td>
+      <td class="guestbook-form-field"><input type="text" id="gb-name" name="name" size="40" maxlength="120" required></td>
     </tr>
     <tr>
-      <td><label for="gb-website"><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
-      <td><input type="text" id="gb-website" name="website" size="40" maxlength="120"></td>
+      <td class="guestbook-form-label"><label for="gb-website"><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
+      <td class="guestbook-form-field"><input type="text" id="gb-website" name="website" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td><label for="gb-referred-by"><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
-      <td><input type="text" id="gb-referred-by" name="referredBy" size="40" maxlength="120"></td>
+      <td class="guestbook-form-label"><label for="gb-referred-by"><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
+      <td class="guestbook-form-field"><input type="text" id="gb-referred-by" name="referredBy" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td><label for="gb-from"><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
-      <td><input type="text" id="gb-from" name="from" size="40" maxlength="120"></td>
+      <td class="guestbook-form-label"><label for="gb-from"><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
+      <td class="guestbook-form-field"><input type="text" id="gb-from" name="from" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td valign="top"><label for="gb-comments"><font face="Verdana,Helvetica,Arial" size="-1">Comments *</font></label></td>
-      <td><textarea id="gb-comments" name="comments" rows="5" cols="46" maxlength="800" required></textarea></td>
+      <td class="guestbook-form-label" valign="top"><label for="gb-comments"><font face="Verdana,Helvetica,Arial" size="-1">Comments *</font></label></td>
+      <td class="guestbook-form-field"><textarea id="gb-comments" name="comments" rows="5" cols="46" maxlength="800" required></textarea></td>
     </tr>
     <tr>
       <td></td>
-      <td>
+      <td class="guestbook-form-field">
         {siteKey ? (
           <div class="g-recaptcha" data-sitekey={siteKey} aria-label="reCAPTCHA"></div>
         ) : (
@@ -93,7 +93,7 @@ const sortedEntries = entries || [];
     </tr>
     <tr>
       <td></td>
-      <td><input type="submit" value="Sign Guestbook"></td>
+      <td class="guestbook-form-field"><input type="submit" value="Sign Guestbook"></td>
     </tr>
   </table>
 </form>
@@ -123,7 +123,7 @@ const sortedEntries = entries || [];
 
     return (
       <tr>
-        <td>
+        <td class="guestbook-entry-cell">
           <font face="Verdana,Helvetica,Arial" size="-1"><b>Record {entry.record}</b></font><br>
           <font face="Verdana,Helvetica,Arial" size="-1"><b>Name:</b> {entry.name}</font><br>
           <font face="Verdana,Helvetica,Arial" size="-1">

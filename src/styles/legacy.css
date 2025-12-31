@@ -2257,6 +2257,73 @@ body {
   margin: 0 auto;
 }
 
+.guestbook-entries-header {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.guestbook-entries-header table {
+  margin: 0 auto;
+}
+
+.guestbook-entries-container {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.guestbook-entries-container table {
+  width: 320px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.guestbook-entry-cell {
+  text-align: left;
+}
+
+.guestbook-form-container input[type="text"],
+.guestbook-form-container textarea {
+  width: 240px;
+  box-sizing: border-box;
+}
+
+.guestbook-form-container .g-recaptcha {
+  margin: 0 auto;
+  width: 304px;
+  transform: scale(0.855);
+  transform-origin: top center;
+}
+
+.guestbook-form-container input[type="submit"] {
+  display: block;
+  margin: 0 auto;
+}
+
+.guestbook-form-table {
+  border-collapse: collapse;
+}
+
+.guestbook-form-label {
+  text-align: right;
+  padding-right: 4px;
+  padding-left: 0;
+  width: 120px;
+  white-space: nowrap;
+  border-right: 0;
+}
+
+.guestbook-form-table td {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.guestbook-form-field {
+  padding-left: 0;
+}
+
 /* Kid pages */
 .kid-titlebar,
 .kid-content-container {
