@@ -18,6 +18,7 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
 <center>
   <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
 </center>
+<br>
 <center><font face="Verdana,Helvetica,Arial" size="6"><b>MINNESOTA WEATHER</b></font></center>
 <hr width="40%">
 <br>
@@ -29,22 +30,37 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
 <table class="weather-widget" border="1" cellpadding="6" cellspacing="0" width="420">
   <tr>
     <td bgcolor="#000000">
-      <font face="Verdana,Helvetica,Arial" size="2" color="#FFFFFF"><b>MINNEAPOLIS LIVE WEATHER</b></font>
+      <table class="wx-header" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td valign="middle">
+            <font face="Verdana,Helvetica,Arial" size="2" color="#FFFFFF"><b><span id="wx-header-city">MINNEAPOLIS</span> LIVE WEATHER</b></font>
+          </td>
+          <td align="RIGHT" valign="middle">
+            <a href="#" class="wx-edit-link" id="wx-edit-link">Change location</a>
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
   <tr>
     <td>
+      <div id="wx-edit" class="wx-edit">
+        <form id="wx-form">
+          <font face="Verdana,Helvetica,Arial" size="1"><b>Location:</b></font>
+          <input id="wx-location" type="text" size="18" value="Minneapolis, MN" autocomplete="address-level2" list="wx-suggest">
+          <input type="submit" value="Go">
+          <font face="Verdana,Helvetica,Arial" size="1">Zip or City</font>
+          <datalist id="wx-suggest">
+            <option value="Minneapolis, MN"></option>
+            <option value="St. Paul, MN"></option>
+            <option value="Chicago, IL"></option>
+            <option value="New York, NY"></option>
+            <option value="Los Angeles, CA"></option>
+            <option value="Dallas, TX"></option>
+          </datalist>
+        </form>
+      </div>
       <table border="0" cellpadding="4" cellspacing="0" width="100%">
-        <tr>
-          <td colspan="2">
-            <form id="wx-form">
-              <font face="Verdana,Helvetica,Arial" size="1"><b>Location:</b></font>
-              <input id="wx-location" type="text" size="18" value="Minneapolis, MN">
-              <input type="submit" value="Go">
-              <font face="Verdana,Helvetica,Arial" size="1">Zip or City</font>
-            </form>
-          </td>
-        </tr>
         <tr>
           <td width="50%"><font face="Verdana,Helvetica,Arial" size="2"><b>Temperature:</b></font></td>
           <td><font face="Verdana,Helvetica,Arial" size="2"><span id="wx-temp">Loading...</span></font></td>
@@ -114,6 +130,9 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
     | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
     | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH FARM</a></font> 
 </center>
+<center>
+  <font face="Verdana,Helvetica,Arial" size="-2">Links marked are Wayback Machine snapshots.</font>
+</center>
 </div>
 
 <map name="titlebar">
@@ -158,27 +177,27 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
   };
 
   const weatherIconMap = {
-    0: "SUN",
-    1: "SUN",
-    2: "CLD",
-    3: "OVC",
-    45: "FOG",
-    48: "FOG",
-    51: "DRZ",
-    53: "DRZ",
-    55: "DRZ",
-    61: "RAN",
-    63: "RAN",
-    65: "RAN",
-    71: "SNW",
-    73: "SNW",
-    75: "SNW",
-    80: "SHR",
-    81: "SHR",
-    82: "SHR",
-    95: "TST",
-    96: "TST",
-    99: "TST",
+    0: "SUN ☀",
+    1: "SUN ☀",
+    2: "PTLY ⛅",
+    3: "CLOUDY ☁",
+    45: "FOG 🌫",
+    48: "FOG 🌫",
+    51: "DRIZ 🌦",
+    53: "DRIZ 🌦",
+    55: "RAIN 🌧",
+    61: "RAIN 🌧",
+    63: "RAIN 🌧",
+    65: "RAIN 🌧",
+    71: "SNOW 🌨",
+    73: "SNOW 🌨",
+    75: "SNOW ❄",
+    80: "SHWR 🌦",
+    81: "SHWR 🌧",
+    82: "SHWR 🌧",
+    95: "TST ⚡",
+    96: "HAIL ⛈",
+    99: "TST ⛈",
   };
 
   const setText = (id, value) => {
@@ -187,7 +206,10 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
   };
 
   const setLocationLabel = (value) => {
-    setText("wx-place", value || "Minneapolis, MN");
+    const label = value || "Minneapolis, MN";
+    setText("wx-place", label);
+    const city = label.split(",")[0] || "Minneapolis";
+    setText("wx-header-city", city.toUpperCase());
   };
 
   const setIcon = (code) => {
@@ -220,6 +242,12 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
     }
   };
 
+  const defaultLocation = {
+    lat: 44.9778,
+    lon: -93.2650,
+    label: "Minneapolis, MN",
+  };
+
   const fetchLocation = async (query) => {
     const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=1&language=en&format=json`;
     const response = await fetch(url, { cache: "no-store" });
@@ -241,19 +269,34 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
       localStorage.setItem("mpls-weather-location", query);
       await fetchWeather(location.lat, location.lon);
     } catch {
-      setText("wx-temp", "Unavailable");
+      setLocationLabel(defaultLocation.label);
       setText("wx-cond", "Location not found");
       setIcon(null);
-      setText("wx-wind", "--");
-      setText("wx-time", "--");
+      await fetchWeather(defaultLocation.lat, defaultLocation.lon);
     }
   };
 
   const form = document.getElementById("wx-form");
   const input = document.getElementById("wx-location");
+  const editLink = document.getElementById("wx-edit-link");
+  const editPanel = document.getElementById("wx-edit");
   const saved = localStorage.getItem("mpls-weather-location");
   if (saved && input) {
     input.value = saved;
+  }
+
+  if (editLink && editPanel) {
+    editPanel.style.display = "none";
+    editLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      const isOpen = editPanel.style.display !== "none";
+      editPanel.style.display = isOpen ? "none" : "block";
+      editLink.textContent = isOpen ? "Change location" : "Close";
+      if (!isOpen && input) {
+        input.focus();
+        input.select();
+      }
+    });
   }
 
   if (form && input) {

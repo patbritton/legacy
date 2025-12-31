@@ -176,10 +176,20 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
   const banner = document.getElementById("legacyBanner");
   const spacer = document.getElementById("legacyBannerSpacer");
   const closeButton = document.getElementById("legacyBannerClose");
+  const bannerKey = "mplsLegacyBannerClosed";
   if (banner && closeButton) {
-    document.body.classList.add("has-legacy-banner");
-    requestAnimationFrame(() => banner.classList.add("show"));
+    const isClosed = localStorage.getItem(bannerKey) === "true";
+    if (!isClosed) {
+      document.body.classList.add("has-legacy-banner");
+      requestAnimationFrame(() => banner.classList.add("show"));
+    } else {
+      banner.style.display = "none";
+      if (spacer) {
+        spacer.style.display = "none";
+      }
+    }
     closeButton.addEventListener("click", () => {
+      localStorage.setItem(bannerKey, "true");
       banner.classList.remove("show");
       banner.style.display = "none";
       if (spacer) {
