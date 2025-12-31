@@ -1,52 +1,26 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../../../layouts/LegacyLayout.astro";
+import LegacyHeader from "../../../components/LegacyHeader.astro";
+import LegacyFooter from "../../../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Kaija's Water Safety Research HomePage">
 <div class="mpls-legacy">
+<LegacyHeader />
 
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
 
-<center>
+
+<div class="kid-titlebar">
   <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
-</center>
-<center>
+</div>
+<div class="kid-nav">
   <font face="Verdana,Helvetica,Arial" size="-1"><a href="/kid/water/watersafety/">HomePage</a> | <a href="/kid/water/ski/">Water Skiing</a> | <a href="/kid/water/hypo/">Hypothermia</a> | <a href="/kid/water/ice/">Ice Safety</a> | <a href="/kid/water/boat/">Boating Safety</a> | <a href="/kid/water/denny/">Ranger Hansen</a></font>
-</center>
+</div>
 
 
 
- 
-<center>
+
+<div class="kid-content-container">
   <table width="550" border="0" cellpadding="15">
     <tr> 
       <td width="178"><img src="/img/car.jpg" width="300" height="185"></td>
@@ -69,8 +43,10 @@ On The Internet</font>
         </td>
     </tr>
   </table>
-  
-</center>
+
+</div>
+
+<LegacyFooter />
 
 <map name="titlebar">
   <area shape="rect" coords="554,0,599,19" href="/search/" target="_top">

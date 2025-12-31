@@ -1,45 +1,19 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../../layouts/LegacyLayout.astro";
+import LegacyHeader from "../../components/LegacyHeader.astro";
+import LegacyFooter from "../../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Northern Exposure @ mpls.com">
 <div class="mpls-legacy">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center>
+<LegacyHeader />
+
+<div class="exposure-titlebar">
   <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
   <p><img src="/img/ne_words.gif" width="303" height="94" border="0" alt="Northern Exposure"></p>
-</center>
+</div>
 
-<center>
+<div class="exposure-gallery">
   <table width="600" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="90" align="left" valign="middle"><a href="/exposure/06/"><img src="/img/arrow_l.gif" alt="Reverse" border="0"></a></td>
@@ -47,16 +21,9 @@ On The Internet</font>
       <td width="90" align="right" valign="middle"><a href="/exposure/08/"><img src="/img/arrow_r.gif" alt="Forward" border="0"></a></td>
     </tr>
   </table>
-</center>
+</div>
 
-<center>
-  <p><font face="Verdana,Helvetica,Arial" size="-1"><b><i>Twin cities of St. Paul &amp; Minneapolis, with St. Paul Cathedral in foreground.</i></b></font></p>
-  <p><font face="Verdana,Helvetica,Arial" size="-2">PHOTO / George Heinrich, <a href="https://web.archive.org/web/20001202222100/http://www.heinrich.mpls.com/" target="_blank">Heinrich Photography</a></font></p>
-  <hr width="50%">
-  <p><font face="Verdana,Helvetica,Arial" size="-1"><a href="/exposure/06/">&lt; Previous Photograph</a> | <a href="/exposure/">Return to Northern Exposure</a> | <a href="/exposure/08/">Next Photograph &gt;</a></font></p>
-  <p><a href="/"><img src="/img/mpls.gif" alt="mpls.com" width="95" height="18" border="0"></a></p>
-  <p><font face="Verdana,Helvetica,Arial" size="-2">Copyright 1997-1999. All rights reserved.</font></p>
-</center>
+<LegacyFooter />
 
 <map name="titlebar">
   <area shape="rect" coords="554,0,599,19" href="/search/">

@@ -1,0 +1,46 @@
+---
+const { showNav = false } = Astro.props;
+const basePath = Astro.url.pathname.startsWith("/legacy") ? "/legacy" : "";
+---
+<div class="legacy-header-container">
+  <div class="legacy-header-wrapper">
+    <div class="legacy-header-content">
+      <div class="header-divider-top">
+        <img src="/img/dividerline.gif" alt="Divider">
+      </div>
+      <div class="header-main">
+        <div class="header-left">
+          <p class="header-location">Minneapolis<br>Minnesota USA</p>
+        </div>
+        <div class="header-center">
+          <a href={`${basePath}/`}>
+            <img alt="Minneapolis, Minnesota" src="/img/logo.gif" class="header-logo">
+          </a>
+        </div>
+        <div class="header-right">
+          <p class="header-tagline">Minnesota's Home<br>On The Internet</p>
+        </div>
+      </div>
+      <div class="header-divider-bottom">
+        <img src="/img/dividerline.gif" alt="Divider">
+      </div>
+    </div>
+    {showNav && (
+      <div class="header-nav">
+        <p class="header-nav-links">
+          <a href={`${basePath}/order/`} class="header-nav-link">ADVERTISE</a> |
+          <a href={`${basePath}/business/`} class="header-nav-link">BUSINESS</a> |
+          <a href={`${basePath}/cool/`} class="header-nav-link">COOL SPOTS</a> |
+          <a href={`${basePath}/exposure/`} class="header-nav-link">NORTHERN EXPOSURE</a> |
+          <a href={`${basePath}/kid/`} class="header-nav-link">KIDS</a> |
+          <a href={`${basePath}/media/`} class="header-nav-link">MEDIA</a> |
+          <a href={`${basePath}/news/`} class="header-nav-link">NEWS</a> |
+          <a href={`${basePath}/politics/`} class="header-nav-link">POLITICS</a> |
+          <a href={`${basePath}/sports/`} class="header-nav-link">SPORTS</a> |
+          <a href={`${basePath}/weather/`} class="header-nav-link">WEATHER</a> |
+          <a href={`${basePath}/search/`} class="header-nav-link">SEARCH FARM</a>
+        </p>
+      </div>
+    )}
+  </div>
+</div>

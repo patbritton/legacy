@@ -1,32 +1,25 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../layouts/LegacyLayout.astro";
+import LegacyHeader from "../components/LegacyHeader.astro";
+import LegacyFooter from "../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Minnesota Weather @ mpls.com">
 <div class="mpls-legacy">
-<center><img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br></center>
-<center>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130"><font face="Verdana,Helvetica,Arial" size="2"></font><center>Minneapolis<br>Minnesota USA</center></td>
-<td width="340"><center><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br></center></td>
-<td align="RIGHT" valign="CENTER" width="130"><font face="Verdana,Helvetica,Arial" size="2"></font><center>Minnesota's Home<br>On The Internet</center></td>
-</tr>
-</table>
-</center>
-<center><img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"></center>
-<center>
+<LegacyHeader />
+
+<div class="weather-titlebar">
   <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
-</center>
+</div>
 <br>
-<center><font face="Verdana,Helvetica,Arial" size="6"><b>MINNESOTA WEATHER</b></font></center>
+<div class="weather-page-title"><font face="Verdana,Helvetica,Arial" size="6"><b>MINNESOTA WEATHER</b></font></div>
 <hr width="40%">
 <br>
-<center>
+<div class="weather-main-content">
 <table border="0" cellpadding="0" cellspacing="0" width="600">
 <tr>
 <td width="600">
-<center>
+<div class="weather-widget-container">
 <table class="weather-widget" border="1" cellpadding="6" cellspacing="0" width="420">
   <tr>
     <td bgcolor="#000000">
@@ -100,13 +93,13 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
 <a href="https://web.archive.org/web/19981203054014/http://www.met.tamu.edu/personnel/students/mkay/warnings_mn.html"><font color="#0000FF" face="Verdana,Helvetica,Arial" size="2">Current severe weather watches &amp; warnings for Minneapolis and the region.</font></a><br><br>
 <a href="https://web.archive.org/web/19981203054014/http://www.crh.noaa.gov/mpx/climate.html"><font color="#0000FF" face="Verdana,Helvetica,Arial" size="2">Current and historical climate records and summaries for Minneapolis and the region.</font></a><br><br>
 <a href="https://web.archive.org/web/19981203054014/http://www.crh.noaa.gov/mpx/mpxnew.html"><font color="#0000FF" face="Verdana,Helvetica,Arial" size="2">Homepage for National Weather Service office serving the Twin Cities</font></a><br><br>
-</center>
+</div>
 </td>
 </tr>
 </table>
-</center>
+</div>
 <br>
-<center>
+<div class="weather-images">
 <p><font face="Verdana,Helvetica,Arial" size="3"><b>INFRARED SATELLITE IMAGE</b></font><br>
 <img src="/img/ir.gif"><br></p>
 <p><font face="Verdana,Helvetica,Arial" size="3"><b>VISIBLE SATELLITE IMAGE</b></font><br>
@@ -114,25 +107,23 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
 <p><font face="Verdana,Helvetica,Arial" size="3"><b>ACCUWEATHER'S NEXRAD NATIONAL RADAR</b></font><br>
 <img src="/img/usrad.gif"><br></p>
 <p><font face="Verdana,Helvetica,Arial" size="3"><b>ACCUWEATHER'S NATIONAL SATELLITE VIEW</b></font><br>
-<img src="https://web.archive.org/web/19981203054014im_/http://208.217.109.20/data/ussat.gif"><br></p>
-<p><font face="Verdana,Helvetica,Arial" size="3"><b>ACCUWEATHER'S 24-HOUR NATIONAL FORECAST</b></font><br>
-<img src="https://web.archive.org/web/19981203054014im_/http://208.217.109.20/data/todtemp.gif"><br></p>
-</center>
-<center><hr width="600"></center>
-<center>
-<a href="/"><img align="MIDDLE" alt="mpls.com" border="0" height="18" src="/img/mpls.gif" width="95"></a></center>
-<center>
-  <font size="-1" face="Verdana,Helvetica,Arial"><a href="/"><img src="/img/mpls.gif" alt="mpls.com" align="MIDDLE" width="95" height="18" border="0"></a><a href="/order/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2"><br>
-    ADVERTISE </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-    <a href="/business/">BUSINESS </a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-    <a href="/cool/">COOL SPOTS</a> | <a href="/exposure/">NORTHERN EXPOSURE</a> | <a href="/kid/">KIDS</a> 
-    | <a href="/media/">MEDIA</a> | <a href="/news/">NEWS </a> 
-    | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
-    | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH FARM</a></font> 
-</center>
-<center>
-  <font face="Verdana,Helvetica,Arial" size="-2">Links marked are Wayback Machine snapshots.</font>
-</center>
+<img src="/img/ussat.gif"><br></p>
+<p><font face="Verdana,Helvetica,Arial" size="3"><b>24 HOUR FORECAST</b></font><br></p>
+<div class="forecast-widget">
+  <div class="forecast-banner">
+    <div class="forecast-brand">
+      <div class="forecast-brand-name">24/HR FORECAST</div>
+    </div>
+    <div class="forecast-badge">24</div>
+  </div>
+  <div class="weekly-forecast" id="hourly-forecast">
+    <div class="forecast-loading">Loading forecast...</div>
+  </div>
+</div>
+</div>
+<div class="weather-footer"><hr width="600"></div>
+<div class="weather-legacy-footer">
+<LegacyFooter />
 </div>
 
 <map name="titlebar">
@@ -177,28 +168,52 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
   };
 
   const weatherIconMap = {
-    0: "SUN ☀",
-    1: "SUN ☀",
-    2: "PTLY ⛅",
-    3: "CLOUDY ☁",
-    45: "FOG 🌫",
-    48: "FOG 🌫",
-    51: "DRIZ 🌦",
-    53: "DRIZ 🌦",
-    55: "RAIN 🌧",
-    61: "RAIN 🌧",
-    63: "RAIN 🌧",
-    65: "RAIN 🌧",
-    71: "SNOW 🌨",
-    73: "SNOW 🌨",
-    75: "SNOW ❄",
-    80: "SHWR 🌦",
-    81: "SHWR 🌧",
-    82: "SHWR 🌧",
-    95: "TST ⚡",
-    96: "HAIL ⛈",
-    99: "TST ⛈",
+    0: "SUN\n☀",
+    1: "SUN\n☀",
+    2: "PTLY\n⛅",
+    3: "CLOUDY\n☁",
+    45: "FOG\n🌫",
+    48: "FOG\n🌫",
+    51: "DRIZ\n🌦",
+    53: "DRIZ\n🌦",
+    55: "RAIN\n🌧",
+    61: "RAIN\n🌧",
+    63: "RAIN\n🌧",
+    65: "RAIN\n🌧",
+    71: "SNOW\n🌨",
+    73: "SNOW\n🌨",
+    75: "SNOW\n❄",
+    80: "SHWR\n🌦",
+    81: "SHWR\n🌧",
+    82: "SHWR\n🌧",
+    95: "TST\n⚡",
+    96: "HAIL\n⛈",
+    99: "TST\n⛈",
   };
+  const weatherShortMap = {
+    0: "CLEAR",
+    1: "MOSTLY CLR",
+    2: "PTLY CLOUDY",
+    3: "CLOUDY",
+    45: "FOG",
+    48: "FOG",
+    51: "DRIZZLE",
+    53: "DRIZZLE",
+    55: "DRIZZLE",
+    61: "RAIN",
+    63: "RAIN",
+    65: "RAIN",
+    71: "SNOW",
+    73: "SNOW",
+    75: "SNOW",
+    80: "SHOWERS",
+    81: "SHOWERS",
+    82: "SHOWERS",
+    95: "T-STORM",
+    96: "T-STORM",
+    99: "T-STORM",
+  };
+
 
   const setText = (id, value) => {
     const el = document.getElementById(id);
@@ -276,10 +291,10 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
     }
   };
 
-  const form = document.getElementById("wx-form");
-  const input = document.getElementById("wx-location");
-  const editLink = document.getElementById("wx-edit-link");
-  const editPanel = document.getElementById("wx-edit");
+  const form = document.getElementById("wx-form") as HTMLFormElement | null;
+  const input = document.getElementById("wx-location") as HTMLInputElement | null;
+  const editLink = document.getElementById("wx-edit-link") as HTMLAnchorElement | null;
+  const editPanel = document.getElementById("wx-edit") as HTMLDivElement | null;
   const saved = localStorage.getItem("mpls-weather-location");
   if (saved && input) {
     input.value = saved;
@@ -310,6 +325,85 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
   }
 
   loadWeatherFor(input?.value || "Minneapolis, MN");
+
+  // Hourly forecast (3-hour intervals)
+  const fetchHourlyForecast = async (lat, lon) => {
+    try {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=weather_code,temperature_2m&temperature_unit=fahrenheit&timezone=auto&forecast_days=2`;
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) throw new Error("bad response");
+      const data = await response.json();
+      return data.hourly;
+    } catch {
+      return null;
+    }
+  };
+
+  const renderHourlyForecast = async () => {
+    const container = document.getElementById("hourly-forecast");
+    if (!container) return;
+
+    try {
+      const location = await fetchLocation(input?.value || "Minneapolis, MN");
+      /** @type {{ time: string[]; weather_code: number[]; temperature_2m: number[] } | null} */
+      const hourly = await fetchHourlyForecast(location.lat, location.lon);
+
+      if (!hourly?.time?.length) {
+        container.innerHTML = '<div class="forecast-error">Forecast unavailable</div>';
+        return;
+      }
+
+      const now = new Date();
+      const times = hourly.time.map((time) => new Date(time));
+      let startIndex = times.findIndex((time) => time >= now);
+      if (startIndex == -1) startIndex = 0;
+
+      const slots = [{ time: new Date(0), code: 0, temp: 0 }];
+      slots.length = 0;
+      const maxSlots = 5;
+      for (let i = 0; i < maxSlots; i++) {
+        const idx = startIndex + i * 3;
+        if (idx >= times.length) break;
+        slots.push({
+          time: times[idx],
+          code: hourly.weather_code[idx],
+          temp: Math.round(hourly.temperature_2m[idx]),
+        });
+      }
+
+      if (!slots.length) {
+        container.innerHTML = '<div class="forecast-error">Forecast unavailable</div>';
+        return;
+      }
+
+      let html = '<table class="forecast-table forecast-table-hourly" border="1" cellspacing="0" cellpadding="0"><tr>';
+
+      for (const slot of slots) {
+        const hours = slot.time.getHours();
+        const hourLabel = `${((hours + 11) % 12) + 1}${hours >= 12 ? "P" : "A"}`;
+        const icon = weatherIconMap[slot.code] || "?";
+        const condition = weatherCodeMap[slot.code] || "Cloudy";
+        const conditionLabel = weatherShortMap[slot.code] || condition.toUpperCase();
+
+        html += `
+          <td class="forecast-slot">
+            <div class="forecast-day-name">${hourLabel}</div>
+            <div class="forecast-icon">${icon}</div>
+            <div class="forecast-temps">
+              <div class="forecast-temp-high">${slot.temp}F</div>
+            </div>
+          </td>
+        `;
+      }
+
+      html += '</tr></table>';
+      container.innerHTML = html;
+    } catch {
+      container.innerHTML = '<div class="forecast-error">Forecast unavailable</div>';
+    }
+  };
+
+  renderHourlyForecast();
 </script>
 
 

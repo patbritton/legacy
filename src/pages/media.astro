@@ -1,53 +1,27 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../layouts/LegacyLayout.astro";
+import LegacyHeader from "../components/LegacyHeader.astro";
+import LegacyFooter from "../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Minnesota Media @ mpls.com">
 <div class="mpls-legacy">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center>
-  <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar"> 
-  <p><font face="Verdana,Helvetica,Arial" size="5">M I N N E S O T A   M 
-    E D I A</font><font face="Verdana,Helvetica,Arial" size="5"> </font> </p>
-</center>
+<LegacyHeader />
 
-<center>
+<div class="media-titlebar">
+  <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
+  <p><font face="Verdana,Helvetica,Arial" size="5">M I N N E S O T A   M
+    E D I A</font><font face="Verdana,Helvetica,Arial" size="5"> </font> </p>
+</div>
+
+<div class="media-main-wrapper">
   <table width="600" border="0" cellspacing="10" cellpadding="10">
-    <tr> 
-      <td width="320" valign="top"> 
-        <p align="CENTER"> 
-          </p><center>
-            <img src="/img/surfing.gif" alt="Web Site Picks" align="BOTTOM" width="320" height="129" border="0"> 
-          </center>
+    <tr>
+      <td width="320" valign="top">
+        <p align="CENTER">
+          </p><div class="media-surfing-image">
+            <img src="/img/surfing.gif" alt="Web Site Picks" align="BOTTOM" width="320" height="129" border="0">
+          </div>
         <font face="Verdana,Helvetica,Arial" size="2"><b>In a state</b> with at 
         least 100 computers for every one of its famous 10,000 lakes, it's not 
         surprising that Minnesotans have their fair share of exemplary, homegrown 
@@ -58,9 +32,9 @@ On The Internet</font>
         <p> </p>
         <br>
         <font face="Verdana,Helvetica,Arial" size="2">
-        </font></font><center>
+        </font></font><div class="media-section-title">
           <b>- M I N N E S O T A - M E D I A -</b>
-        </center>
+        </div>
         <br>
         <font face="Verdana,Helvetica,Arial" size="2">In many ways, the formation 
         of Internet Broadcasting and its <a href="https://web.archive.org/web/20001026104443/http://www.wcco.com/" target="_blank">Channel 
@@ -115,11 +89,11 @@ On The Internet</font>
         <br>
         <br>
         <font face="Verdana,Helvetica,Arial" size="4"><b>
-        </b></font></font></font></font></font></font></font></font><center>
+        </b></font></font></font></font></font></font></font></font><div class="media-sports-callout">
           Check Out Our Sports Polls<br>
           @mpls.com
-        </center>
-         
+        </div>
+
         <p> 
         <font face="Verdana,Helvetica,Arial" size="3"><a href="/sports/">SPORTS 
         POLLING</a><font face="Verdana,Helvetica,Arial" size="3"> is featured on 
@@ -135,34 +109,34 @@ On The Internet</font>
         <br>
         <hr width="60%">
         <font face="Verdana,Helvetica,Arial" size="4"><b>
-        </b></font></font></font></p><center>
+        </b></font></font></font></p><div class="media-front-page-callout">
           Also, Check Out Our Front Page
-        </center>
-         
-        <p> <font face="Verdana,Helvetica,Arial" size="3"><a href="/">Mpls.com</a><font face="Verdana,Helvetica,Arial" size="3"> 
-          always has something new and of interest to Minnesotans. Check us out 
+        </div>
+
+        <p> <font face="Verdana,Helvetica,Arial" size="3"><a href="/">Mpls.com</a><font face="Verdana,Helvetica,Arial" size="3">
+          always has something new and of interest to Minnesotans. Check us out
           and come back often. </font></font>
         </p></td>
-      <td width="244" valign="top"> 
-        <center>
-          <img src="/img/tvpoll.gif" alt="Television Poll" align="BOTTOM" width="210" height="27" border="0"> 
-        </center>
-        <center>
+      <td width="244" valign="top">
+        <div class="media-poll-header">
+          <img src="/img/tvpoll.gif" alt="Television Poll" align="BOTTOM" width="210" height="27" border="0">
+        </div>
+        <div class="media-polls">
           <!-- Favorite TV News Station --> <!-- Begin Poll Code --> 
           <table width="210" cellpadding="4" cellspacing="0" border="1">
             <tr>
               <td width="210">
-                <center>
-                  <img src="/img/tvnews.gif" height="25" width="200"> 
-                </center>
+                <div class="poll-header-img">
+                  <img src="/img/tvnews.gif" height="25" width="200">
+                </div>
               </td>
             </tr>
             <tr>
-              <td width="210"> 
+              <td width="210">
                 <form method="get" action="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp">
                   <input type="hidden" name="ptype" value="0">
                   <input type="hidden" name="id" value="1998530233612">
-                  <font color="#000000" size="2" face="Verdana"><b>Your Favorite 
+                  <font color="#000000" size="2" face="Verdana"><b>Your Favorite
                   TV News Station?</b></font><br>
                   <br>
                   <table border="0">
@@ -192,12 +166,12 @@ On The Internet</font>
                     </tr>
                   </table>
                   <br>
-                  <center>
+                  <div class="poll-submit-section">
                     <input type="submit" value="Submit Vote">
                     <br>
-                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=1998530233612">Current 
+                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=1998530233612">Current
                     Results</a>
-                  </center>
+                  </div>
                 </form>
               </td>
             </tr>
@@ -206,18 +180,18 @@ On The Internet</font>
           <table width="210" cellpadding="4" cellspacing="0" border="1">
             <tr>
               <td width="210">
-                <center>
-                  <img src="/img/tvfanchor.gif" height="25" width="200"> 
-                </center>
+                <div class="poll-header-img">
+                  <img src="/img/tvfanchor.gif" height="25" width="200">
+                </div>
               </td>
             </tr>
             <tr>
-              <td width="210"> 
+              <td width="210">
                 <form method="get" action="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp">
                   <input type="hidden" name="ptype" value="0">
                   <input type="hidden" name="id" value="1998615154250">
-                  <font color="#000000" size="2" face="Verdana"><b>Of these 
-                  Minneapolis television personalities, who comes across as the 
+                  <font color="#000000" size="2" face="Verdana"><b>Of these
+                  Minneapolis television personalities, who comes across as the
                   smartest of them all?</b></font><br>
                   <br>
                   <table border="0">
@@ -247,12 +221,12 @@ On The Internet</font>
                     </tr>
                   </table>
                   <br>
-                  <center>
+                  <div class="poll-submit-section">
                     <input type="submit" value="Submit Vote">
                     <br>
-                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=1998615154250">Current 
+                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=1998615154250">Current
                     Results</a>
-                  </center>
+                  </div>
                 </form>
               </td>
             </tr>
@@ -261,18 +235,18 @@ On The Internet</font>
           <table width="210" cellpadding="4" cellspacing="0" border="1">
             <tr>
               <td width="210">
-                <center>
-                  <img src="/img/tvmanchor.gif" height="25" width="200"> 
-                </center>
+                <div class="poll-header-img">
+                  <img src="/img/tvmanchor.gif" height="25" width="200">
+                </div>
               </td>
             </tr>
             <tr>
-              <td width="210"> 
+              <td width="210">
                 <form method="get" action="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp">
                   <input type="hidden" name="ptype" value="0">
                   <input type="hidden" name="id" value="1998615164418">
-                  <font color="#000000" size="2" face="Verdana"><b>Of these 
-                  Minneapolis television personalities, who is the 'Sharpest' 
+                  <font color="#000000" size="2" face="Verdana"><b>Of these
+                  Minneapolis television personalities, who is the 'Sharpest'
                   Male Anchor?</b></font><br>
                   <br>
                   <table border="0">
@@ -302,12 +276,12 @@ On The Internet</font>
                     </tr>
                   </table>
                   <br>
-                  <center>
+                  <div class="poll-submit-section">
                     <input type="submit" value="Submit Vote">
                     <br>
-                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=1998615164418">Current 
+                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=1998615164418">Current
                     Results</a>
-                  </center>
+                  </div>
                 </form>
               </td>
             </tr>
@@ -316,17 +290,17 @@ On The Internet</font>
           <table width="210" cellpadding="4" cellspacing="0" border="1">
             <tr>
               <td width="210">
-                <center>
-                  <img src="/img/tvweather.gif" height="25" width="200"> 
-                </center>
+                <div class="poll-header-img">
+                  <img src="/img/tvweather.gif" height="25" width="200">
+                </div>
               </td>
             </tr>
             <tr>
-              <td width="210"> 
+              <td width="210">
                 <form method="get" action="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp">
                   <input type="hidden" name="ptype" value="0">
                   <input type="hidden" name="id" value="861984816">
-                  <font color="#000000" size="2" face="Verdana"><b>Best Television 
+                  <font color="#000000" size="2" face="Verdana"><b>Best Television
                   Weather Coverage</b></font><br>
                   <br>
                   <table border="0">
@@ -356,47 +330,27 @@ On The Internet</font>
                     </tr>
                   </table>
                   <br>
-                  <center>
+                  <div class="poll-submit-section">
                     <input type="submit" value="Submit Vote">
                     <br>
-                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=861984816">Current 
+                    <a href="https://web.archive.org/web/20001026104443/http://apps2.vantagenet.com/apolls/count.asp?id=861984816">Current
                     Results</a>
-                  </center>
+                  </div>
                 </form>
               </td>
             </tr>
           </table>
-          <!-- End Poll Code --> 
-        </center>
+          <!-- End Poll Code -->
+        </div>
       </td>
     </tr>
   </table>
-</center>
-<center>
+</div>
+<div class="media-footer">
   <hr width="600">
-  <center>
-    <p><font size="-1" face="Verdana,Helvetica,Arial"><a href="/"><img src="/img/mpls.gif" alt="mpls.com" align="MIDDLE" width="95" height="18" border="0"></a><a href="/order/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2"><br>
-      ADVERTISE </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/business/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">BUSINESS 
-      </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/cool/">COOL SPOTS</a> | <a href="/exposure/">NORTHERN EXPOSURE</a> | <a href="/kid/">KIDS</a> 
-      | <a href="/media/">MEDIA</a> | <a href="/news/">NEWS 
-      </a> | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
-      | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH FARM</a></font> </p>
-  </center>
-  <center>
-    <hr width="468">
-    <font size="-2" face="Geneva, Arial, Helvetica, sans-serif">WEBSITE DESIGNED 
-    &amp; MAINTAINED BY <a href="https://web.archive.org/web/20001026104443/http://www.digital.mpls.com/">DIGITAL CONCEPTS,</a> 
-    MINNEAPOLIS, MINNESOTA </font><font face="Verdana,Futura,Helvetica,Arial"> 
-    <hr width="468">
-    </font><font size="-2" face="Geneva, Arial, Helvetica, sans-serif">The contents 
-    of this website are   Copyright 1997-2000 DIGITAL CONCEPTS. All rights 
-    reserved.<br>
-    </font> 
-  </center>
+  <LegacyFooter />
   <p> </p>
-  </center>
+  </div>
 
 
 <map name="titlebar">
@@ -420,11 +374,11 @@ On The Internet</font>
 <!-- ************** Start Stattrax Code ************** -->
 
 
-<center>
+<div class="stattrax-tracker">
 
 <img src="https://web.archive.org/web/20001026104443im_/http://www.stattrax.com/cgi/stattrax.cgi?account=3757&amp;page=500&amp;graphic=1&amp;ref=(none)">
 
-</center>
+</div>
 
 
 <!-- ************** End Stattrax Code ************** -->

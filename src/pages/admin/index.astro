@@ -1,5 +1,7 @@
 ---
 import LegacyLayout from "../../layouts/LegacyLayout.astro";
+import LegacyHeader from "../../components/LegacyHeader.astro";
+import LegacyFooter from "../../components/LegacyFooter.astro";
 import { verifySessionToken } from "../../lib/adminAuth";
 
 export const prerender = false;
@@ -10,12 +12,13 @@ const isAuthed = verifySessionToken(token);
 ---
 <LegacyLayout title="Admin Login @ mpls.com">
 <div class="mpls-legacy">
-<center>
+<LegacyHeader />
+<div class="admin-header">
   <p><font face="Verdana,Helvetica,Arial" size="4"><b>Admin</b></font></p>
-</center>
+</div>
 
 {isAuthed ? (
-  <center>
+  <div class="admin-menu-container">
     <table border="1" cellpadding="6" cellspacing="0" width="600">
       <tr>
         <td>
@@ -27,9 +30,9 @@ const isAuthed = verifySessionToken(token);
         </td>
       </tr>
     </table>
-  </center>
+  </div>
 ) : (
-  <center>
+  <div class="admin-login-container">
     <table border="1" cellpadding="6" cellspacing="0" width="600">
       <tr>
         <td>
@@ -61,8 +64,9 @@ const isAuthed = verifySessionToken(token);
         </td>
       </tr>
     </table>
-  </center>
+  </div>
 )}
+<LegacyFooter />
 </div>
 </LegacyLayout>
 

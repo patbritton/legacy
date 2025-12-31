@@ -1,0 +1,33 @@
+---
+const basePath = Astro.url.pathname.startsWith("/legacy") ? "/legacy" : "";
+---
+<div class="footer-container">
+  <hr class="footer-divider-main">
+  <div class="footer-content">
+    <p class="footer-nav">
+      <a href={`${basePath}/`}><img alt="mpls.com" src="/img/mpls.gif" class="footer-logo"></a>
+      <a href={`${basePath}/order/`} class="footer-link"><br>ADVERTISE</a> |
+      <a href={`${basePath}/business/`} class="footer-link">BUSINESS</a> |
+      <a href={`${basePath}/cool/`} class="footer-link">COOL SPOTS</a> |
+      <a href={`${basePath}/exposure/`} class="footer-link">NORTHERN EXPOSURE</a> |
+      <a href={`${basePath}/kid/`} class="footer-link">KIDS</a> |
+      <a href={`${basePath}/media/`} class="footer-link">MEDIA</a> |
+      <a href={`${basePath}/news/`} class="footer-link">NEWS</a> |
+      <a href={`${basePath}/politics/`} class="footer-link">POLITICS</a> |
+      <a href={`${basePath}/sports/`} class="footer-link">SPORTS</a> |
+      <a href={`${basePath}/weather/`} class="footer-link">WEATHER</a> |
+      <a href={`${basePath}/search/`} class="footer-link">SEARCH FARM</a>
+    </p>
+  </div>
+  <div class="footer-credits">
+    <hr class="footer-divider-mini">
+    <p class="footer-text">
+      WEBSITE DESIGNED &amp; MAINTAINED BY <a href="https://web.archive.org/web/20001030182442/http://www.digital.mpls.com/">DIGITAL CONCEPTS,</a> MINNEAPOLIS, MINNESOTA
+    </p>
+    <hr class="footer-divider-mini">
+    <p class="footer-text">
+      The contents of this website are Copyright 1997-2000 DIGITAL CONCEPTS. All rights reserved.<br>
+      Some historical references on this site are linked via Archive.org (Wayback Machine).
+    </p>
+  </div>
+</div>

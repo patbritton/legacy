@@ -1,45 +1,19 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../layouts/LegacyLayout.astro";
+import LegacyHeader from "../components/LegacyHeader.astro";
+import LegacyFooter from "../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Search Farm @ mpls.com">
 <div class="mpls-legacy">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center>
-  <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar"> 
+<LegacyHeader />
+
+<div class="search-main-content">
+  <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
   <p><img src="/img/farm.gif" width="600" height="183"> </p>
-  <p><font face="Verdana,Helvetica,Arial" size="5">S E A R C H</font><font face="Verdana, Arial, Helvetica, sans-serif" size="5">   
+  <p><font face="Verdana,Helvetica,Arial" size="5">S E A R C H</font><font face="Verdana, Arial, Helvetica, sans-serif" size="5">
     </font><font face="Verdana,Helvetica,Arial" size="5">F A R M<br>
-    </font><font face="Verdana,Helvetica,Arial" size="3">Resources to harvest 
+    </font><font face="Verdana,Helvetica,Arial" size="3">Resources to harvest
     the bounty of the World Wide Web</font></p>
   <table width="600" border="0" cellpadding="10" align="center">
     <tr> 
@@ -76,8 +50,8 @@ On The Internet</font>
           People Search</a><br>
           </font></p>
         <p> </p>
-        <p align="center"><font face="Verdana,Helvetica,Arial" size="2"> <a href="https://web.archive.org/web/20001018001804/http://minn.yahoo.com/"><img src="/img/yahoo.gif" alt="Yahoo" align="absmiddle" width="125" height="40" border="0"></a> 
-          </font><font face="Verdana,Helvetica,Arial" size="2"> </font></p>
+        <div class="search-yahoo-logo"><font face="Verdana,Helvetica,Arial" size="2"> <a href="https://web.archive.org/web/20001018001804/http://minn.yahoo.com/"><img src="/img/yahoo.gif" alt="Yahoo" align="absmiddle" width="125" height="40" border="0"></a>
+          </font><font face="Verdana,Helvetica,Arial" size="2"> </font></div>
         <font face="Verdana,Helvetica,Arial" size="2"> 
         <p><font face="Verdana,Helvetica,Arial" size="1"><a href="https://web.archive.org/web/20001018001804/http://minn.yahoo.com/">Yahoo! 
           Twin Cities </a>is an excellent site for discovering things about the 
@@ -110,10 +84,10 @@ On The Internet</font>
   </table>
   <table width="600" border="1" cellpadding="10">
     <tr>
-      <td width="263"> 
-        <p align="center"><font face="Arial, Helvetica, sans-serif"><b><font face="Verdana, Arial, Helvetica, sans-serif">Why 
+      <td width="263">
+        <div class="search-trivia-header"><font face="Arial, Helvetica, sans-serif"><b><font face="Verdana, Arial, Helvetica, sans-serif">Why
           is that search engine called<br>
-          "Yahoo!</font></b></font><font face="Verdana, Arial, Helvetica, sans-serif"><b>"?</b></font></p>
+          "Yahoo!</font></b></font><font face="Verdana, Arial, Helvetica, sans-serif"><b>"?</b></font></div>
         <p><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"> <i><b>The 
           Answer:</b></i> <br>
           One legend about the origin of the name is that it was a playful acronym 
@@ -125,10 +99,10 @@ On The Internet</font>
           and a lot of people found it easy to remember, which we thought was 
           probably good."</font></p>
         </td>
-      <td width="291"> 
-        <p align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif">Why 
+      <td width="291">
+        <div class="search-trivia-header"><b><font face="Verdana, Arial, Helvetica, sans-serif">Why
           is that search engine called<br>
-          &quot;Lycos&quot;?</font></b></p>
+          &quot;Lycos&quot;?</font></b></div>
         <p align="left"> <font size="-2" face="Verdana, Arial, Helvetica, sans-serif"><b><i>The 
           Answer: <br>
           </i> </b> According to the company's public relations department, Lycos 
@@ -142,34 +116,14 @@ On The Internet</font>
         </td>
     </tr>
   </table>
-  </center>
-<center>
+  </div>
+<div class="search-footer">
   <hr width="600">
-  <center>
-    <p><font size="-1" face="Verdana,Helvetica,Arial"><a href="/"><img src="/img/mpls.gif" alt="mpls.com" align="MIDDLE" width="95" height="18" border="0"></a><a href="/order/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2"><br>
-      ADVERTISE </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/business/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">BUSINESS 
-      </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/cool/">COOL SPOTS</a> | <a href="/exposure/">NORTHERN EXPOSURE</a> | <a href="/kid/">KIDS</a> 
-      | <a href="/media/">MEDIA</a> | <a href="/news/">NEWS 
-      </a> | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
-      | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH FARM</a></font> </p>
-  </center>
-  <center>
-    <hr width="468">
-    <font size="-2" face="Geneva, Arial, Helvetica, sans-serif">WEBSITE DESIGNED 
-    &amp; MAINTAINED BY <a href="https://web.archive.org/web/20001018001804/http://www.digital.mpls.com/">DIGITAL CONCEPTS,</a> 
-    MINNEAPOLIS, MINNESOTA </font><font face="Verdana,Futura,Helvetica,Arial"> 
-    <hr width="468">
-    </font><font size="-2" face="Geneva, Arial, Helvetica, sans-serif">The contents 
-    of this website are   Copyright 1997-2000 DIGITAL CONCEPTS. All rights 
-    reserved.<br>
-    </font> 
-  </center>
+  <LegacyFooter />
   <p> </p>
   <font face="Verdana, Arial, Helvetica, sans-serif" size="-2">
-</font> 
-</center>
+</font>
+</div>
 
 
 
@@ -190,17 +144,17 @@ On The Internet</font>
   <area shape="rect" coords="0,0,90,19" href="/" target="_top">
 
   <area shape="default" href="/">
-</map>  
+</map>
 
 
 
 
 
-<center>
+<div class="stattrax-tracker">
 
 <img src="https://web.archive.org/web/20001018001804im_/http://www.stattrax.com/cgi/stattrax.cgi?account=3757&amp;page=600&amp;graphic=1&amp;ref=(none)">
 
-</center>
+</div>
 </div>
 </LegacyLayout>
 

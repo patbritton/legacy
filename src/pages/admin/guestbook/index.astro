@@ -1,5 +1,7 @@
 ---
 import LegacyLayout from "../../../layouts/LegacyLayout.astro";
+import LegacyHeader from "../../../components/LegacyHeader.astro";
+import LegacyFooter from "../../../components/LegacyFooter.astro";
 import { verifySessionToken } from "../../../lib/adminAuth";
 import { getSupabaseAdminClient } from "../../../lib/supabase";
 
@@ -46,12 +48,13 @@ const config = configData || {
 ---
 <LegacyLayout title="Guestbook Admin @ mpls.com">
 <div class="mpls-legacy">
-<center>
+<LegacyHeader />
+<div class="guestbook-admin-header">
   <p><font face="Verdana,Helvetica,Arial" size="4"><b>Guestbook Admin</b></font></p>
   <p><font face="Verdana,Helvetica,Arial" size="-1"><a href="/admin">Admin Menu</a> | <a href="/guestbook/">View Guestbook</a></font></p>
-</center>
+</div>
 
-<center>
+<div class="guestbook-admin-status">
 <table border="0" cellpadding="6" cellspacing="0" width="600">
   <tr>
     <td>
@@ -67,9 +70,9 @@ const config = configData || {
     </td>
   </tr>
 </table>
-</center>
+</div>
 
-<center>
+<div class="guestbook-admin-config">
 <table border="1" cellpadding="6" cellspacing="0" width="600">
   <tr>
     <td>
@@ -107,16 +110,16 @@ const config = configData || {
     </td>
   </tr>
 </table>
-</center>
+</div>
 
-<center>
+<div class="guestbook-admin-section-title">
   <p><font face="Verdana,Helvetica,Arial" size="3"><b>Pending Entries</b></font></p>
-</center>
+</div>
 {pending.length === 0 && (
-  <center><font face="Verdana,Helvetica,Arial" size="-1">No pending entries.</font></center>
+  <div class="guestbook-admin-no-entries"><font face="Verdana,Helvetica,Arial" size="-1">No pending entries.</font></div>
 )}
 {pending.map((entry) => (
-  <center>
+  <div class="guestbook-admin-entry-container">
   <table border="1" cellpadding="6" cellspacing="0" width="600">
     <tr>
       <td>
@@ -174,17 +177,17 @@ const config = configData || {
       </td>
     </tr>
   </table>
-  </center>
+  </div>
 ))}
 
-<center>
+<div class="guestbook-admin-section-title">
   <p><font face="Verdana,Helvetica,Arial" size="3"><b>Approved Entries</b></font></p>
-</center>
+</div>
 {approved.length === 0 && (
-  <center><font face="Verdana,Helvetica,Arial" size="-1">No approved entries.</font></center>
+  <div class="guestbook-admin-no-entries"><font face="Verdana,Helvetica,Arial" size="-1">No approved entries.</font></div>
 )}
 {approved.map((entry) => (
-  <center>
+  <div class="guestbook-admin-entry-container">
   <table border="1" cellpadding="6" cellspacing="0" width="600">
     <tr>
       <td>
@@ -237,8 +240,9 @@ const config = configData || {
       </td>
     </tr>
   </table>
-  </center>
+  </div>
 ))}
+<LegacyFooter />
 </div>
 </LegacyLayout>
 

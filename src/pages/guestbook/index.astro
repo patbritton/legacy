@@ -1,5 +1,7 @@
 ---
 import LegacyLayout from "../../layouts/LegacyLayout.astro";
+import LegacyHeader from "../../components/LegacyHeader.astro";
+import LegacyFooter from "../../components/LegacyFooter.astro";
 import { getSupabaseClient } from "../../lib/supabase";
 
 export const prerender = false;
@@ -19,45 +21,17 @@ const sortedEntries = entries || [];
 ---
 <LegacyLayout title="Guestbook @ mpls.com">
 <div class="mpls-legacy">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center>
+<LegacyHeader />
+
+<div class="guestbook-titlebar">
 <p><img border="0" height="20" src="/img/titlebar.gif" usemap="#titlebar" width="600"></p>
-</center>
+</div>
 
-<center>
+<div class="guestbook-header">
   <font face="Verdana,Helvetica,Arial" size="4"><b>Guestbook</b></font>
-</center>
+</div>
 
-<center>
+<div class="guestbook-status-container">
 <table border="0" cellpadding="6" cellspacing="0" width="600">
 <tr>
 <td>
@@ -79,9 +53,9 @@ On The Internet</font>
 </td>
 </tr>
 </table>
-</center>
+</div>
 
-<center>
+<div class="guestbook-form-container">
 <table border="1" cellpadding="6" cellspacing="0" width="600">
 <tr>
 <td>
@@ -128,9 +102,9 @@ On The Internet</font>
 </td>
 </tr>
 </table>
-</center>
+</div>
 
-<center>
+<div class="guestbook-entries-header">
 <table border="0" cellpadding="6" cellspacing="0" width="600">
   <tr>
     <td>
@@ -138,9 +112,9 @@ On The Internet</font>
     </td>
   </tr>
 </table>
-</center>
+</div>
 
-<center>
+<div class="guestbook-entries-container">
 <table border="1" cellpadding="6" cellspacing="0" width="600">
   {sortedEntries.map((entry) => {
     const websiteUrl = entry.website && entry.website.trim()
@@ -168,7 +142,9 @@ On The Internet</font>
     );
   })}
 </table>
-</center>
+</div>
+
+<LegacyFooter />
 
 <map name="titlebar">
   <area shape="rect" coords="554,0,599,19" href="/search/" target="_top">

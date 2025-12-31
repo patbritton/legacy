@@ -1,43 +1,17 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../../layouts/LegacyLayout.astro";
+import LegacyHeader from "../../components/LegacyHeader.astro";
+import LegacyFooter from "../../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Kid Kaija @ mpls.com">
 <div class="mpls-legacy">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center><p><img border="0" height="20" src="/img/titlebar.gif" usemap="#titlebar" width="600">
+<LegacyHeader />
+
+<div class="kid-titlebar"><p><img border="0" height="20" src="/img/titlebar.gif" usemap="#titlebar" width="600">
 </p>
-</center>
-<center><table border="0" cellpadding="10" cellspacing="0" width="600">
+</div>
+<div class="kid-content-container"><table border="0" cellpadding="10" cellspacing="0" width="600">
 <tr>
 <td valign="TOP" width="54"><img align="BOTTOM" height="480" naturalsizeflag="3" src="/img/hotair.gif" width="40"></td>
 <td valign="TOP" width="545">
@@ -97,32 +71,12 @@ On The Internet</font>
 <font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><font face="Verdana,Helvetica,Arial" size="3"><p><a href="/kid/water/watersafety/">Water Safety Report</a>
 </p></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></td>
 </tr>
-</table></center>
+</table></div>
 <p></p>
-<center><hr width="600">
+<div class="kid-footer-dividers"><hr width="600">
 <hr width="600">
-<center>
-<p><font face="Verdana,Helvetica,Arial" size="-1"><a href="/"><img align="MIDDLE" alt="mpls.com" border="0" height="18" src="/img/mpls.gif" width="95"></a><a href="/order/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2"><br>
-      ADVERTISE </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/business/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">BUSINESS 
-      </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/cool/">COOL SPOTS</a> | <a href="/exposure/">NORTHERN EXPOSURE</a> | <a href="/kid/">KIDS</a> 
-      | <a href="/media/">MEDIA</a> | <a href="/news/">NEWS 
-      </a> | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
-      | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH FARM</a></font> </p>
-</center>
-<center>
-<hr width="468">
-<font face="Geneva, Arial, Helvetica, sans-serif" size="-2">WEBSITE DESIGNED 
-    &amp; MAINTAINED BY <a href="https://web.archive.org/web/19990428020131/http://www.digital.mpls.com/">DIGITAL CONCEPTS,</a> 
-    MINNEAPOLIS, MINNESOTA </font><font face="Verdana,Futura,Helvetica,Arial">
-<hr width="468">
-</font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">The contents 
-    of this website are   Copyright 1997-1999 DIGITAL CONCEPTS. All rights 
-    reserved.<br>
-</font>
-</center>
-</center>
+<LegacyFooter />
+</div>
 <map name="titlebar">
 <area coords="554,0,599,19" href="/search/" shape="rect" target="_top">
 <area coords="498,0,552,19" href="/weather/" shape="rect" target="_top">

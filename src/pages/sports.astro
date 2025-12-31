@@ -2,6 +2,8 @@
 // @ts-nocheck
 export const prerender = false;
 import LegacyLayout from "../layouts/LegacyLayout.astro";
+import LegacyHeader from "../components/LegacyHeader.astro";
+import LegacyFooter from "../components/LegacyFooter.astro";
 import { attachArticleImages } from "../lib/articleImages";
 import { fetchRssItems } from "../lib/rss";
 
@@ -47,47 +49,19 @@ const sportsWithImages = await attachArticleImages(sportsRssItems.length ? sport
 ---
 <LegacyLayout title="Minnesota Sports @ mpls.com">
 <div class="mpls-legacy">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center><img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar"></center>
-<center>
-<font face="Verdana,Helvetica,Arial" size="5">M I N N E S O T A    S 
+<LegacyHeader />
+
+<div class="sports-titlebar"><img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar"></div>
+<div class="sports-page-title">
+<font face="Verdana,Helvetica,Arial" size="5">M I N N E S O T A    S
   P O R T S</font><br>
-</center>
-<center><hr width="600"></center>
-<center>
+</div>
+<div class="sports-divider-line"><hr width="600"></div>
+<div class="sports-wire-section">
 <table border="1" cellpadding="6" cellspacing="0" width="600">
 <tr>
 <td>
-<center><font face="Verdana,Helvetica,Arial" size="3"><b>SPORTS WIRE</b></font></center>
+<div class="sports-wire-header"><font face="Verdana,Helvetica,Arial" size="3"><b>SPORTS WIRE</b></font></div>
 <table border="0" cellpadding="4" cellspacing="0" width="100%">
 {sportsWithImages.map((story) => (
   <tr>
@@ -108,14 +82,14 @@ On The Internet</font>
 </td>
 </tr>
 </table>
-</center>
-<center>
+</div>
+<div class="sports-main-content">
 <table border="0" cellpadding="10" cellspacing="10" width="600">
 <tr>
 <td valign="top" width="320">
-<p><font face="Verdana,Futura,Helvetica,Arial" size="4"></font></p><center><b>THE SPORTS ROLLER COASTER</b></center>
-<center><img align="TOP" border="0" height="77" src="/img/twinslogo.gif" width="90"></center>
-<font face="Verdana,Futura,Helvetica,Arial" size="3"></font><center>THE MINNESOTA TWINS</center><p></p>
+<p><font face="Verdana,Futura,Helvetica,Arial" size="4"></font></p><div class="sports-section-title"><b>THE SPORTS ROLLER COASTER</b></div>
+<div class="sports-team-logo"><img align="TOP" border="0" height="77" src="/img/twinslogo.gif" width="90"></div>
+<font face="Verdana,Futura,Helvetica,Arial" size="3"></font><div class="sports-team-name">THE MINNESOTA TWINS</div><p></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">Being a sports fan in Minnesota is both a joyful and frustrating experience.</font></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">Over the years, we've had our moments in the sun. Who can forget the Twins' championship drives in 1987 and 1991. It almost makes you want to break out your old 'Homer Hanky' just thinking about the pride and joy we felt for our underdog hometown heros.</font></p>
 <table align="RIGHT" border="1" cellpadding="3" cellspacing="2" width="150">
@@ -129,15 +103,15 @@ On The Internet</font>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">But, fame is fleeting. Today, the controversy over the construction of a new outdoor facility has dampened the interest and support for the Minnesota Twins for everyone except the die-hard fan.</font></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">St. Paul Pioneer Press writer Scott Miller offers a historical view of the stadium issue and how it has altered the atmosphere of Twins baseball in: <a href="https://web.archive.org/web/19990428032341/http://www.pioneerplanet.com/sports/twins/dox/017968.htm" target="_blank">Movable Twins Have Gone Nowhere Since '91.</a></font></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">For a more upbeat approach and different perspective to Twins baseball, be sure to check out the official website of the <a href="https://web.archive.org/web/19990428032341/http://www.wcco.com/sports/twins" target="_blank">Minnesota Twins.</a></font></p>
-<center><img align="TOP" border="0" height="77" src="/img/wolveslogo.gif" width="101"></center>
-<font face="Verdana,Futura,Helvetica,Arial" size="3"></font><center>THE MINNESOTA TIMBERWOLVES</center><p></p>
+<div class="sports-team-logo"><img align="TOP" border="0" height="77" src="/img/wolveslogo.gif" width="101"></div>
+<font face="Verdana,Futura,Helvetica,Arial" size="3"></font><div class="sports-team-name">THE MINNESOTA TIMBERWOLVES</div><p></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">If you're a fan of good basketball, last year's Minnesota Timberwolves performance was one for the record books. If the team has deep enough pockets and the good fortune to sign some key players, the future for the Minnesota Timberwolves looks great.</font></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">Kevin Garnett, a teen age sensation when he originally signed with the Timberwolves in 1995 direct from Chicago's Garragut Academy High School, signed a new contract in 1997--this one for $125 million over six years--at the time, the largest multiyear deal in professional team sports. In fact, Garnett's $125 million deal was $36.5 million more than Timberwolves owner Glen Taylor paid in 1994 to keep Minnesota's NBA franchise from moving to New Orleans.</font></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">Silent throughout the negotiations despite intense local public criticism after his rejection of an earlier $103.5 million offer from the team, Garnett expressed loyalty to the Wolves organization and the area upon agreeing to the new deal. "Minnesota is my home," Garnett said at a Target Center news conference. "We've got a bright future in Minnesota. I want to play for this team and I like (Wolves vice president) Kevin McHale."</font></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">Minnesota responded in kind, packing Target Center in 1997 for virtually every game to record the highest paid attendance in the franchise's history. That was good news for the team as Taylor now has to worry about keeping a strong enough revenue flow to pay Garnett, keep the organization profitable and have money left over for Stephon Marbury and Tom Gugliotta--two players who are asking for new contracts this summer. Garnett, Marbury and Gugliotta represent the core of what Taylor and Wolves management hope will be a future championship contender.</font></p>
 <p><font face="Verdana,Futura,Helvetica,Arial" size="2">Sites featuring the Minnesota Timberwolves and its current and future stars are peppered throughout the World Wide Web. One of the best places to start is the <a href="https://web.archive.org/web/19990428032341/http://www.nba.com/timberwolves" target="_blank">Timberwolves official website.</a> An excellent article on Kevin Garnett's new-found wealth and Minnesota attitude about the big contract can be found at the Pioneer Planet: <a href="https://web.archive.org/web/19990428032341/http://www.pioneerplanet.com/sports/bkn_docs/026587.htm" target="_blank">Garnett Is Playing For More Than Money.</a> And, if you haven't had enough of Kevin Garnett by now, visit a photo history of the young star at: <a href="https://web.archive.org/web/19990428032341/http://www.pioneerplanet.com/archive/garnett/" target="_blank">Kevin Garnett: Passion Play.</a></font></p>
-<center><img align="TOP" border="0" height="77" src="/img/vikingslogo.gif" width="108"></center>
-<font face="Verdana,Futura,Helvetica,Arial" size="3"></font><center>THE MINNESOTA VIKINGS</center><p></p>
+<div class="sports-team-logo"><img align="TOP" border="0" height="77" src="/img/vikingslogo.gif" width="108"></div>
+<font face="Verdana,Futura,Helvetica,Arial" size="3"></font><div class="sports-team-name">THE MINNESOTA VIKINGS</div><p></p>
 <p>
 </p><p><font face="Verdana,Helvetica,Arial" size="2">Are you ready for some 
           <b>football</b>. If you're a Minnesota Vikings Fan (the few that remain 
@@ -151,16 +125,16 @@ On The Internet</font>
           abuse) and even offers to sell you his Harley. </font>
 </p></font></font></td>
 <td valign="top" width="244">
-<center>
+<div class="sports-poll-header">
 <img align="BOTTOM" alt="Sports Poll" border="0" height="25" src="/img/sportspoll.gif" width="200">
-</center>
-<center>
+</div>
+<div class="sports-polls">
 <!-- Most Hated Sports Figure -->
 <!-- Begin Poll Code -->
 <table border="1" cellpadding="4" cellspacing="0" width="210">
-<tr><td width="210"><center>
+<tr><td width="210"><div class="poll-header-img">
 <img height="25" src="/img/mosthated.gif" width="200">
-</center></td></tr><tr><td width="210">
+</div></td></tr><tr><td width="210">
 <form action="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp" method="get">
 <input name="ptype" type="hidden" value="0"><input name="id" type="hidden" value="8619142025">
 <font color="#000000" face="Verdana" size="2"><b>Who is the most hated sports figure in Minnesota history?</b></font><br><br>
@@ -170,15 +144,15 @@ On The Internet</font>
 <tr><td valign="top"><input name="poll" type="radio" value="3"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Roger Headrick</font></td></tr>
 <tr><td valign="top"><input name="poll" type="radio" value="4"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Mike Lynn</font></td></tr>
 <tr><td valign="top"><input name="poll" type="radio" value="5"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Carl Pohlad</font></td></tr>
-</table><br><center><input type="submit" value="Submit Vote"><br><a href="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp?id=8619142025">Current Results</a></center>
+</table><br><div class="poll-submit-section"><input type="submit" value="Submit Vote"><br><a href="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp?id=8619142025">Current Results</a></div>
 </form></td></tr></table>
 <!-- End Poll Code -->
 <!-- Talk Baseball With -->
 <!-- Begin Poll Code -->
 <table border="1" cellpadding="4" cellspacing="0" width="210">
-<tr><td width="210"><center>
+<tr><td width="210"><div class="poll-header-img">
 <img height="25" src="/img/talkbb.gif" width="200">
-</center></td></tr><tr><td width="210">
+</div></td></tr><tr><td width="210">
 <form action="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp" method="get">
 <input name="ptype" type="hidden" value="0"><input name="id" type="hidden" value="8619151459">
 <font color="#000000" face="Verdana" size="2"><b>With whom would you most like to sit and talk baseball?</b></font><br><br>
@@ -188,11 +162,11 @@ On The Internet</font>
 <tr><td valign="top"><input name="poll" type="radio" value="3"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Harmon Killebrew</font></td></tr>
 <tr><td valign="top"><input name="poll" type="radio" value="4"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Paul Molitor</font></td></tr>
 <tr><td valign="top"><input name="poll" type="radio" value="5"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Kirby Puckett</font></td></tr>
-</table><br><center><input type="submit" value="Submit Vote"><br><a href="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp?id=8619151459">Current Results</a></center>
+</table><br><div class="poll-submit-section"><input type="submit" value="Submit Vote"><br><a href="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp?id=8619151459">Current Results</a></div>
 </form></td></tr></table>
 <!-- End Poll Code -->
-</center>
-<p><font face="Verdana,Helvetica,Arial" size="3"></font></p><center><b>Minnesota Native Dean KIeinschmidt, Head Trainer of New Orleans' Saints, To Stay Put</b></center>
+</div>
+<p><font face="Verdana,Helvetica,Arial" size="3"></font></p><div class="sports-article-title"><b>Minnesota Native Dean KIeinschmidt, Head Trainer of New Orleans' Saints, To Stay Put</b></div>
 <p><font face="Verdana,Helvetica,Arial" size="1">Dean Kleinschmidt, the Saints' athletic trainer for 30 years, is staying in New Orleans and will not defect to the Chicago Bulls. Bulls general manager Jerry Krause interviewed Kleinschmidt in April as one of those being considered for the vacancy created when Chip Schaefer resigned.
 
 <p><font face="Verdana,Helvetica,Arial" size="1">Kleinschmidt became a figure in the possible breakup of the Bulls because NBC reported that Iowa State coach Tim Floyd, who has been rumored to be in line to replace Phil Jackson if he doesn't return next season, had conducted the interview.
@@ -208,13 +182,13 @@ On The Internet</font>
 <p><font face="Verdana,Helvetica,Arial" size="1">"I have been fortunate to work under all 12 Saints head coaches and I have never been more convinced that the direction that Mike Ditka has this team headed is the way to go. I want to be part of it, I feel I belong here and I want to end my career here."
 
 <p><font face="Verdana,Helvetica,Arial" size="1">Kleinschmidt had his career goals set in high school. He was student athletic trainer for a small Minnesota high school, went on to a newly established athletic training program at Indiana University and was immediately hired upon graduation by the Saints. He was promoted to Head Athletic Trainer for the Saints in 1971.</font> </p>
-</font></p></font></p></font></p></font></p></font></p></font></p></font></p><center>
+</font></p></font></p></font></p></font></p></font></p></font></p></font></p><div class="sports-kleinschmidt-poll">
 <!-- Dean Kleinschmidt's Hometown -->
 <!-- Begin Poll Code -->
 <table border="1" cellpadding="4" cellspacing="0" width="210">
-<tr><td width="210"><center>
+<tr><td width="210"><div class="poll-image">
 <img height="212" src="/img/doc.jpg" width="200">
-</center></td></tr><tr><td width="210">
+</div></td></tr><tr><td width="210">
 <form action="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp" method="get">
 <input name="ptype" type="hidden" value="0"><input name="id" type="hidden" value="1998618235811">
 <font color="#000000" face="Verdana" size="2"><b>What Minnesota community was the hometown of New Orleans' Saints Head Trainer Dean Kleinschmidt</b></font><br><br>
@@ -224,38 +198,18 @@ On The Internet</font>
 <tr><td valign="top"><input name="poll" type="radio" value="3"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Granite Falls</font></td></tr>
 <tr><td valign="top"><input name="poll" type="radio" value="4"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Morgan</font></td></tr>
 <tr><td valign="top"><input name="poll" type="radio" value="5"></td><td valign="top"><font color="#000000" face="Verdana" size="2">Spicer</font></td></tr>
-</table><br><center><input type="submit" value="Submit Vote"><br><a href="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp?id=1998618235811">Current Results</a></center>
+</table><br><div class="poll-submit-section"><input type="submit" value="Submit Vote"><br><a href="https://web.archive.org/web/19990428032341/http://apps2.vantagenet.com/apolls/count.asp?id=1998618235811">Current Results</a></div>
 </form></td></tr></table>
 <!-- End Poll Code -->
-</center>
+</div>
 </td>
 </tr>
 </table>
-</center>
-<center>
+</div>
+<div class="sports-footer">
 <hr width="600">
-<center>
-<p><font face="Verdana,Helvetica,Arial" size="-1"><a href="/"><img align="MIDDLE" alt="mpls.com" border="0" height="18" src="/img/mpls.gif" width="95"></a><a href="/order/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2"><br>
-      ADVERTISE </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/business/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">BUSINESS 
-      </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
-      <a href="/cool/">COOL SPOTS</a> | <a href="/exposure/">NORTHERN EXPOSURE</a> | <a href="/kid/">KIDS</a> 
-      | <a href="/media/">MEDIA</a> | <a href="/news/">NEWS 
-      </a> | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
-      | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH FARM</a></font> </p>
-</center>
-<center>
-<hr width="468">
-<font face="Geneva, Arial, Helvetica, sans-serif" size="-2">WEBSITE DESIGNED 
-    &amp; MAINTAINED BY <a href="https://web.archive.org/web/19990428032341/http://www.digital.mpls.com/">DIGITAL CONCEPTS,</a> 
-    MINNEAPOLIS, MINNESOTA </font><font face="Verdana,Futura,Helvetica,Arial">
-<hr width="468">
-</font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">The contents 
-    of this website are   Copyright 1997-1999 DIGITAL CONCEPTS. All rights 
-    reserved.<br>
-</font>
-</center>
-</center>
+<LegacyFooter />
+</div>
 <map name="titlebar">
 <area coords="554,0,599,19" href="/search/" shape="rect" target="_top">
 <area coords="498,0,552,19" href="/weather/" shape="rect" target="_top">
@@ -270,11 +224,11 @@ On The Internet</font>
 <area coords="0,0,90,19" href="/" shape="rect" target="_top">
 <area href="/" shape="default">
 </map>
-<center>
+<div class="stattrax-tracker">
 <!-- ************** Start Stattrax Code ************** -->
 <img src="https://web.archive.org/web/19990428032341im_/http://www.stattrax.com/cgi/stattrax.cgi?account=3757&amp;page=800&amp;graphic=1&amp;ref=(none)">
 <!-- ************** End Stattrax Code ************** -->
-</center>
+</div>
 </div>
 </LegacyLayout>
 

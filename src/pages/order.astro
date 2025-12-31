@@ -1,36 +1,35 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../layouts/LegacyLayout.astro";
+import LegacyHeader from "../components/LegacyHeader.astro";
+import LegacyFooter from "../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Business Network Advertising Order Form">
 <div class="mpls-legacy">
-<center>
+<LegacyHeader />
+<div class="order-main-content">
   <table width="600" border="0" cellspacing="0" cellpadding="0">
-    <tr> 
-      <td width="180" valign="TOP"> 
-        <center>
-          <br>
-          <img src="/img/logo.gif" align="TOP" width="339" height="68" border="0" alt="mpls.com"> 
-        </center>
-        <p align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="5">Business 
+    <tr>
+      <td width="180" valign="TOP">
+        <p align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="5">Business
           Network <br>
-          Advertising Order Form</font></b> 
-        <font face="Verdana,Helvetica,Arial" size="4"> 
+          Advertising Order Form</font></b>
+        <font face="Verdana,Helvetica,Arial" size="4">
         <form name="GstBK" method="POST" action="https://web.archive.org/web/20001202211400/http://wwwns.mcg.net/cgi-bin/cgigen.bat">
-          <center>
+          <div class="order-form-receiver">
             <input type="hidden" name="receiver" value="hansen@mpls.com">
-          </center>
-          <p align="center"> <font face="Verdana,Helvetica,Arial" size="2"><b>Fill 
+          </div>
+          <p align="center"> <font face="Verdana,Helvetica,Arial" size="2"><b>Fill
             in the following Email form. <br>
             We'll add your listing to the Business Network @mpls.com <br>
-            and invoice your company via U.S. Mail.</b></font> 
-          </p><center>
-            <font face="Verdana,Helvetica,Arial" size="2"> </font> 
-          </center>
-          <font face="Verdana,Helvetica,Arial" size="2"> 
-          <p align="center"><b>Thanks for becoming part of the Business Network 
+            and invoice your company via U.S. Mail.</b></font>
+          </p><div class="order-form-spacer">
+            <font face="Verdana,Helvetica,Arial" size="2"> </font>
+          </div>
+          <font face="Verdana,Helvetica,Arial" size="2">
+          <p align="center"><b>Thanks for becoming part of the Business Network
             @mpls.com.</b></p>
-          </font><center>
+          </font><div class="order-form-fields">
             <br>
             <table border="0" cellspacing="2" cellpadding="0" align="center">
               <tr> 
@@ -139,17 +138,17 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
                 </td>
               </tr>
             </table>
-          </center>
-          <p align="center"> 
+          </div>
+          <p align="center">
             <input type="submit" name="SUBMIT2" value="Submit Information" align="middle">
             <input type="reset" name="clearform2" value="Cancel" align="middle">
           </p>
-          </form></font> 
-        
+          </form></font>
+
          </p></td>
     </tr>
   </table>
-</center>
+</div>
 <hr width="600" align="center">
 <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="/business/">BACK 
   TO MINNEAPOLIS BUSINESS NETWORK</a></font></p>
@@ -161,6 +160,7 @@ import LegacyLayout from "../layouts/LegacyLayout.astro";
   | <a href="/media/">MEDIA</a> | <a href="/news/">NEWS </a> 
   | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
   | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH FARM</a></font> </p>
+<LegacyFooter />
 </div>
 </LegacyLayout>
 

@@ -1,41 +1,15 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../../layouts/LegacyLayout.astro";
+import LegacyHeader from "../../components/LegacyHeader.astro";
+import LegacyFooter from "../../components/LegacyFooter.astro";
 ---
 <LegacyLayout title="Northern Exposure @ mpls.com">
 <div class="mpls-legacy exposure-page">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center>
-  <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar"> 
+<LegacyHeader />
+
+<div class="exposure-titlebar">
+  <img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
   <table width="610" border="0" cellspacing="0" cellpadding="2" height="99">
 <tr>
       <td width="25%" height="99"><a href="/exposure/01/"><img src="/img/01.jpg" width="150" height="99" align="BOTTOM" border="0"></a></td>
@@ -43,27 +17,27 @@ On The Internet</font>
       <td width="25%"><a href="/exposure/03/"><img src="/img/03.jpg" width="150" height="99" align="BOTTOM" border="0"></a></td>
       <td width="25%"><a href="/exposure/04/"><img src="/img/04.jpg" width="150" height="99" align="BOTTOM" border="0"></a></td>
     </tr>
-</table></center>
+</table></div>
 
 
-<center><table width="610" height="94" border="0" cellspacing="0" cellpadding="2">
+<div class="exposure-table-container"><table width="610" height="94" border="0" cellspacing="0" cellpadding="2">
 <tr>
       <td width="25%"><a href="/exposure/12/"><img src="/img/12.jpg" width="150" height="94" align="BOTTOM" border="0"></a></td>
 <td width="50%"><img src="/img/ne_words.gif" width="303" height="94" align="BOTTOM"></td>
       <td width="25%"><a href="/exposure/05/"><img src="/img/05.jpg" width="150" height="94" align="BOTTOM" border="0"></a></td>
     </tr>
-</table></center>
-<center><table width="610" height="93" border="0" cellspacing="0" cellpadding="2">
+</table></div>
+<div class="exposure-table-container"><table width="610" height="93" border="0" cellspacing="0" cellpadding="2">
 <tr>
       <td width="150"><a href="/exposure/11/"><img src="/img/11.jpg" width="150" height="92" align="BOTTOM" border="0"></a></td>
-<td width="310"><font face="Verdana,Helvetica,Arial" size="-1"><center>
-          <font size="-2">Click on an image for larger view and a brief description. 
-          Visit <a href="https://web.archive.org/web/20001202222100/http://www.heinrich.mpls.com/" target="_blank">Photographer 
-          George Heinrich's Website</a> to view more of his dramatic photography 
-          and studio portfolio.</font> 
-        </center>
+<td width="310"><font face="Verdana,Helvetica,Arial" size="-1"><div class="exposure-gallery">
+          <font size="-2">Click on an image for larger view and a brief description.
+          Visit <a href="https://web.archive.org/web/20001202222100/http://www.heinrich.mpls.com/" target="_blank">Photographer
+          George Heinrich's Website</a> to view more of his dramatic photography
+          and studio portfolio.</font>
+        </div>
 
-<center> <hr width="50%">
+<div class="exposure-gallery"> <hr width="50%">
           <font size="-1" face="Verdana,Helvetica,Arial"><a href="/order/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">ADVERTISE 
           </font></a></font><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">| 
           <a href="/business/"><font face="Geneva, Arial, Helvetica, sans-serif" size="-2">BUSINESS 
@@ -73,43 +47,27 @@ On The Internet</font>
           | <a href="/media/">MEDIA</a> | <a href="/news/">NEWS 
           </a> | <a href="/politics/">POLITICS</a> | <a href="/sports/">SPORTS</a> 
           | <a href="/weather/">WEATHER</a> | <a href="/search/">SEARCH<br>
-          </a></font><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000"> 
-          <a href="/"><img src="/img/mpls.gif" alt="mpls.com" align="MIDDLE" width="95" height="18" border="0"></a></font></font></font></font></font> 
-        </center>
+          </a></font><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000"><font face="Verdana,Helvetica,Arial" color="#000000">
+          <a href="/"><img src="/img/mpls.gif" alt="mpls.com" align="MIDDLE" width="95" height="18" border="0"></a></font></font></font></font></font>
+        </div>
 
 </font></td>
       <td width="150"><a href="/exposure/06/"><img src="/img/06.jpg" width="150" height="93" align="BOTTOM" border="0"></a></td>
     </tr>
-</table></center>
+</table></div>
 
 
-<center><table width="610" border="0" cellspacing="0" cellpadding="2" height="93">
+<div class="exposure-table-container"><table width="610" border="0" cellspacing="0" cellpadding="2" height="93">
 <tr>
       <td width="25%" height="93"><a href="/exposure/10/"><img src="/img/10.jpg" align="BOTTOM" width="150" height="93" border="0"></a></td>
       <td width="25%"><a href="/exposure/09/"><img src="/img/09.jpg" align="BOTTOM" width="150" height="93" border="0"></a></td>
       <td width="25%"><a href="/exposure/08/"><img src="/img/08.jpg" align="BOTTOM" width="150" height="93" border="0"></a></td>
       <td width="25%"><a href="/exposure/07/"><img src="/img/07.jpg" align="BOTTOM" width="150" height="93" border="0"></a></td>
     </tr>
-</table></center>
+</table></div>
 
 
-<center><hr width="75%">
-  <font face="Verdana,Futura,Helvetica,Arial"><font size="-2">WEB SITE DESIGNED 
-  &amp; MAINTAINED BY <a href="https://web.archive.org/web/20001202222100/http://www.digital.mpls.com/" target="_blank">DIGITAL 
-  CONCEPTS,</a> MINNEAPOLIS, MINNESOTA </font> 
-  <hr width="75%"></font></center>
-
-
-
-<center>
-  <font face="Verdana,Futura,Helvetica,Arial"><font size="-2">The contents of this 
-  web site are   Copyright 1997-2000 Digital Concepts and Heinrich Photography. 
-  All rights reserved.</font><br>
-</font></center>
-
-
-
-
+<LegacyFooter />
 
 <map name="titlebar">
   <area shape="rect" coords="554,0,599,19" href="/search/">

@@ -1,6 +1,8 @@
 ---
 // @ts-nocheck
 import LegacyLayout from "../layouts/LegacyLayout.astro";
+import LegacyHeader from "../components/LegacyHeader.astro";
+import LegacyFooter from "../components/LegacyFooter.astro";
 
 const politicsEntries = Object.entries(
   import.meta.glob("../content/politics/*.md", { eager: true })
@@ -23,134 +25,100 @@ const sideStories = currentBatch.slice(0, 2);
 ---
 <LegacyLayout title="Minnesota Politics @ mpls.com">
 <div class="mpls-legacy">
-<center>
-<table border="0" width="623">
-<tr>
-<td width="621">
-<center>
-<img align="TOP" border="0" height="10" src="/img/dividerline.gif" width="600"><br>
-<table border="0" cellpadding="0" cellspacing="0" width="600">
-<tr>
-<td align="LEFT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minneapolis<br>
-Minnesota USA</font>
-</center>
-</td>
-<td width="340"><a href="/"><img align="TOP" alt="Minneapolis, Minnesota" border="0" height="68" src="/img/logo.gif" width="339"></a><br>
-</td>
-<td align="RIGHT" valign="CENTER" width="130">
-<center>
-<font face="Verdana,Helvetica,Arial" size="2">Minnesota's Home<br>
-On The Internet</font>
-</center>
-</td>
-</tr>
-</table>
-<img height="10" src="/img/dividerline.gif" width="600">
-</center>
-</td>
-</tr>
-</table>
-</center>
-<center><img src="/img/titlebar.gif" width="600" height="20" border="0" usemap="#titlebar">
-</center>
+<LegacyHeader />
+<div class="titlebar-image">
+  <img src="/img/titlebar.gif" alt="Navigation bar" usemap="#titlebar">
+</div>
 
+<div class="news-container">
+  <div class="news-layout">
+    <div class="news-main">
+      <h1 class="news-title">MINNESOTA POLITICS</h1>
+      <p class="news-subtitle">Updated daily - Statehouse / City Hall</p>
+      <hr class="news-divider">
 
-<center>
-  <table width="600" border="1" cellpadding="8" cellspacing="0">
-    <tr>
-      <td width="390" valign="top">
-        <center><font face="Verdana, Helvetica, Arial" size="4"><b>MINNESOTA POLITICS</b></font></center>
-        <center><font face="Verdana, Helvetica, Arial" size="1">Updated daily - Statehouse / City Hall</font></center>
-        <hr width="90%">
-        <p><font face="Verdana, Helvetica, Arial" size="2"><b>LEAD STORY</b></font></p>
-        {leadStory?.image ? (
-          <center>
-            <img align="TOP" border="1" height="150" src={leadStory.image} width="300">
-          </center>
-        ) : null}
-        {leadStory ? (
-          <>
-            <p><font face="Verdana, Helvetica, Arial" size="3"><b><a class="story-link" href={`/politics/${leadStory.slug}/`}>{leadStory.title}</a></b></font></p>
-            <p><font face="Verdana, Helvetica, Arial" size="2">{leadStory.source || "Wire report"}.</font></p>
-            <p><font face="Verdana, Helvetica, Arial" size="1"><b>{leadStory.displayDate || leadStory.date}</b></font></p>
-          </>
-        ) : null}
-        <hr width="90%">
-        <p><font face="Verdana, Helvetica, Arial" size="2"><b>TOP STORIES</b></font></p>
-        <table border="0" cellpadding="4" cellspacing="0" width="100%">
-          {topStories.map((story) => (
-            <tr>
-              <td width="120" valign="top">
-                {story.image ? (
-                  <img border="1" height="70" width="110" src={story.image}>
-                ) : null}
-              </td>
-              <td valign="top">
-                <font face="Verdana, Helvetica, Arial" size="2">
-                  <b>{story.displayDate || story.date}</b> - <a class="story-link" href={`/politics/${story.slug}/`}>{story.title}</a><br>
-                  <font face="Verdana, Helvetica, Arial" size="1">{story.source}</font>
-                </font>
-              </td>
-            </tr>
-          ))}
-        </table>
-      </td>
-      <td width="190" valign="top">
-        <center><img align="TOP" border="0" height="25" src="/img/tvnews.gif" width="200"></center>
-        <p><font face="Verdana, Helvetica, Arial" size="2"><b>BREAKING</b></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1">Fresh items are pulled from live feeds when available.</font></p>
-        {sideStories.map((story) =>
-          story.image ? (
-            <center>
-              <img border="1" height="90" src={story.image} width="150">
-            </center>
-          ) : null
-        )}
-        <hr width="100%">
-        <p><font face="Verdana, Helvetica, Arial" size="2"><b>ON THE WIRE</b></font></p>
-        {topStories.slice(0, 3).map((story) => (
-          <p><font face="Verdana, Helvetica, Arial" size="1"><a class="story-link" href={`/politics/${story.slug}/`}>{story.title}</a></font></p>
+      <h2 class="section-title">LEAD STORY</h2>
+      {leadStory && (
+        <div class="lead-story-container">
+          {leadStory.image && (
+            <div class="lead-image">
+              <img src={leadStory.image} alt={leadStory.title}>
+            </div>
+          )}
+          <div class="lead-story-content">
+            <h3 class="story-headline"><a class="story-link" href={`/politics/${leadStory.slug}/`}>{leadStory.title}</a></h3>
+            <p class="story-source">{leadStory.source || "Wire report"}.</p>
+            <p class="story-date"><strong>{leadStory.displayDate || leadStory.date}</strong></p>
+          </div>
+        </div>
+      )}
+      <hr class="news-divider">
+
+      <h2 class="section-title">TOP STORIES</h2>
+      <div class="stories-list">
+        {topStories.map((story) => (
+          <div class="story-item">
+            <div class="story-image">
+              {story.image && (
+                <img src={story.image} alt={story.title}>
+              )}
+            </div>
+            <div class="story-content">
+              <p class="story-text">
+                <strong>{story.displayDate || story.date}</strong> - <a class="story-link" href={`/politics/${story.slug}/`}>{story.title}</a><br>
+                <span class="story-source-small">{story.source}</span>
+              </p>
+            </div>
+          </div>
         ))}
-        <hr width="100%">
-        <p><font face="Verdana, Helvetica, Arial" size="2"><b>QUICK LINKS</b></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/news/">News Desk</a></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/weather/">Weather Center</a></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/sports/">Sports</a></font></p>
-        <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/media/">Media</a></font></p>
-      </td>
-    </tr>
-  </table>
-</center>
+      </div>
+    </div>
 
+    <aside class="news-sidebar">
+      <div class="sidebar-header">
+      </div>
+      <h2 class="section-title">BREAKING</h2>
+      <p class="sidebar-text">Fresh items are pulled from live feeds when available.</p>
+      
+      <hr class="sidebar-divider">
+
+      <h2 class="section-title">ON THE WIRE</h2>
+      {sideStories.map((story) =>
+        story.image && (
+          <div class="sidebar-image">
+            <img src={story.image} alt={story.title}>
+          </div>
+        )
+      )}
+      {topStories.slice(0, 3).map((story) => (
+        <p class="sidebar-link"><a class="story-link" href={`/politics/${story.slug}/`}>{story.title}</a></p>
+      ))}
+      <hr class="sidebar-divider">
+
+      <h2 class="section-title">QUICK LINKS</h2>
+      <p class="sidebar-link"><a href="/news/">News Desk</a></p>
+      <p class="sidebar-link"><a href="/weather/">Weather Center</a></p>
+      <p class="sidebar-link"><a href="/sports/">Sports</a></p>
+      <p class="sidebar-link"><a href="/media/">Media</a></p>
+    </aside>
+  </div>
+</div>
+
+<LegacyFooter />
+</div>
 
 <map name="titlebar">
-  <area shape="rect" coords="554,0,599,19" href="/search/" target="_top">
-  <area shape="rect" coords="498,0,552,19" href="/weather/" target="_top">
-  <area shape="rect" coords="450,0,495,19" href="/sports/" target="_top">
-  <area shape="rect" coords="397,0,448,19" href="/politics/" target="_top">
-  <area shape="rect" coords="358,0,392,19" href="/news/" target="_top">
-  <area shape="rect" coords="316,0,354,19" href="/media/" target="_top">
-  <area shape="rect" coords="281,0,312,19" href="/kid/" target="_top">
-  <area shape="rect" coords="220,0,278,19" href="/exposure/" target="_top">
-  <area shape="rect" coords="151,0,218,19" href="/cool/" target="_top">
-  <area shape="rect" coords="92,0,148,19" href="/business/" target="_top">
-  <area shape="rect" coords="0,0,90,19" href="/" target="_top">
-  <area shape="default" href="/">
+  <area shape="rect" coords="554,0,599,19" href="/search/" alt="Search">
+  <area shape="rect" coords="498,0,552,19" href="/weather/" alt="Weather">
+  <area shape="rect" coords="450,0,495,19" href="/sports/" alt="Sports">
+  <area shape="rect" coords="397,0,448,19" href="/politics/" alt="Politics">
+  <area shape="rect" coords="358,0,392,19" href="/news/" alt="News">
+  <area shape="rect" coords="316,0,354,19" href="/media/" alt="Media">
+  <area shape="rect" coords="281,0,312,19" href="/kid/" alt="Kids">
+  <area shape="rect" coords="220,0,278,19" href="/exposure/" alt="Exposure">
+  <area shape="rect" coords="151,0,218,19" href="/cool/" alt="Cool Spots">
+  <area shape="rect" coords="92,0,148,19" href="/business/" alt="Business">
+  <area shape="rect" coords="0,0,90,19" href="/" alt="Home">
+  <area shape="default" href="/" alt="Home">
 </map>
-</div>
 </LegacyLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
