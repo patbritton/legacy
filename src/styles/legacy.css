@@ -886,6 +886,25 @@ body {
 }
 
 /* ------------------------------------------------------------
+   WEATHER WIDGET
+   ------------------------------------------------------------ */
+
+.weather-widget {
+  border: 2px solid #000;
+  background: #f2f2f2;
+  box-shadow: inset 0 0 0 1px #666;
+}
+.weather-widget td {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.weather-widget #wx-temp,
+.weather-widget #wx-cond,
+.weather-widget #wx-wind,
+.weather-widget #wx-time {
+  font-weight: bold;
+}
+
+/* ------------------------------------------------------------
     MOBILE OPTIMIZATION (Media Query)
     ------------------------------------------------------------ */
 
