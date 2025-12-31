@@ -1,7 +1,7 @@
 Legacy MPLS Astro Site
 ======================
 
-This is a modern Astro rebuild of the legacy `mpls.com` site, preserving the original look while adding a working guestbook, admin tools, and restored legacy pages.
+This is a modern Astro rebuild of the legacy `mp.ls` site, preserving the original look while adding a working guestbook, admin tools, and restored legacy pages.
 
 What's inside
 -------------
