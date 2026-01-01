@@ -54,22 +54,22 @@ const config = configData || {
 <div class="mpls-legacy">
 <LegacyHeader />
 <div class="guestbook-admin-header">
-  <p><font face="Verdana,Helvetica,Arial" size="4"><b>Guestbook Admin</b></font></p>
-  <p><font face="Verdana,Helvetica,Arial" size="-1"><a href="/admin">Admin Menu</a> | <a href="/guestbook/">View Guestbook</a></font></p>
+  <p><span class="legacy-font legacy-font--size-4 legacy-font--face-verdana"><b>Guestbook Admin</b></span></p>
+  <p><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><a href="/admin">Admin Menu</a> | <a href="/guestbook/">View Guestbook</a></span></p>
 </div>
 
 <div class="guestbook-admin-status">
-<table border="0" cellpadding="6" cellspacing="0" width="600">
+<table class="legacy-border-0 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
   <tr>
     <td>
       {status === "auth" && (
-        <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Auth failed.</b> Check admin password.</font></p>
+        <p><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Auth failed.</b> Check admin password.</span></p>
       )}
       {status === "ok" && (
-        <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Saved.</b></font></p>
+        <p><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Saved.</b></span></p>
       )}
       {status === "error" && (
-        <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Error.</b> Try again.</font></p>
+        <p><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Error.</b> Try again.</span></p>
       )}
     </td>
   </tr>
@@ -77,30 +77,30 @@ const config = configData || {
 </div>
 
 <div class="guestbook-admin-config">
-<table border="1" cellpadding="6" cellspacing="0" width="600">
+<table class="legacy-border-1 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
   <tr>
     <td>
       <form action="/api/guestbook/admin" method="post">
         <input type="hidden" name="action" value="update-config">
-        <table border="0" cellpadding="4" cellspacing="0" width="100%">
+        <table class="legacy-border-0 legacy-cellpadding-4 legacy-cellspacing-0 legacy-width-100pct">
           <tr>
-            <td><label for="gb-config-max-links"><font face="Verdana,Helvetica,Arial" size="-1">Max Links</font></label></td>
+            <td><label for="gb-config-max-links"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Max Links</span></label></td>
             <td><input type="number" id="gb-config-max-links" name="maxLinks" value={config.max_links} min="0" max="10"></td>
           </tr>
           <tr>
-            <td><label for="gb-config-max-comment-length"><font face="Verdana,Helvetica,Arial" size="-1">Max Comment Length</font></label></td>
+            <td><label for="gb-config-max-comment-length"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Max Comment Length</span></label></td>
             <td><input type="number" id="gb-config-max-comment-length" name="maxCommentLength" value={config.max_comment_length} min="50" max="2000"></td>
           </tr>
           <tr>
-            <td><label for="gb-config-max-field-length"><font face="Verdana,Helvetica,Arial" size="-1">Max Field Length</font></label></td>
+            <td><label for="gb-config-max-field-length"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Max Field Length</span></label></td>
             <td><input type="number" id="gb-config-max-field-length" name="maxFieldLength" value={config.max_field_length} min="20" max="300"></td>
           </tr>
           <tr>
-            <td><label for="gb-config-require-moderation"><font face="Verdana,Helvetica,Arial" size="-1">Require Moderation</font></label></td>
+            <td><label for="gb-config-require-moderation"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Require Moderation</span></label></td>
             <td><input type="checkbox" id="gb-config-require-moderation" name="requireModeration" checked={config.require_moderation}></td>
           </tr>
           <tr>
-            <td valign="top"><label for="gb-config-banned-terms"><font face="Verdana,Helvetica,Arial" size="-1">Banned Terms</font></label></td>
+            <td class="legacy-valign-top"><label for="gb-config-banned-terms"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Banned Terms</span></label></td>
             <td>
               <textarea id="gb-config-banned-terms" name="bannedTerms" rows="5" cols="40">{config.banned_terms.join("\n")}</textarea>
             </td>
@@ -117,47 +117,47 @@ const config = configData || {
 </div>
 
 <div class="guestbook-admin-section-title">
-  <p><font face="Verdana,Helvetica,Arial" size="3"><b>Pending Entries</b></font></p>
+  <p><span class="legacy-font legacy-font--size-3 legacy-font--face-verdana"><b>Pending Entries</b></span></p>
 </div>
 {pending.length === 0 && (
-  <div class="guestbook-admin-no-entries"><font face="Verdana,Helvetica,Arial" size="-1">No pending entries.</font></div>
+  <div class="guestbook-admin-no-entries"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">No pending entries.</span></div>
 )}
 {pending.map((entry) => (
   <div class="guestbook-admin-entry-container">
-  <table border="1" cellpadding="6" cellspacing="0" width="600">
+  <table class="legacy-border-1 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
     <tr>
       <td>
         <form action="/api/guestbook/admin" method="post">
           <input type="hidden" name="action" value="update">
           <input type="hidden" name="list" value="pending">
           <input type="hidden" name="record" value={entry.record}>
-          <table border="0" cellpadding="4" cellspacing="0" width="100%">
+          <table class="legacy-border-0 legacy-cellpadding-4 legacy-cellspacing-0 legacy-width-100pct">
             <tr>
-              <td style="width: 160px"><font face="Verdana,Helvetica,Arial" size="-1"><b>Record {entry.record}</b></font></td>
-              <td><font face="Verdana,Helvetica,Arial" size="-2">Flagged: {entry.flagged ? "Yes" : "No"}</font></td>
+              <td class="guestbook-admin-record-cell"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Record {entry.record}</b></span></td>
+              <td><span class="legacy-font legacy-font--size--2 legacy-font--face-verdana">Flagged: {entry.flagged ? "Yes" : "No"}</span></td>
             </tr>
             <tr>
-              <td><label for={`pending-name-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Name</font></label></td>
+              <td><label for={`pending-name-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Name</span></label></td>
               <td><input type="text" id={`pending-name-${entry.record}`} name="name" value={entry.name} size="40"></td>
             </tr>
             <tr>
-              <td><label for={`pending-website-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
+              <td><label for={`pending-website-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Website</span></label></td>
               <td><input type="text" id={`pending-website-${entry.record}`} name="website" value={entry.website} size="40"></td>
             </tr>
             <tr>
-              <td><label for={`pending-referred-by-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
+              <td><label for={`pending-referred-by-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Referred By</span></label></td>
               <td><input type="text" id={`pending-referred-by-${entry.record}`} name="referredBy" value={entry.referred_by} size="40"></td>
             </tr>
             <tr>
-              <td><label for={`pending-from-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
+              <td><label for={`pending-from-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">From</span></label></td>
               <td><input type="text" id={`pending-from-${entry.record}`} name="from" value={entry.from_location} size="40"></td>
             </tr>
             <tr>
-              <td valign="top"><label for={`pending-comments-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></label></td>
+              <td class="legacy-valign-top"><label for={`pending-comments-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Comments</span></label></td>
               <td><textarea id={`pending-comments-${entry.record}`} name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
             </tr>
             <tr>
-              <td><label for={`pending-private-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Private</font></label></td>
+              <td><label for={`pending-private-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Private</span></label></td>
               <td><input type="checkbox" id={`pending-private-${entry.record}`} name="privateMessage" checked={entry.private_message}></td>
             </tr>
             <tr>
@@ -185,47 +185,47 @@ const config = configData || {
 ))}
 
 <div class="guestbook-admin-section-title">
-  <p><font face="Verdana,Helvetica,Arial" size="3"><b>Approved Entries</b></font></p>
+  <p><span class="legacy-font legacy-font--size-3 legacy-font--face-verdana"><b>Approved Entries</b></span></p>
 </div>
 {approved.length === 0 && (
-  <div class="guestbook-admin-no-entries"><font face="Verdana,Helvetica,Arial" size="-1">No approved entries.</font></div>
+  <div class="guestbook-admin-no-entries"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">No approved entries.</span></div>
 )}
 {approved.map((entry) => (
   <div class="guestbook-admin-entry-container">
-  <table border="1" cellpadding="6" cellspacing="0" width="600">
+  <table class="legacy-border-1 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
     <tr>
       <td>
         <form action="/api/guestbook/admin" method="post">
           <input type="hidden" name="action" value="update">
           <input type="hidden" name="list" value="approved">
           <input type="hidden" name="record" value={entry.record}>
-          <table border="0" cellpadding="4" cellspacing="0" width="100%">
+          <table class="legacy-border-0 legacy-cellpadding-4 legacy-cellspacing-0 legacy-width-100pct">
             <tr>
-              <td style="width: 160px"><font face="Verdana,Helvetica,Arial" size="-1"><b>Record {entry.record}</b></font></td>
-              <td><font face="Verdana,Helvetica,Arial" size="-2">{new Date(entry.created_at).toISOString().replace("T", " ").slice(0, 19)}</font></td>
+              <td class="guestbook-admin-record-cell"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Record {entry.record}</b></span></td>
+              <td><span class="legacy-font legacy-font--size--2 legacy-font--face-verdana">{new Date(entry.created_at).toISOString().replace("T", " ").slice(0, 19)}</span></td>
             </tr>
             <tr>
-              <td><label for={`approved-name-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Name</font></label></td>
+              <td><label for={`approved-name-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Name</span></label></td>
               <td><input type="text" id={`approved-name-${entry.record}`} name="name" value={entry.name} size="40"></td>
             </tr>
             <tr>
-              <td><label for={`approved-website-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
+              <td><label for={`approved-website-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Website</span></label></td>
               <td><input type="text" id={`approved-website-${entry.record}`} name="website" value={entry.website} size="40"></td>
             </tr>
             <tr>
-              <td><label for={`approved-referred-by-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
+              <td><label for={`approved-referred-by-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Referred By</span></label></td>
               <td><input type="text" id={`approved-referred-by-${entry.record}`} name="referredBy" value={entry.referred_by} size="40"></td>
             </tr>
             <tr>
-              <td><label for={`approved-from-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
+              <td><label for={`approved-from-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">From</span></label></td>
               <td><input type="text" id={`approved-from-${entry.record}`} name="from" value={entry.from_location} size="40"></td>
             </tr>
             <tr>
-              <td valign="top"><label for={`approved-comments-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Comments</font></label></td>
+              <td class="legacy-valign-top"><label for={`approved-comments-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Comments</span></label></td>
               <td><textarea id={`approved-comments-${entry.record}`} name="comments" rows="4" cols="46">{entry.comments}</textarea></td>
             </tr>
             <tr>
-              <td><label for={`approved-private-${entry.record}`}><font face="Verdana,Helvetica,Arial" size="-1">Private</font></label></td>
+              <td><label for={`approved-private-${entry.record}`}><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Private</span></label></td>
               <td><input type="checkbox" id={`approved-private-${entry.record}`} name="privateMessage" checked={entry.private_message}></td>
             </tr>
             <tr>

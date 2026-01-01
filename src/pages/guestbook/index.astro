@@ -29,27 +29,27 @@ const sortedEntries = entries || [];
 
 
 <div class="guestbook-header">
-  <font face="Verdana,Helvetica,Arial" size="4"><b>Guestbook</b></font>
+  <span class="legacy-font legacy-font--size-4 legacy-font--face-verdana"><b>Guestbook</b></span>
 </div>
 
 <div class="guestbook-status-container">
-<table border="0" cellpadding="6" cellspacing="0" width="600">
+<table class="legacy-border-0 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
 <tr>
 <td>
   {status === "ok" && (
-    <p><font face="Verdana,Helvetica,Arial" size="-1" color="green"><b>✓ Success!</b> Your entry has been posted and is now visible in the guestbook.</font></p>
+    <p><span class="legacy-font legacy-font--size--1 legacy-font--color-green legacy-font--face-verdana"><b>✓ Success!</b> Your entry has been posted and is now visible in the guestbook.</span></p>
   )}
   {status === "pending" && (
-    <p><font face="Verdana,Helvetica,Arial" size="-1" color="blue"><b>✓ Submitted!</b> Your entry has been received and will appear after review. Thank you for signing our guestbook!</font></p>
+    <p><span class="legacy-font legacy-font--size--1 legacy-font--color-blue legacy-font--face-verdana"><b>✓ Submitted!</b> Your entry has been received and will appear after review. Thank you for signing our guestbook!</span></p>
   )}
   {status === "banned" && (
-    <p><font face="Verdana,Helvetica,Arial" size="-1" color="red"><b>✗ Entry Rejected</b> Your submission contains prohibited content or language. Please review our guidelines and try again with appropriate content.</font></p>
+    <p><span class="legacy-font legacy-font--size--1 legacy-font--color-red legacy-font--face-verdana"><b>✗ Entry Rejected</b> Your submission contains prohibited content or language. Please review our guidelines and try again with appropriate content.</span></p>
   )}
   {status === "captcha" && (
-    <p><font face="Verdana,Helvetica,Arial" size="-1" color="orange"><b>⚠ Verification Failed</b> Please complete the reCAPTCHA verification and try again.</font></p>
+    <p><span class="legacy-font legacy-font--size--1 legacy-font--color-orange legacy-font--face-verdana"><b>⚠ Verification Failed</b> Please complete the reCAPTCHA verification and try again.</span></p>
   )}
   {status === "error" && (
-    <p><font face="Verdana,Helvetica,Arial" size="-1" color="red"><b>✗ Error</b> There was a problem submitting your entry. Please check that all required fields are filled and within the length limits.</font></p>
+    <p><span class="legacy-font legacy-font--size--1 legacy-font--color-red legacy-font--face-verdana"><b>✗ Error</b> There was a problem submitting your entry. Please check that all required fields are filled and within the length limits.</span></p>
   )}
 </td>
 </tr>
@@ -57,31 +57,31 @@ const sortedEntries = entries || [];
 </div>
 
 <div class="guestbook-form-container">
-<table border="1" cellpadding="6" cellspacing="0" width="600">
+<table class="legacy-border-1 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
 <tr>
 <td>
 <a id="sign"></a>
 <form action="/api/guestbook/submit" method="post">
-  <input type="text" name="company" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
-  <table class="guestbook-form-table" border="0" cellpadding="4" cellspacing="0" width="100%">
+  <input type="text" name="company" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="guestbook-honeypot">
+  <table class="guestbook-form-table legacy-border-0 legacy-cellpadding-4 legacy-cellspacing-0 legacy-width-100pct">
     <tr>
-      <td class="guestbook-form-label"><label for="gb-name"><font face="Verdana,Helvetica,Arial" size="-1">Name *</font></label></td>
+      <td class="guestbook-form-label"><label for="gb-name"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Name *</span></label></td>
       <td class="guestbook-form-field"><input type="text" id="gb-name" name="name" size="40" maxlength="120" required></td>
     </tr>
     <tr>
-      <td class="guestbook-form-label"><label for="gb-website"><font face="Verdana,Helvetica,Arial" size="-1">Website</font></label></td>
+      <td class="guestbook-form-label"><label for="gb-website"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Website</span></label></td>
       <td class="guestbook-form-field"><input type="text" id="gb-website" name="website" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td class="guestbook-form-label"><label for="gb-referred-by"><font face="Verdana,Helvetica,Arial" size="-1">Referred By</font></label></td>
+      <td class="guestbook-form-label"><label for="gb-referred-by"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Referred By</span></label></td>
       <td class="guestbook-form-field"><input type="text" id="gb-referred-by" name="referredBy" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td class="guestbook-form-label"><label for="gb-from"><font face="Verdana,Helvetica,Arial" size="-1">From</font></label></td>
+      <td class="guestbook-form-label"><label for="gb-from"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">From</span></label></td>
       <td class="guestbook-form-field"><input type="text" id="gb-from" name="from" size="40" maxlength="120"></td>
     </tr>
     <tr>
-      <td class="guestbook-form-label" valign="top"><label for="gb-comments"><font face="Verdana,Helvetica,Arial" size="-1">Comments *</font></label></td>
+      <td class="guestbook-form-label legacy-valign-top"><label for="gb-comments"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Comments *</span></label></td>
       <td class="guestbook-form-field"><textarea id="gb-comments" name="comments" rows="5" cols="46" maxlength="800" required></textarea></td>
     </tr>
     <tr>
@@ -90,7 +90,7 @@ const sortedEntries = entries || [];
         {siteKey ? (
           <div class="g-recaptcha" data-sitekey={siteKey} aria-label="reCAPTCHA"></div>
         ) : (
-          <font face="Verdana,Helvetica,Arial" size="-2">reCAPTCHA site key missing.</font>
+          <span class="legacy-font legacy-font--size--2 legacy-font--face-verdana">reCAPTCHA site key missing.</span>
         )}
       </td>
     </tr>
@@ -106,17 +106,17 @@ const sortedEntries = entries || [];
 </div>
 
 <div class="guestbook-entries-header">
-<table border="0" cellpadding="6" cellspacing="0" width="600">
+<table class="legacy-border-0 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
   <tr>
     <td>
-      <font face="Verdana,Helvetica,Arial" size="-1"><b>Guestbook Entries</b></font>
+      <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Guestbook Entries</b></span>
     </td>
   </tr>
 </table>
 </div>
 
 <div class="guestbook-entries-container">
-<table border="1" cellpadding="6" cellspacing="0" width="600">
+<table class="legacy-border-1 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
   {sortedEntries.map((entry) => {
     const websiteUrl = entry.website && entry.website.trim()
       ? (entry.website.startsWith('http://') || entry.website.startsWith('https://')
@@ -127,17 +127,17 @@ const sortedEntries = entries || [];
     return (
       <tr>
         <td class="guestbook-entry-cell">
-          <font face="Verdana,Helvetica,Arial" size="-1"><b>Record {entry.record}</b></font><br>
-          <font face="Verdana,Helvetica,Arial" size="-1"><b>Name:</b> {entry.name}</font><br>
-          <font face="Verdana,Helvetica,Arial" size="-1">
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Record {entry.record}</b></span><br>
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Name:</b> {entry.name}</span><br>
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">
             <b>Website:</b> {websiteUrl
               ? <a href={websiteUrl} rel="nofollow noopener noreferrer" target="_blank">{entry.website}</a>
               : (entry.website || " ")}
-          </font><br>
-          <font face="Verdana,Helvetica,Arial" size="-1"><b>Referred by:</b> {entry.referred_by || " "}</font><br>
-          <font face="Verdana,Helvetica,Arial" size="-1"><b>From:</b> {entry.from_location || " "}</font><br>
-          <font face="Verdana,Helvetica,Arial" size="-1"><b>Time:</b> {new Date(entry.created_at).toISOString().replace("T", " ").slice(0, 19)}</font><br>
-          <font face="Verdana,Helvetica,Arial" size="-1"><b>Comments:</b> {entry.comments}</font>
+          </span><br>
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Referred by:</b> {entry.referred_by || " "}</span><br>
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>From:</b> {entry.from_location || " "}</span><br>
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Time:</b> {new Date(entry.created_at).toISOString().replace("T", " ").slice(0, 19)}</span><br>
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Comments:</b> {entry.comments}</span>
         </td>
       </tr>
     );

@@ -18,17 +18,17 @@ const isAuthed = verifySessionToken(token);
 <div class="mpls-legacy">
 <LegacyHeader />
 <div class="admin-header">
-  <p><font face="Verdana,Helvetica,Arial" size="4"><b>Admin</b></font></p>
+  <p><span class="legacy-font legacy-font--size-4 legacy-font--face-verdana"><b>Admin</b></span></p>
 </div>
 
 {isAuthed ? (
   <div class="admin-menu-container">
-    <table border="1" cellpadding="6" cellspacing="0" width="600">
+    <table class="legacy-border-1 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
       <tr>
         <td>
-          <font face="Verdana,Helvetica,Arial" size="-1"><b>Menu</b></font><br>
+          <span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Menu</b></span><br>
           <a href="/admin/guestbook/">Guestbook</a><br>
-          <form action="/api/admin/logout" method="post" style="margin-top:8px;">
+          <form action="/api/admin/logout" method="post" class="admin-logout-form">
             <input type="submit" value="Log Out">
           </form>
         </td>
@@ -37,26 +37,26 @@ const isAuthed = verifySessionToken(token);
   </div>
 ) : (
   <div class="admin-login-container">
-    <table border="1" cellpadding="6" cellspacing="0" width="600">
+    <table class="legacy-border-1 legacy-cellpadding-6 legacy-cellspacing-0 legacy-width-600">
       <tr>
         <td>
           {status === "auth" && (
-            <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Login failed.</b></font></p>
+            <p><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Login failed.</b></span></p>
           )}
           {status === "logout" && (
-            <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Logged out.</b></font></p>
+            <p><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Logged out.</b></span></p>
           )}
           {status === "error" && (
-            <p><font face="Verdana,Helvetica,Arial" size="-1"><b>Error.</b> Please try again.</font></p>
+            <p><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana"><b>Error.</b> Please try again.</span></p>
           )}
           <form action="/api/admin/login" method="post">
-            <table border="0" cellpadding="4" cellspacing="0">
+            <table class="legacy-border-0 legacy-cellpadding-4 legacy-cellspacing-0">
               <tr>
-                <td><label for="admin-username"><font face="Verdana,Helvetica,Arial" size="-1">Username</font></label></td>
+                <td><label for="admin-username"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Username</span></label></td>
                 <td><input type="text" id="admin-username" name="username" size="30" autocomplete="username" value="admin"></td>
               </tr>
               <tr>
-                <td><label for="admin-password"><font face="Verdana,Helvetica,Arial" size="-1">Password</font></label></td>
+                <td><label for="admin-password"><span class="legacy-font legacy-font--size--1 legacy-font--face-verdana">Password</span></label></td>
                 <td><input type="password" id="admin-password" name="password" size="30" autocomplete="current-password" required></td>
               </tr>
               <tr>

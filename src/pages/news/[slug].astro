@@ -29,21 +29,21 @@ const ogImage = frontmatter.image ?? "/img/logo2-768x455.png";
     
 
     <div class="article-container">
-      <table width="600" border="1" cellpadding="12" cellspacing="0">
+      <table class="legacy-width-600 legacy-border-1 legacy-cellpadding-12 legacy-cellspacing-0">
         <tr>
           <td>
-            <div class="article-title"><font face="Verdana, Helvetica, Arial" size="4"><b>{frontmatter.title}</b></font></div>
-            <div class="article-meta"><font face="Verdana, Helvetica, Arial" size="1">{frontmatter.displayDate || frontmatter.date} · {frontmatter.source}</font></div>
+            <div class="article-title"><span class="legacy-font legacy-font--size-4 legacy-font--face-verdana"><b>{frontmatter.title}</b></span></div>
+            <div class="article-meta"><span class="legacy-font legacy-font--size-1 legacy-font--face-verdana">{frontmatter.displayDate || frontmatter.date} · {frontmatter.source}</span></div>
             {frontmatter.image ? (
               <div class="article-image-container">
-                <img align="TOP" border="1" height="180" src={frontmatter.image} width="340">
+                <img src={frontmatter.image} class="legacy-align-top legacy-border-1 legacy-height-180 legacy-width-340">
               </div>
             ) : null}
-            <p><font face="Verdana, Helvetica, Arial" size="2"><Content /></font></p>
+            <p><span class="legacy-font legacy-font--size-2 legacy-font--face-verdana"><Content /></span></p>
             {frontmatter.sourceUrl ? (
-              <p><font face="Verdana, Helvetica, Arial" size="1"><a href={frontmatter.sourceUrl} target="_blank" rel="noreferrer">Original source</a></font></p>
+              <p><span class="legacy-font legacy-font--size-1 legacy-font--face-verdana"><a href={frontmatter.sourceUrl} target="_blank" rel="noreferrer">Original source</a></span></p>
             ) : null}
-            <p><font face="Verdana, Helvetica, Arial" size="1"><a href="/news/">Return to News</a></font></p>
+            <p><span class="legacy-font legacy-font--size-1 legacy-font--face-verdana"><a href="/news/">Return to News</a></span></p>
           </td>
         </tr>
       </table>

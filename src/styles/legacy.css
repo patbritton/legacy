@@ -52,6 +52,7 @@ body {
   color: #000;
   line-height: 0.9;
   position: relative;
+  zoom: 1.2;
 }
 
 .legacy-news-frame {
@@ -1384,6 +1385,7 @@ body {
     /* Allow the main container to fill the screen width with some padding */
     .mpls-legacy {
         padding: 0 6px;
+        zoom: 1;
     }
 
     /* Set the main content area (where fixed widths are often set) to 100% */
@@ -1711,16 +1713,31 @@ body {
        TABLES AND IMAGES - PREVENT HORIZONTAL SCROLL
        ------------------------------------------------------------ */
 
-    .mpls-legacy table:not([width="600"]) {
+    .mpls-legacy table,
+    .mpls-legacy table[class*="legacy-width-"] {
         max-width: 100%;
         width: 100% !important;
-        display: block;
         overflow-x: auto;
+        box-sizing: border-box;
     }
 
     .mpls-legacy img {
         max-width: 100%;
         height: auto;
+    }
+
+    .mpls-legacy img[class*="legacy-height-"] {
+        height: auto;
+    }
+
+    .mpls-legacy img.legacy-align-left,
+    .mpls-legacy img.legacy-align-center,
+    .mpls-legacy img.legacy-align-right {
+        display: block;
+    }
+
+    .mpls-legacy hr[class*="legacy-width-"] {
+        width: 100% !important;
     }
 
     /* Improve font sizes for better readability */
@@ -1829,11 +1846,525 @@ body {
         width: auto;
         height: auto;
     }
+
+    .sports-callout {
+        float: none;
+        width: 100%;
+        margin: 10px auto;
+    }
 }
 
 /* ------------------------------------------------------------
    CENTER TAG REPLACEMENTS
    ------------------------------------------------------------ */
+
+/* Legacy font tag replacements */
+
+
+/* Legacy alignment and table attribute replacements */
+.legacy-align-left {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+}
+.legacy-align-center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.legacy-align-right {
+  text-align: right;
+  margin-left: auto;
+  margin-right: 0;
+}
+.legacy-align-top {
+  vertical-align: top;
+}
+.legacy-align-middle,
+.legacy-align-absmiddle {
+  vertical-align: middle;
+}
+.legacy-align-bottom {
+  vertical-align: bottom;
+}
+.legacy-valign-top {
+  vertical-align: top;
+}
+.legacy-valign-middle {
+  vertical-align: middle;
+}
+.legacy-bgcolor-000000 {
+  background-color: #000000;
+}
+.legacy-bgcolor-cccccc {
+  background-color: #cccccc;
+}
+.legacy-border-0 {
+  border: 0;
+}
+.legacy-border-1 {
+  border: 1px solid #000;
+}
+table.legacy-border-0,
+table.legacy-border-0 td,
+table.legacy-border-0 th {
+  border: 0;
+}
+table.legacy-border-1 {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+table.legacy-border-1 td,
+table.legacy-border-1 th {
+  border: 1px solid #000;
+}
+img.legacy-border-0 {
+  border: 0;
+}
+img.legacy-border-1 {
+  border: 1px solid #000;
+}
+table.legacy-cellpadding-0 td,
+table.legacy-cellpadding-0 th {
+  padding: 0px;
+}
+table.legacy-cellpadding-1 td,
+table.legacy-cellpadding-1 th {
+  padding: 1px;
+}
+table.legacy-cellpadding-2 td,
+table.legacy-cellpadding-2 th {
+  padding: 2px;
+}
+table.legacy-cellpadding-3 td,
+table.legacy-cellpadding-3 th {
+  padding: 3px;
+}
+table.legacy-cellpadding-4 td,
+table.legacy-cellpadding-4 th {
+  padding: 4px;
+}
+table.legacy-cellpadding-5 td,
+table.legacy-cellpadding-5 th {
+  padding: 5px;
+}
+table.legacy-cellpadding-6 td,
+table.legacy-cellpadding-6 th {
+  padding: 6px;
+}
+table.legacy-cellpadding-8 td,
+table.legacy-cellpadding-8 th {
+  padding: 8px;
+}
+table.legacy-cellpadding-10 td,
+table.legacy-cellpadding-10 th {
+  padding: 10px;
+}
+table.legacy-cellpadding-12 td,
+table.legacy-cellpadding-12 th {
+  padding: 12px;
+}
+table.legacy-cellpadding-15 td,
+table.legacy-cellpadding-15 th {
+  padding: 15px;
+}
+table.legacy-cellspacing-0 {
+  border-spacing: 0px;
+  border-collapse: separate;
+}
+table.legacy-cellspacing-1 {
+  border-spacing: 1px;
+  border-collapse: separate;
+}
+table.legacy-cellspacing-2 {
+  border-spacing: 2px;
+  border-collapse: separate;
+}
+table.legacy-cellspacing-5 {
+  border-spacing: 5px;
+  border-collapse: separate;
+}
+table.legacy-cellspacing-10 {
+  border-spacing: 10px;
+  border-collapse: separate;
+}
+
+/* Legacy width/height attribute replacements */
+.legacy-width-100pct {
+  width: 100%;
+}
+.legacy-width-101 {
+  width: 101px;
+}
+.legacy-width-108 {
+  width: 108px;
+}
+.legacy-width-110 {
+  width: 110px;
+}
+.legacy-width-116 {
+  width: 116px;
+}
+.legacy-width-119 {
+  width: 119px;
+}
+.legacy-width-120 {
+  width: 120px;
+}
+.legacy-width-123 {
+  width: 123px;
+}
+.legacy-width-125 {
+  width: 125px;
+}
+.legacy-width-129 {
+  width: 129px;
+}
+.legacy-width-145 {
+  width: 145px;
+}
+.legacy-width-150 {
+  width: 150px;
+}
+.legacy-width-178 {
+  width: 178px;
+}
+.legacy-width-180 {
+  width: 180px;
+}
+.legacy-width-20 {
+  width: 20px;
+}
+.legacy-width-200 {
+  width: 200px;
+}
+.legacy-width-210 {
+  width: 210px;
+}
+.legacy-width-220 {
+  width: 220px;
+}
+.legacy-width-244 {
+  width: 244px;
+}
+.legacy-width-25 {
+  width: 25px;
+}
+.legacy-width-250 {
+  width: 250px;
+}
+.legacy-width-25pct {
+  width: 25%;
+}
+.legacy-width-261 {
+  width: 261px;
+}
+.legacy-width-263 {
+  width: 263px;
+}
+.legacy-width-264 {
+  width: 264px;
+}
+.legacy-width-270 {
+  width: 270px;
+}
+.legacy-width-275 {
+  width: 275px;
+}
+.legacy-width-279 {
+  width: 279px;
+}
+.legacy-width-291 {
+  width: 291px;
+}
+.legacy-width-294 {
+  width: 294px;
+}
+.legacy-width-300 {
+  width: 300px;
+}
+.legacy-width-301 {
+  width: 301px;
+}
+.legacy-width-303 {
+  width: 303px;
+}
+.legacy-width-306 {
+  width: 306px;
+}
+.legacy-width-310 {
+  width: 310px;
+}
+.legacy-width-32 {
+  width: 32px;
+}
+.legacy-width-320 {
+  width: 320px;
+}
+.legacy-width-340 {
+  width: 340px;
+}
+.legacy-width-361 {
+  width: 361px;
+}
+.legacy-width-40 {
+  width: 40px;
+}
+.legacy-width-40pct {
+  width: 40%;
+}
+.legacy-width-420 {
+  width: 420px;
+}
+.legacy-width-433 {
+  width: 433px;
+}
+.legacy-width-450 {
+  width: 450px;
+}
+.legacy-width-468 {
+  width: 468px;
+}
+.legacy-width-5 {
+  width: 5px;
+}
+.legacy-width-50pct {
+  width: 50%;
+}
+.legacy-width-54 {
+  width: 54px;
+}
+.legacy-width-545 {
+  width: 545px;
+}
+.legacy-width-550 {
+  width: 550px;
+}
+.legacy-width-590 {
+  width: 590px;
+}
+.legacy-width-600 {
+  width: 600px;
+}
+.legacy-width-60pct {
+  width: 60%;
+}
+.legacy-width-610 {
+  width: 610px;
+}
+.legacy-width-75 {
+  width: 75px;
+}
+.legacy-width-85 {
+  width: 85px;
+}
+.legacy-width-90 {
+  width: 90px;
+}
+.legacy-width-95 {
+  width: 95px;
+}
+.legacy-height-10 {
+  height: 10px;
+}
+.legacy-height-108 {
+  height: 108px;
+}
+.legacy-height-121 {
+  height: 121px;
+}
+.legacy-height-129 {
+  height: 129px;
+}
+.legacy-height-150 {
+  height: 150px;
+}
+.legacy-height-176 {
+  height: 176px;
+}
+.legacy-height-179 {
+  height: 179px;
+}
+.legacy-height-18 {
+  height: 18px;
+}
+.legacy-height-180 {
+  height: 180px;
+}
+.legacy-height-183 {
+  height: 183px;
+}
+.legacy-height-185 {
+  height: 185px;
+}
+.legacy-height-197 {
+  height: 197px;
+}
+.legacy-height-198 {
+  height: 198px;
+}
+.legacy-height-212 {
+  height: 212px;
+}
+.legacy-height-22 {
+  height: 22px;
+}
+.legacy-height-248 {
+  height: 248px;
+}
+.legacy-height-25 {
+  height: 25px;
+}
+.legacy-height-27 {
+  height: 27px;
+}
+.legacy-height-287 {
+  height: 287px;
+}
+.legacy-height-29 {
+  height: 29px;
+}
+.legacy-height-300 {
+  height: 300px;
+}
+.legacy-height-32 {
+  height: 32px;
+}
+.legacy-height-371 {
+  height: 371px;
+}
+.legacy-height-373 {
+  height: 373px;
+}
+.legacy-height-378 {
+  height: 378px;
+}
+.legacy-height-40 {
+  height: 40px;
+}
+.legacy-height-480 {
+  height: 480px;
+}
+.legacy-height-5 {
+  height: 5px;
+}
+.legacy-height-50 {
+  height: 50px;
+}
+.legacy-height-60 {
+  height: 60px;
+}
+.legacy-height-70 {
+  height: 70px;
+}
+.legacy-height-75 {
+  height: 75px;
+}
+.legacy-height-77 {
+  height: 77px;
+}
+.legacy-height-81 {
+  height: 81px;
+}
+.legacy-height-92 {
+  height: 92px;
+}
+.legacy-height-93 {
+  height: 93px;
+}
+.legacy-height-94 {
+  height: 94px;
+}
+.legacy-height-99 {
+  height: 99px;
+}
+.legacy-font {
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+}
+
+.legacy-font--face-verdana {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.legacy-font--face-geneva {
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+
+.legacy-font--face-times {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.legacy-font--face-futura {
+  font-family: Futura, "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.legacy-font--size--2,
+.legacy-font--size-1 {
+  font-size: 10px;
+}
+
+.legacy-font--size--1,
+.legacy-font--size-2 {
+  font-size: 13px;
+}
+
+.legacy-font--size-3 {
+  font-size: 16px;
+}
+
+.legacy-font--size-4 {
+  font-size: 18px;
+}
+
+.legacy-font--size-5 {
+  font-size: 22px;
+}
+
+.legacy-font--size-6 {
+  font-size: 32px;
+}
+
+.legacy-font--color-000000 {
+  color: #000000;
+}
+
+.legacy-font--color-0000ff {
+  color: #0000ff;
+}
+
+.legacy-font--color-003333 {
+  color: #003333;
+}
+
+.legacy-font--color-660000 {
+  color: #660000;
+}
+
+.legacy-font--color-999999 {
+  color: #999999;
+}
+
+.legacy-font--color-ffffff {
+  color: #ffffff;
+}
+
+.legacy-font--color-blue {
+  color: blue;
+}
+
+.legacy-font--color-green {
+  color: green;
+}
+
+.legacy-font--color-orange {
+  color: orange;
+}
+
+.legacy-font--color-red {
+  color: red;
+}
 
 /* Index page */
 .home-main-content,
@@ -1970,6 +2501,11 @@ body {
 
 .sports-wire-section {
   text-align: center;
+}
+
+.sports-callout {
+  float: right;
+  margin: 4px 0 10px 12px;
 }
 
 .sports-wire-section table {
@@ -2224,6 +2760,14 @@ body {
   margin: 0 auto;
 }
 
+.admin-logout-form {
+  margin-top: 8px;
+}
+
+.guestbook-admin-record-cell {
+  width: 160px;
+}
+
 /* Exposure pages */
 .exposure-titlebar,
 .exposure-header-image,
@@ -2323,6 +2867,11 @@ body {
   padding-left: 0;
 }
 
+.guestbook-honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
 /* Kid pages */
 .kid-titlebar,
 .kid-content-container {
@@ -2334,6 +2883,22 @@ body {
 .kid-header-image,
 .kid-nav,
 .kid-footer-dividers {
+  text-align: center;
+}
+
+.kid-hero-image {
+  object-fit: cover;
+  width: 394px;
+  height: auto;
+}
+
+.kid-hero-image-compact {
+  width: 291px;
+  height: auto;
+}
+
+.kid-nav-links {
+  font-size: 10px;
   text-align: center;
 }
 
