@@ -1519,7 +1519,12 @@ body {
         display: block;
         width: 100%;
         text-align: center;
-        padding: 8px 0;
+        padding: 2px 0;
+    }
+
+    .header-location,
+    .header-tagline {
+        display: none;
     }
 
     .header-logo {
@@ -1532,6 +1537,11 @@ body {
     .header-divider-bottom img {
         width: 100%;
         height: auto;
+        margin: 0 auto;
+    }
+
+    .header-center {
+        padding: 1px 0;
     }
 
     /* ------------------------------------------------------------
@@ -1851,6 +1861,44 @@ body {
         float: none;
         width: 100%;
         margin: 10px auto;
+    }
+
+    /* Search page */
+    .search-links-table,
+    .search-trivia-table {
+        width: 100% !important;
+        display: block;
+        box-sizing: border-box;
+    }
+    .search-links-table tr,
+    .search-trivia-table tr {
+        display: block;
+    }
+    .search-links-table td,
+    .search-trivia-table td {
+        display: block;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Home page */
+    .home-main-content > table {
+        width: 100% !important;
+        table-layout: fixed;
+    }
+    .home-main-content > table > tr {
+        display: flex;
+        align-items: flex-start;
+    }
+    .home-main-content > table > tr > td {
+        width: 50% !important;
+        display: block;
+        box-sizing: border-box;
+        padding-top: 0;
+    }
+    .home-main-content .sidebar-email-box,
+    .home-main-content .email-signup-table {
+        margin-top: 0;
     }
 }
 
